@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 
 #include "Actors/CStar.h"
+#include "Characters/CCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "CPlayerController.generated.h"
 
@@ -22,9 +23,12 @@ public:
 protected:
 	UPROPERTY(VisibleInstanceOnly)
 	ACStar* SelectedStar;
-	
-	virtual  void SetupInputComponent() override;
+	UPROPERTY(VisibleInstanceOnly)	
+	ACCharacter* CurrentCharacter;
 
+	virtual void SetupInputComponent() override;
+	ACCharacter* GetCurrentCharacter();
+	
 	UFUNCTION()
 	void OnSelectionStart();
 	UFUNCTION()
