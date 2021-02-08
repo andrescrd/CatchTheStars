@@ -41,6 +41,6 @@ void ACStar::SetSelected(const bool Selected)
 {
 	IsSelected = Selected;
 
-	const FVector NewLocation = !IsSelected ? FVector(150, 0, 0) : FVector(-150, 0, 0);
-	AddActorLocalOffset(NewLocation);
+	const FVector NewLocation = !IsSelected ? FVector(0, 0, -50) : FVector(0, 0, 50);
+	AddActorLocalOffset(NewLocation, true);
 }

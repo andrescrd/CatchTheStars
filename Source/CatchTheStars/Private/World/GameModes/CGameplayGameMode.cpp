@@ -8,4 +8,5 @@
 ACGameplayGameMode::ACGameplayGameMode()
 {
 	PlayerControllerClass = ACPlayerController::StaticClass();
+	DefaultPawnClass = nullptr;
 }
