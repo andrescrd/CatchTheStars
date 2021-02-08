@@ -19,7 +19,7 @@ ACStar::ACStar()
 	RootComponent = MeshComponent;
 
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
-	SphereComponent->InitSphereRadius(256.f);
+	SphereComponent->InitSphereRadius(128.f);
 	SphereComponent->SetupAttachment(RootComponent);
 
 	PrimaryActorTick.bCanEverTick = false;
@@ -35,4 +35,12 @@ void ACStar::NotifyActorBeginCursorOver()
 void ACStar::NotifyActorEndCursorOver()
 {
 	std::cout << "cursor is not over ";
+}
+
+void ACStar::SetSelected(const bool Selected)
+{
+	IsSelected = Selected;
+
+	const FVector NewLocation = IsSelected ? FVector(150, 0, 0) : FVector(-150, 0, 0);
+	AddActorLocalOffset(NewLocation);
 }

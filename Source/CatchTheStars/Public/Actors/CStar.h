@@ -33,7 +33,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-
 	virtual void NotifyActorBeginCursorOver() override;
 	virtual  void NotifyActorEndCursorOver() override;
+
+	void SetSelected(bool Selected);
 };
