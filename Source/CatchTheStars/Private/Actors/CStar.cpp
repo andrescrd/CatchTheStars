@@ -3,25 +3,36 @@
 
 #include "Actors/CStar.h"
 
+#include <iostream>
+
+
+#include "Components/SphereComponent.h"
+#include "Components/StaticMeshComponent.h"
+
 // Sets default values
 ACStar::ACStar()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	IsSelected = false;
+	Type = CStarTypesEnum::A;
 
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	RootComponent = MeshComponent;
+
+	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
+	SphereComponent->InitSphereRadius(256.f);
+	SphereComponent->SetupAttachment(RootComponent);
+
+	PrimaryActorTick.bCanEverTick = false;
 }
 
-// Called when the game starts or when spawned
-void ACStar::BeginPlay()
+void ACStar::BeginPlay() { Super::BeginPlay(); }
+
+void ACStar::NotifyActorBeginCursorOver()
 {
-	Super::BeginPlay();
-	
+	std::cout << "cursor is over ";
 }
 
-// Called every frame
-void ACStar::Tick(float DeltaTime)
+void ACStar::NotifyActorEndCursorOver()
 {
-	Super::Tick(DeltaTime);
-
+	std::cout << "cursor is not over ";
 }
-

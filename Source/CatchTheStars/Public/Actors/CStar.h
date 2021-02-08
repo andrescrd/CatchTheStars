@@ -3,24 +3,37 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
+#include "Support/Enums/CStarTypesEnum.h"
+
 #include "CStar.generated.h"
 
 UCLASS()
 class CATCHTHESTARS_API ACStar : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
+
+public:
 	ACStar();
 
 protected:
-	// Called when the game starts or when spawned
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UStaticMeshComponent* MeshComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class USphereComponent* SphereComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool IsSelected;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	CStarTypesEnum Type;
+
+
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+public:
 
+	virtual void NotifyActorBeginCursorOver() override;
+	virtual  void NotifyActorEndCursorOver() override;
 };
