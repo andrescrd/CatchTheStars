@@ -2,10 +2,7 @@
 
 
 #include "Actors/CStar.h"
-
-#include <iostream>
-
-
+#include "Components/CMovableComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 
@@ -22,25 +19,23 @@ ACStar::ACStar()
 	SphereComponent->InitSphereRadius(128.f);
 	SphereComponent->SetupAttachment(RootComponent);
 
+	MovableComponent = CreateDefaultSubobject<UCMovableComponent>(TEXT("MovableComponent"));
+	MovableComponent->SetAutoActivate(false);
+
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ACStar::BeginPlay() { Super::BeginPlay(); }
-
-void ACStar::NotifyActorBeginCursorOver()
+void ACStar::BeginPlay()
 {
-	std::cout << "cursor is over ";
-}
-
-void ACStar::NotifyActorEndCursorOver()
-{
-	std::cout << "cursor is not over ";
+	Super::BeginPlay();
 }
 
 void ACStar::SetSelected(const bool Selected)
 {
 	IsSelected = Selected;
 
-	const FVector NewLocation = !IsSelected ? FVector(0, 0, -50) : FVector(0, 0, 50);
-	AddActorLocalOffset(NewLocation, true);
+	if (IsSelected)
+		MovableComponent->Activate(true);
+	else
+		MovableComponent->Deactivate();
 }

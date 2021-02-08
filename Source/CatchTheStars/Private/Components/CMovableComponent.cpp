@@ -10,7 +10,7 @@ UCMovableComponent::UCMovableComponent()
 {
 	bAutoActivate = false;
 	OffsetZ = 50;
-	Time = FFloatRange::Inclusive(.5, 2);
+	Time = FFloatRange::Inclusive(0.3,2);
 
 	TimelineComponent = CreateDefaultSubobject<UTimelineComponent>(TEXT("TimelineComponent"));
 	PrimaryComponentTick.bCanEverTick = false;
@@ -23,8 +23,9 @@ void UCMovableComponent::BeginPlay()
 
 	if (bAutoActivate)
 		PlayTimeline();
-}
 
+	InitialLocation = GetOwner()->GetActorLocation();
+}
 
 void UCMovableComponent::SetupTimeline()
 {
@@ -50,8 +51,7 @@ void UCMovableComponent::GetNewLocation()
 		StartLocation = Actor->GetActorLocation();
 		EndLocation = StartLocation;
 		EndLocation.Z += OffsetZ;
-		const float NewRate = 1 / FMath::RandRange(Time.GetLowerBoundValue(), Time.GetUpperBoundValue());
-		TimelineComponent->SetPlayRate(NewRate);
+		TimelineComponent->SetPlayRate( 1 / FMath::RandRange(Time.GetLowerBoundValue(), Time.GetUpperBoundValue()));
 	}
 }
 
@@ -87,4 +87,6 @@ void UCMovableComponent::Deactivate()
 {
 	Super::Deactivate();
 	TimelineComponent->Deactivate();
+
+	GetOwner()->SetActorLocation(InitialLocation);
 }

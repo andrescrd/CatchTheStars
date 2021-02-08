@@ -18,10 +18,11 @@ public:
 	UCMovableComponent();
 
 protected:
+	FVector InitialLocation;
 	FVector StartLocation;
 	FVector EndLocation;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
 	class UTimelineComponent* TimelineComponent;	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UCurveFloat* Curve;
@@ -29,7 +30,7 @@ protected:
 	float OffsetZ;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FFloatRange Time;
-
+	
 	virtual void BeginPlay() override;
 	void SetupTimeline();
 	void GetNewLocation();

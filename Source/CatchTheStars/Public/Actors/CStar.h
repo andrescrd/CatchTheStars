@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 
+
+#include "Components/CMovableComponent.h"
 #include "Components/SphereComponent.h"
+#include "Components/TimelineComponent.h"
 #include "GameFramework/Actor.h"
 #include "Support/Enums/CStarTypesEnum.h"
 
@@ -23,18 +26,18 @@ protected:
 	class UStaticMeshComponent* MeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USphereComponent* SphereComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UCMovableComponent* MovableComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSelected;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	CStarTypesEnum Type;
+	
 
-
+	void SetupTimeline();
 	virtual void BeginPlay() override;
 
 public:
-	virtual void NotifyActorBeginCursorOver() override;
-	virtual  void NotifyActorEndCursorOver() override;
-
 	void SetSelected(bool Selected);
 };

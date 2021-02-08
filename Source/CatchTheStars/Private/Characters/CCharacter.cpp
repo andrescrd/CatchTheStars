@@ -29,5 +29,5 @@ ACCharacter::ACCharacter()
 void ACCharacter::MoveToDestination(const FVector Destination) const
 {
 	if (AAIController* AI = Cast<AAIController>(GetController()))
-		AI->MoveToLocation(Destination, 1, false);
+		AI->MoveToLocation(Destination, 50, false);
 }
