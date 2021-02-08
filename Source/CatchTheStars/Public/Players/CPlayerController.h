@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Actors/CStar.h"
 #include "GameFramework/PlayerController.h"
 #include "CPlayerController.generated.h"
 
@@ -14,4 +16,17 @@ class CATCHTHESTARS_API ACPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public:
+	ACPlayerController();
+		
+protected:
+	UPROPERTY(VisibleInstanceOnly)
+	ACStar* SelectedStar;
+	
+	virtual  void SetupInputComponent() override;
+
+	UFUNCTION()
+	void OnSelectionStart();
+	UFUNCTION()
+	void OnSelectionEnd();
 };
