@@ -3,3 +3,9 @@
 
 #include "World/GameModes/CGameplayGameMode.h"
 
+#include "Players/CPlayerController.h"
+
+ACGameplayGameMode::ACGameplayGameMode()
+{
+	PlayerControllerClass = ACPlayerController::StaticClass();
+}

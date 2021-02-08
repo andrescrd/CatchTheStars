@@ -13,5 +13,7 @@ UCLASS()
 class CATCHTHESTARS_API ACGameplayGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	ACGameplayGameMode();
 };
