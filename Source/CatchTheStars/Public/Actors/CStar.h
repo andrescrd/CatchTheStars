@@ -8,6 +8,7 @@
 #include "Components/CMovableComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/TimelineComponent.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/Actor.h"
 #include "Support/Enums/CStarTypesEnum.h"
 
@@ -27,17 +28,22 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USphereComponent* SphereComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UWidgetComponent* WidgetComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UCMovableComponent* MovableComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSelected;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	CStarTypesEnum Type;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TSubclassOf<UUserWidget> UserWidgetClass;
 
-	void SetupTimeline();
 	virtual void BeginPlay() override;
 
 public:
+	virtual void OnConstruction(const FTransform& Transform) override;
+	
 	void SetSelected(bool Selected);
 };
