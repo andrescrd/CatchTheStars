@@ -55,3 +55,9 @@ void ACStar::SetSelected(const bool Selected)
 	else
 		MovableComponent->Deactivate();
 }
+
+void ACStar::AddRelation(ACStar* Relation)
+{
+	if(Relation != this)
+		Relations.AddUnique(Relation);
+}

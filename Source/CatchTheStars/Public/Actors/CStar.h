@@ -23,6 +23,8 @@ public:
 	ACStar();
 
 protected:
+	TArray<class ACStar*> Relations;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* MeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -46,4 +48,5 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
 	void SetSelected(bool Selected);
+	void AddRelation(class ACStar* Relation);
 };
