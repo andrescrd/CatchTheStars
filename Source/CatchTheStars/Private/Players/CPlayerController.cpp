@@ -2,10 +2,6 @@
 
 
 #include "Players/CPlayerController.h"
-
-#include <iostream>
-
-
 #include "Actors/CStar.h"
 #include "Characters/CCharacter.h"
 #include "Kismet/GameplayStatics.h"
@@ -47,7 +43,9 @@ void ACPlayerController::OnSelectionStart()
 
 	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACStar::StaticClass()))
 	{
-		std::cout << "a star was selected";		
+		if(SelectedStar != nullptr && SelectedStar != HitResult.GetActor())
+			SelectedStar->SetSelected(false);
+		
 		SelectedStar =  Cast<ACStar>(HitResult.GetActor());
 		SelectedStar->SetSelected(true);
 
@@ -57,9 +55,9 @@ void ACPlayerController::OnSelectionStart()
 
 void ACPlayerController::OnSelectionEnd()
 {
-	if(SelectedStar)
-	{
-		SelectedStar->SetSelected(false);
-		SelectedStar= nullptr;
-	}
+	// if(SelectedStar)
+	// {
+	// 	SelectedStar->SetSelected(false);
+	// 	SelectedStar= nullptr;
+	// }
 }
