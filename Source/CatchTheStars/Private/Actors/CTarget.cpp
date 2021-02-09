@@ -38,7 +38,6 @@ void ACTarget::OnConstruction(const FTransform& Transform)
 		WidgetComponent->SetWidgetClass(UserWidgetClass);
 }
 
-void ACTarget::SetSelected(const bool Selected)
-{
-	IsSelected = Selected;
-}
+void ACTarget::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+
+void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }

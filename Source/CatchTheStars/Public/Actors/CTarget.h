@@ -15,16 +15,16 @@ UCLASS()
 class CATCHTHESTARS_API ACTarget : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ACTarget();
 
 protected:
-		
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)	
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* StaticMeshComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UBoxComponent* BoxComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UWidgetComponent* WidgetComponent;
@@ -36,11 +36,12 @@ protected:
 	CStarTypesEnum Type;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSelected;
-	
+
 	virtual void BeginPlay() override;
 
 public:
-virtual void OnConstruction(const FTransform& Transform) override;
-	
+	virtual void OnConstruction(const FTransform& Transform) override;
+
+	void SetType(const CStarTypesEnum NewType);
 	void SetSelected(bool Selected);
 };
