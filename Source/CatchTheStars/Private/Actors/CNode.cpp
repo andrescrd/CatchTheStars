@@ -4,6 +4,7 @@
 #include "Actors/CNode.h"
 #include "Actors/CStar.h"
 #include "Actors/CTarget.h"
+#include "NiagaraComponent.h"
 
 ACNode::ACNode()
 {
@@ -16,7 +17,30 @@ ACNode::ACNode()
 	TargetChild->SetupAttachment(RootComponent);
 	StarChild = CreateDefaultSubobject<UChildActorComponent>(TEXT("StarComponent"));
 	StarChild->SetRelativeLocation(FVector(0, 0, 150.f));
-	StarChild->SetupAttachment(RootComponent);
+	StarChild->SetupAttachment(RootComponent);	
+}
+
+void ACNode::BeginPlay()
+{
+	Super::BeginPlay();
+	DisplayStar();
+}
+
+void ACNode::DisplayStar()
+{
+	if (bHasStar)
+	{
+		StarChild->CreateChildActor();
+		Star = Cast<ACStar>(StarChild->GetChildActor());
+	}
+	else
+	{
+		if (StarChild->GetChildActor())
+		{
+			StarChild->DestroyChildActor();
+			Star = nullptr;
+		}
+	}
 }
 
 void ACNode::OnConstruction(const FTransform& Transform)
@@ -33,36 +57,18 @@ void ACNode::OnConstruction(const FTransform& Transform)
 	if (StarChild && StarClass)
 	{
 		StarChild->SetChildActorClass(StarClass);
-
-		if (bHasStar)
-		{
-			StarChild->CreateChildActor();
-			Star = Cast<ACStar>(StarChild->GetChildActor());
-		}
-		else
-		{
-			if (StarChild->GetChildActor())
-			{
-				StarChild->DestroyChildActor();
-				Star = nullptr;
-			}
-		}
+		DisplayStar();
 	}
 }
 
+#if WITH_EDITOR
 void ACNode::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
-
-	if (!bHasStar)
-	{
-		if (StarChild->GetChildActor())
-		{
-			StarChild->DestroyChildActor();
-			Star = nullptr;
-		}
-	}
+	DisplayStar();
 }
+#endif
+
 
 void ACNode::SetTargetType(const CStarTypesEnum Type)
 {
@@ -74,6 +80,16 @@ void ACNode::AddRelation(ACNode* Relation)
 {
 	if (Relation != this)
 		Relations.AddUnique(Relation);
+
+	
+}
+
+FVector ACNode::GetStartLocation() const
+{
+	if(Target)
+		return Target->GetActorLocation();
+	
+	return {};
 }
 
 TArray<FVector> ACNode::GetRelationLocations()
