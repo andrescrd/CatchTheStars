@@ -3,9 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
-#include "Actors/CStar.h"
-#include "Characters/CCharacter.h"
 #include "GameFramework/PlayerController.h"
 #include "CPlayerController.generated.h"
 
@@ -22,9 +19,13 @@ public:
 		
 protected:
 	UPROPERTY(VisibleInstanceOnly)
-	ACStar* SelectedStar;
+	class ACNode* SelectedNode;
+	UPROPERTY(VisibleInstanceOnly)
+	class ACTarget* SelectedTarget;
+	UPROPERTY(VisibleInstanceOnly)
+	class ACStar* SelectedStar;
 	UPROPERTY(VisibleInstanceOnly)	
-	ACCharacter* CurrentCharacter;
+	class ACCharacter* CurrentCharacter;
 
 	virtual void SetupInputComponent() override;
 	ACCharacter* GetCurrentCharacter();

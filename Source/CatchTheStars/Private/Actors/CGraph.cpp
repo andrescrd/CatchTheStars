@@ -2,7 +2,6 @@
 
 
 #include "Actors/CGraph.h"
-
 #include "CollisionDebugDrawingPublic.h"
 #include "Actors/CNode.h"
 #include "Kismet/GameplayStatics.h"
@@ -59,8 +58,8 @@ void ACGraph::GeneratePaths()
 {
 	while (Paths.Num() > 0)
 	{
-		UNiagaraComponent* Node = Paths.Pop();
-		Node->DestroyComponent(true);
+		if(UNiagaraComponent* Node = Paths.Pop())
+			Node->DestroyComponent(true);
 	}
 
 	if (FXTemplate)

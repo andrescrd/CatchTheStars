@@ -2,7 +2,10 @@
 
 
 #include "Players/CPlayerController.h"
+
+#include "Actors/CNode.h"
 #include "Actors/CStar.h"
+#include "Actors/CTarget.h"
 #include "Characters/CCharacter.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -27,9 +30,9 @@ void ACPlayerController::SetupInputComponent()
 
 ACCharacter* ACPlayerController::GetCurrentCharacter()
 {
-	if(!IsValid(CurrentCharacter))
+	if (!IsValid(CurrentCharacter))
 	{
-		if( AActor * Actor = UGameplayStatics::GetActorOfClass(GetWorld(), ACCharacter::StaticClass()))
+		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), ACCharacter::StaticClass()))
 			CurrentCharacter = Cast<ACCharacter>(Actor);
 	}
 
@@ -39,17 +42,40 @@ ACCharacter* ACPlayerController::GetCurrentCharacter()
 void ACPlayerController::OnSelectionStart()
 {
 	FHitResult HitResult;
-	GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);	
-
+	GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);
+	
 	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACStar::StaticClass()))
-	{
-		if(SelectedStar != nullptr && SelectedStar != HitResult.GetActor())
+	{		
+		if (SelectedStar != nullptr && SelectedStar != HitResult.GetActor())
 			SelectedStar->SetSelected(false);
-		
-		SelectedStar =  Cast<ACStar>(HitResult.GetActor());
+	
+		SelectedStar = Cast<ACStar>(HitResult.GetActor());
 		SelectedStar->SetSelected(true);
-
+	
 		GetCurrentCharacter()->MoveToDestination(SelectedStar->GetActorLocation());
+		
+		GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Star")));
+	}
+	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()))
+	{
+		if(SelectedStar && SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
+		{
+			if (SelectedTarget != nullptr && SelectedTarget != HitResult.GetActor())
+				SelectedTarget->SetSelected(false);
+
+			SelectedTarget = Cast<ACTarget>(HitResult.GetActor());
+			SelectedTarget->SetSelected(true);
+
+			GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
+
+			FVector NewLocation = SelectedTarget->GetActorLocation();
+			NewLocation.Z = SelectedStar->GetActorLocation().Z;
+			SelectedStar->SetSelected(false);
+			SelectedStar->SetActorLocation(NewLocation);
+
+			ACNode* Node = Cast<ACNode>(SelectedTarget->GetParentActor());
+			Node->AddStar(SelectedStar);
+		}
 	}
 }
 

@@ -15,7 +15,9 @@ public:
 	ACNode();
 
 protected:
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	class ACTarget* Target;
+	UPROPERTY(VisibleInstanceOnly,  BlueprintReadOnly, Category=Setup)
 	class ACStar* Star;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
@@ -47,9 +49,13 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 
-	void SetTargetType(const CStarTypesEnum Type);
+	void SetTargetType(const CStarTypesEnum Type) const;
 	void AddRelation(class ACNode* Relation);
+	void AddStar(class ACStar* NewStar);
 
 	FVector GetStartLocation() const;
 	TArray<FVector> GetRelationLocations();
+
+	ACTarget * GetTarget() const;
+	ACStar * GetStar() const;
 };

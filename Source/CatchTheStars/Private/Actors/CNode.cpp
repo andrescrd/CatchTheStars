@@ -9,6 +9,7 @@
 ACNode::ACNode()
 {
 	bHasStar = true;
+	Relations = TArray<ACNode*>(); 
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
@@ -58,7 +59,7 @@ void ACNode::OnConstruction(const FTransform& Transform)
 	{
 		StarChild->SetChildActorClass(StarClass);
 		DisplayStar();
-	}
+	}	
 }
 
 #if WITH_EDITOR
@@ -69,8 +70,7 @@ void ACNode::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 }
 #endif
 
-
-void ACNode::SetTargetType(const CStarTypesEnum Type)
+void ACNode::SetTargetType(const CStarTypesEnum Type) const
 {
 	if (Target)
 		Target->SetType(Type);
@@ -79,18 +79,23 @@ void ACNode::SetTargetType(const CStarTypesEnum Type)
 void ACNode::AddRelation(ACNode* Relation)
 {
 	if (Relation != this)
-		Relations.AddUnique(Relation);
-
-	
+		Relations.AddUnique(Relation);	
 }
 
-FVector ACNode::GetStartLocation() const
+void ACNode::AddStar(ACStar* NewStar)
 {
-	if(Target)
-		return Target->GetActorLocation();
-	
-	return {};
+	if(StarChild && StarChild->GetChildActor())
+	{
+		USceneComponent* CurrentStarChild = StarChild->GetChildActor()->GetRootComponent();
+		CurrentStarChild->DetachFromComponent(FDetachmentTransformRules(EDetachmentRule::KeepWorld,false));
+	}
+
+	USceneComponent* ChildRoot = NewStar->GetRootComponent();
+	ChildRoot->DetachFromComponent(FDetachmentTransformRules(EDetachmentRule::KeepWorld,false));
+	ChildRoot->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 }
+
+FVector ACNode::GetStartLocation() const { return Target ? Target->GetActorLocation() : FVector::ZeroVector; }
 
 TArray<FVector> ACNode::GetRelationLocations()
 {
@@ -101,3 +106,7 @@ TArray<FVector> ACNode::GetRelationLocations()
 
 	return Locations;
 }
+
+ACTarget* ACNode::GetTarget() const { return Target; }
+
+ACStar* ACNode::GetStar() const { return Star; }
