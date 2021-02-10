@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "NiagaraSystem.h"
 #include "GameFramework/Actor.h"
 
 #include "CGraph.generated.h"
@@ -17,14 +19,21 @@ public:
 	ACGraph();
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
 	TArray<class ACNode*> Nodes;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
+	TArray<class UNiagaraComponent*> Paths;
 
+	UPROPERTY()
+	USceneComponent* Root;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	int NodesCounter;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<class ACNode> NodeClass;
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UNiagaraSystem* FXTemplate;
+	
 	virtual void BeginPlay() override;
 
 public:
@@ -33,4 +42,6 @@ public:
 
 	UFUNCTION(CallInEditor)
 	void GenerateGraph();
+	UFUNCTION(CallInEditor)
+    void GeneratePaths();
 };
