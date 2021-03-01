@@ -11,12 +11,14 @@
 // Sets default values
 ACTarget::ACTarget()
 {
-	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
-	RootComponent = StaticMeshComponent;
+	Type = CStarTypesEnum::A;
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
 	BoxComponent->SetBoxExtent(FVector(128.f));
-	BoxComponent->SetupAttachment(RootComponent);
+	RootComponent = BoxComponent;
+	
+	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	StaticMeshComponent->SetupAttachment(RootComponent);
 
 	WidgetComponent =  CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComponent"));
 	WidgetComponent->SetWidgetClass(UserWidgetClass);
@@ -37,7 +39,6 @@ void ACTarget::OnConstruction(const FTransform& Transform)
 	if(WidgetComponent && UserWidgetClass)
 		WidgetComponent->SetWidgetClass(UserWidgetClass);
 }
-
 
 void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }
 

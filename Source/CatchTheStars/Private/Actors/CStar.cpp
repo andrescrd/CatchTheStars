@@ -15,12 +15,13 @@ ACStar::ACStar()
 	IsSelected = false;
 	Type = CStarTypesEnum::A;
 
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
-	RootComponent = MeshComponent;
-
+	
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->InitSphereRadius(128.f);
-	SphereComponent->SetupAttachment(RootComponent);
+	RootComponent = SphereComponent;
+	
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent->SetupAttachment(RootComponent);
 
 	WidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComponent"));
 	WidgetComponent->SetWidgetClass(UserWidgetClass);

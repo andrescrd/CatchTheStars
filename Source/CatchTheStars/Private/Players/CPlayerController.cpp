@@ -58,24 +58,25 @@ void ACPlayerController::OnSelectionStart()
 	}
 	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()))
 	{
-		if(SelectedStar && SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
-		{
-			if (SelectedTarget != nullptr && SelectedTarget != HitResult.GetActor())
-				SelectedTarget->SetSelected(false);
-
-			SelectedTarget = Cast<ACTarget>(HitResult.GetActor());
-			SelectedTarget->SetSelected(true);
-
-			GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
-
-			FVector NewLocation = SelectedTarget->GetActorLocation();
-			NewLocation.Z = SelectedStar->GetActorLocation().Z;
-			SelectedStar->SetSelected(false);
-			SelectedStar->SetActorLocation(NewLocation);
-
-			ACNode* Node = Cast<ACNode>(SelectedTarget->GetParentActor());
-			Node->AddStar(SelectedStar);
-		}
+		GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
+		// if(SelectedStar && SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
+		// {
+		// 	if (SelectedTarget != nullptr && SelectedTarget != HitResult.GetActor())
+		// 		SelectedTarget->SetSelected(false);
+		//
+		// 	SelectedTarget = Cast<ACTarget>(HitResult.GetActor());
+		// 	SelectedTarget->SetSelected(true);
+		//
+		// 	GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
+		//
+		// 	FVector NewLocation = SelectedTarget->GetActorLocation();
+		// 	NewLocation.Z = SelectedStar->GetActorLocation().Z;
+		// 	SelectedStar->SetSelected(false);
+		// 	SelectedStar->SetActorLocation(NewLocation);
+		//
+		// 	ACNode* Node = Cast<ACNode>(SelectedTarget->GetParentActor());
+		// 	Node->AddStar(SelectedStar);
+		// }
 	}
 }
 
