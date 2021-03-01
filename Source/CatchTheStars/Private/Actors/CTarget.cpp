@@ -3,10 +3,10 @@
 
 #include "Actors/CTarget.h"
 
-
 #include "Blueprint/UserWidget.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
+#include "UI/CTypeWidget.h"
 
 // Sets default values
 ACTarget::ACTarget()
@@ -38,6 +38,8 @@ void ACTarget::OnConstruction(const FTransform& Transform)
 		WidgetComponent->SetWidgetClass(UserWidgetClass);
 }
 
-void ACTarget::SetType(const CStarTypesEnum NewType) { Type = NewType; }
 
 void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }
+
+void ACTarget::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+CStarTypesEnum ACTarget::GetType() const { return Type; }

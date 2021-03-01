@@ -2,10 +2,12 @@
 
 
 #include "Actors/CStar.h"
+
 #include "Components/CMovableComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/WidgetComponent.h"
+#include "UI/CTypeWidget.h"
 
 // Sets default values
 ACStar::ACStar()
@@ -20,12 +22,12 @@ ACStar::ACStar()
 	SphereComponent->InitSphereRadius(128.f);
 	SphereComponent->SetupAttachment(RootComponent);
 
-	WidgetComponent =  CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComponent"));
+	WidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComponent"));
 	WidgetComponent->SetWidgetClass(UserWidgetClass);
 	WidgetComponent->SetDrawAtDesiredSize(true);
-	WidgetComponent->AddRelativeRotation(FRotator(90,0,0));
+	WidgetComponent->AddRelativeRotation(FRotator(90, 0, 0));
 	WidgetComponent->InitWidget();
-	WidgetComponent->SetupAttachment(RootComponent);	
+	WidgetComponent->SetupAttachment(RootComponent);
 
 	MovableComponent = CreateDefaultSubobject<UCMovableComponent>(TEXT("MovableComponent"));
 	MovableComponent->SetAutoActivate(false);
@@ -33,16 +35,13 @@ ACStar::ACStar()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ACStar::BeginPlay()
-{
-	Super::BeginPlay();
-}
+void ACStar::BeginPlay() { Super::BeginPlay(); }
 
 void ACStar::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	if(WidgetComponent && UserWidgetClass)
+	if (WidgetComponent && UserWidgetClass)
 		WidgetComponent->SetWidgetClass(UserWidgetClass);
 }
 
@@ -56,8 +55,5 @@ void ACStar::SetSelected(const bool Selected)
 		MovableComponent->Deactivate();
 }
 
-void ACStar::AddRelation(ACStar* Relation)
-{
-	if(Relation != this)
-		Relations.AddUnique(Relation);
-}
+void ACStar::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+CStarTypesEnum ACStar::GetType() const { return Type; }

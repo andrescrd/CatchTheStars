@@ -7,12 +7,13 @@
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/TypeInterface.h"
 #include "Support/Enums/CStarTypesEnum.h"
 
 #include "CTarget.generated.h"
 
 UCLASS()
-class CATCHTHESTARS_API ACTarget : public AActor
+class CATCHTHESTARS_API ACTarget : public AActor, public ITypeInterface
 {
 	GENERATED_BODY()
 
@@ -30,7 +31,7 @@ protected:
 	class UWidgetComponent* WidgetComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<UUserWidget> UserWidgetClass;
+	TSubclassOf<class UCTypeWidget> UserWidgetClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	CStarTypesEnum Type;
@@ -42,6 +43,8 @@ protected:
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 
-	void SetType(const CStarTypesEnum NewType);
 	void SetSelected(bool Selected);
+
+	void SetType(CStarTypesEnum NewType);
+	CStarTypesEnum GetType() const;
 };
