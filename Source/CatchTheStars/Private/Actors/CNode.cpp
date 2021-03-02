@@ -22,19 +22,26 @@ ACNode::ACNode()
 	StarChild->SetupAttachment(RootComponent);
 }
 
+ACTarget* ACNode::GetTarget() const { return Target; }
+
+ACStar* ACNode::GetStar() const { return Star; }
+
 void ACNode::BeginPlay() { Super::BeginPlay(); }
 
 void ACNode::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
+	SetupChildren();
+}
 
+void ACNode::SetupChildren()
+{
 	if (TargetChild && TargetClass)
 	{
 		TargetChild->SetChildActorClass(TargetClass);
 		TargetChild->CreateChildActor();
 		Target = Cast<ACTarget>(TargetChild->GetChildActor());
 	}
-
 
 	if (StarChild && StarClass)
 	{	
@@ -54,7 +61,3 @@ void ACNode::OnConstruction(const FTransform& Transform)
 		}
 	}
 }
-
-ACTarget* ACNode::GetTarget() const { return Target; }
-
-ACStar* ACNode::GetStar() const { return Star; }

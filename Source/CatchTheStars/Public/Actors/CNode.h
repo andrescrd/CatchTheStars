@@ -17,7 +17,7 @@ public:
 protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	class ACTarget* Target;
-	UPROPERTY(VisibleInstanceOnly,  BlueprintReadOnly, Category=Setup)
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	class ACStar* Star;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
@@ -26,7 +26,7 @@ protected:
 	class UChildActorComponent* TargetChild;
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class UChildActorComponent* StarChild;
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	TSubclassOf<class ACTarget> TargetClass;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
@@ -38,12 +38,13 @@ protected:
 	CStarTypesEnum TargetType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	CStarTypesEnum StarType;
-	
+
 	virtual void BeginPlay() override;
-	
+	void SetupChildren();
+
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 
-	ACTarget * GetTarget() const;
-	ACStar * GetStar() const;
+	ACTarget* GetTarget() const;
+	ACStar* GetStar() const;
 };
