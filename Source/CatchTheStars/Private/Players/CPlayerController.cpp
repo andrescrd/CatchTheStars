@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Players/CPlayerController.h"
 
 #include "Actors/CNode.h"
@@ -23,9 +22,7 @@ ACPlayerController::ACPlayerController()
 void ACPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
-	InputComponent->BindAction(ActionName, IE_Pressed, this, &ACPlayerController::OnSelectionStart);
-	InputComponent->BindAction(ActionName, IE_Released, this, &ACPlayerController::OnSelectionEnd);
+	InputComponent->BindAction(ActionName, IE_Pressed, this, &ACPlayerController::OnSelected);
 }
 
 ACCharacter* ACPlayerController::GetCurrentCharacter()
@@ -39,52 +36,56 @@ ACCharacter* ACPlayerController::GetCurrentCharacter()
 	return CurrentCharacter;
 }
 
-void ACPlayerController::OnSelectionStart()
+void ACPlayerController::OnSelected()
 {
 	FHitResult HitResult;
 	GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);
-	
+
 	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACStar::StaticClass()))
-	{		
-		if (SelectedStar != nullptr && SelectedStar != HitResult.GetActor())
-			SelectedStar->SetSelected(false);
-	
-		SelectedStar = Cast<ACStar>(HitResult.GetActor());
-		SelectedStar->SetSelected(true);
-	
-		GetCurrentCharacter()->MoveToDestination(SelectedStar->GetActorLocation());
-		
-		GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Star")));
-	}
-	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()))
 	{
-		GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
-		// if(SelectedStar && SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
-		// {
-		// 	if (SelectedTarget != nullptr && SelectedTarget != HitResult.GetActor())
-		// 		SelectedTarget->SetSelected(false);
-		//
-		// 	SelectedTarget = Cast<ACTarget>(HitResult.GetActor());
-		// 	SelectedTarget->SetSelected(true);
-		//
-		// 	GEngine->AddOnScreenDebugMessage(0,3,FColor::Green, FString::Printf(TEXT("Have a Target")));
-		//
-		// 	FVector NewLocation = SelectedTarget->GetActorLocation();
-		// 	NewLocation.Z = SelectedStar->GetActorLocation().Z;
-		// 	SelectedStar->SetSelected(false);
-		// 	SelectedStar->SetActorLocation(NewLocation);
-		//
-		// 	ACNode* Node = Cast<ACNode>(SelectedTarget->GetParentActor());
-		// 	Node->AddStar(SelectedStar);
-		// }
+		ACStar* Star = Cast<ACStar>(HitResult.GetActor());
+		SetSelectedStar(Star);
+	}
+	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()) && SelectedStar != nullptr &&
+		SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
+	{
+		ACTarget* Target = Cast<ACTarget>(HitResult.GetActor());
+		SetSelectedTarget(Target);
+	}
+	else
+	{
+		if (SelectedStar)
+			SelectedStar->SetSelected(false);
+
+		if (SelectedTarget)
+			SelectedTarget->SetSelected(false);
 	}
 }
 
-void ACPlayerController::OnSelectionEnd()
+void ACPlayerController::SetSelectedStar(ACStar* Star)
 {
-	// if(SelectedStar)
-	// {
-	// 	SelectedStar->SetSelected(false);
-	// 	SelectedStar= nullptr;
-	// }
+	GEngine->AddOnScreenDebugMessage(0, 3, FColor::Green, FString::Printf(TEXT("Star clicked")));
+
+	if (SelectedStar != nullptr && SelectedStar != Star)
+		SelectedStar->SetSelected(false);
+
+	SelectedStar = Star;
+	SelectedStar->SetSelected(true);
+
+	MoveCharacterTo(SelectedStar->GetActorLocation());
 }
+
+void ACPlayerController::SetSelectedTarget(ACTarget* Target)
+{
+	GEngine->AddOnScreenDebugMessage(0, 3, FColor::Green, FString::Printf(TEXT("Target clicked")));
+
+	if (SelectedTarget != nullptr && SelectedTarget != Target)
+		SelectedTarget->SetSelected(false);
+
+	SelectedTarget = Target;
+	SelectedTarget->SetSelected(true);
+
+	SelectedStar->SetSelected(false);
+}
+
+void ACPlayerController::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }

@@ -64,24 +64,24 @@ void ACGraph::GeneratePaths()
 
 	if (FXTemplate)
 	{
-		for (int i = 0; i < Nodes.Num(); ++i)
-		{
-			ACNode* Node = Nodes[i];
-
-
-			const TArray<FVector> Locations = Node->GetRelationLocations();
-			for (int x = 0; x < Locations.Num(); ++x)
-			{
-				// UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, FXTemplate,  Node->GetStartLocation(), FRotator::ZeroRotator);
-				UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAttached(FXTemplate, Node->GetRootComponent(), NAME_None,
-				                                                                          Node->GetStartLocation(), FRotator::ZeroRotator, EAttachLocation::KeepRelativeOffset,
-				                                                                          true);
-				Niagara->SetRelativeLocation(FVector(0));
-				Niagara->AttachToComponent(Node->GetRootComponent(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
-
-				Niagara->SetVectorParameter(FName("BeamEnd"), Locations[x]);
-				Paths.AddUnique(Niagara);
-			}
-		}
+		// for (int i = 0; i < Nodes.Num(); ++i)
+		// {
+		// 	ACNode* Node = Nodes[i];
+		//
+		//
+		// 	const TArray<FVector> Locations = Node->GetRelationLocations();
+		// 	for (int x = 0; x < Locations.Num(); ++x)
+		// 	{
+		// 		// UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, FXTemplate,  Node->GetStartLocation(), FRotator::ZeroRotator);
+		// 		UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAttached(FXTemplate, Node->GetRootComponent(), NAME_None,
+		// 		                                                                          Node->GetStartLocation(), FRotator::ZeroRotator, EAttachLocation::KeepRelativeOffset,
+		// 		                                                                          true);
+		// 		Niagara->SetRelativeLocation(FVector(0));
+		// 		Niagara->AttachToComponent(Node->GetRootComponent(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
+		//
+		// 		Niagara->SetVectorParameter(FName("BeamEnd"), Locations[x]);
+		// 		Paths.AddUnique(Niagara);
+		// 	}
+		// }
 	}
 }

@@ -14,7 +14,6 @@ ACStar::ACStar()
 {
 	IsSelected = false;
 	Type = CStarTypesEnum::A;
-
 	
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->InitSphereRadius(128.f);

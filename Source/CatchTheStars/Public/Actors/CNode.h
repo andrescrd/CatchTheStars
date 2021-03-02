@@ -33,9 +33,6 @@ protected:
 	TSubclassOf<class ACStar> StarClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	TArray<class ACNode*> Relations;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	bool bHasStar;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	CStarTypesEnum TargetType;
@@ -43,18 +40,9 @@ protected:
 	CStarTypesEnum StarType;
 	
 	virtual void BeginPlay() override;
-	void DisplayStar();
 	
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
-	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
-
-	void SetTargetType(const CStarTypesEnum Type) const;
-	void AddRelation(class ACNode* Relation);
-	void AddStar(class ACStar* NewStar);
-
-	FVector GetStartLocation() const;
-	TArray<FVector> GetRelationLocations();
 
 	ACTarget * GetTarget() const;
 	ACStar * GetStar() const;

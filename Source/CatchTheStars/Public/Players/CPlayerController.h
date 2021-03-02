@@ -30,8 +30,11 @@ protected:
 	virtual void SetupInputComponent() override;
 	ACCharacter* GetCurrentCharacter();
 	
+	void SetSelectedTarget(class ACTarget* Target);
+	void SetSelectedStar(class ACStar* Star);
+	
+	void MoveCharacterTo(FVector Location);
+
 	UFUNCTION()
-	void OnSelectionStart();
-	UFUNCTION()
-	void OnSelectionEnd();
+	void OnSelected();
 };
