@@ -43,4 +43,5 @@ void ACTarget::OnConstruction(const FTransform& Transform)
 void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }
 
 void ACTarget::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+
 CStarTypesEnum ACTarget::GetType() const { return Type; }

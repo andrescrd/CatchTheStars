@@ -86,6 +86,8 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	SelectedTarget->SetSelected(true);
 
 	SelectedStar->SetSelected(false);
+
+	MoveCharacterTo(SelectedTarget->GetActorLocation());
 }
 
 void ACPlayerController::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }

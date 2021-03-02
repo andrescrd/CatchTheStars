@@ -46,7 +46,8 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
 	void SetSelected(bool Selected);
-
+	
+	// ITypeInterface implementation
 	void SetType(CStarTypesEnum NewType);
 	CStarTypesEnum GetType() const;
 };

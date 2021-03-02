@@ -29,19 +29,19 @@ void UCMovableComponent::BeginPlay()
 
 void UCMovableComponent::SetupTimeline()
 {
-	if (Curve)
-	{
-		FOnTimelineFloat TimelineCallback;
-		TimelineCallback.BindUFunction(this, FName("OnTimelineHandler"));
-		FOnTimelineEventStatic FinishCallback;
-		FinishCallback.BindUFunction(this, FName("OnFinishHandler"));
+	if (!Curve)
+		return;
+	
+	FOnTimelineFloat TimelineCallback;
+	TimelineCallback.BindUFunction(this, FName("OnTimelineHandler"));
+	FOnTimelineEventStatic FinishCallback;
+	FinishCallback.BindUFunction(this, FName("OnFinishHandler"));
 
-		TimelineComponent->AddInterpFloat(Curve, TimelineCallback);
-		TimelineComponent->SetTimelineFinishedFunc(FinishCallback);
+	TimelineComponent->AddInterpFloat(Curve, TimelineCallback);
+	TimelineComponent->SetTimelineFinishedFunc(FinishCallback);
 
-		TimelineComponent->SetLooping(false);
-		TimelineComponent->SetIgnoreTimeDilation(true);
-	}
+	TimelineComponent->SetLooping(false);
+	TimelineComponent->SetIgnoreTimeDilation(true);
 }
 
 void UCMovableComponent::GetNewLocation()
@@ -70,7 +70,6 @@ void UCMovableComponent::OnTimelineHandler(float Value)
 void UCMovableComponent::OnFinishHandler()
 {
 	if (TimelineComponent->GetPlaybackPosition() <= 0)
-
 		TimelineComponent->PlayFromStart();
 	else
 

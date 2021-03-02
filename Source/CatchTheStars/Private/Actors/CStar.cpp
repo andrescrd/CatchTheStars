@@ -56,4 +56,5 @@ void ACStar::SetSelected(const bool Selected)
 }
 
 void ACStar::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+
 CStarTypesEnum ACStar::GetType() const { return Type; }
