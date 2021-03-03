@@ -18,11 +18,43 @@ ACGraph::ACGraph()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-// Called when the game starts or when spawned
 void ACGraph::BeginPlay()
 {
 	Super::BeginPlay();
-	// GeneratePaths();
+
+	for (auto Node : NodesSucessMap)
+	{
+		Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached);
+		NodesSucessMap[Node.Key] = Node.Key->IsSuccessAttach();
+
+		if (Node.Key->HasStar())
+			MaxSuccess++;
+
+		if(NodesSucessMap[Node.Key])
+			CurrentSuccess++;
+	}	
+}
+
+void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
+{
+	UE_LOG(LogTemp,Warning, TEXT("i am the node %s - success is: %s"), *Node->GetActorLabel(), Success ? TEXT("True"):TEXT("False"));
+	NodesSucessMap[Node] = Success;
+
+	if (Success)
+	{
+		CurrentSuccess++;
+	}
+	else
+	{
+		CurrentSuccess--;
+	}	
+	
+	// CurrentSuccess = 0;
+	// for (auto Node2 : NodesSucessMap)
+	// {		
+	// 	if(NodesSucessMap[Node2.Key])
+	// 		CurrentSuccess++;
+	// }	
 }
 
 void ACGraph::OnConstruction(const FTransform& Transform)
@@ -31,13 +63,15 @@ void ACGraph::OnConstruction(const FTransform& Transform)
 }
 
 void ACGraph::GenerateGraph()
-{
-	while (Nodes.Num() > 0)
+{	
+	for (auto It = NodesSucessMap.CreateConstIterator(); It; ++It)
 	{
-		if(ACNode* Node = Nodes.Pop())
-			Node->Destroy();
-	}
+		if(IsValid(It.Key()))
+			It.Key()->Destroy();
 
+		NodesSucessMap.Remove(It.Key());
+	}
+	
 	if (!NodeClass)
 		return;
 	
@@ -47,7 +81,10 @@ void ACGraph::GenerateGraph()
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 		if (ACNode* Node = Cast<ACNode>(ChildActor))
-			Nodes.AddUnique(Node);
+		{
+			// Node->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached);
+			NodesSucessMap.Add(Node,Node->IsSuccessAttach());
+		}
 	}
 }
 

@@ -5,10 +5,15 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="fix attach parent">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding translation to star">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,8 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveDrawingUtils.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/World.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Map.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/UObject/ScriptDelegates.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Misc/AssertionMacros.h" root0="FORCE_HIGHLIGHTING" />
@@ -34,6 +41,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Private/UObject/Obj.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/LineBatchComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
@@ -45,13 +53,10 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Enums/CStarTypesEnum.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/CStarTypesEnum.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Characters/CCharacter.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/CMovableComponent.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Characters/CCharacter.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structs/CNode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structs/CNode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/CTypeInterface.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" />
@@ -59,12 +64,15 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Characters/CCharacter.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Characters/CCharacter.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -516,7 +524,7 @@
       <workItem from="1614637098029" duration="17329000" />
       <workItem from="1614710816336" duration="631000" />
       <workItem from="1614800224663" duration="588000" />
-      <workItem from="1614800867678" duration="5011000" />
+      <workItem from="1614800867678" duration="13556000" />
     </task>
     <task id="LOCAL-00001" summary="adding star actor">
       <created>1612746041376</created>
@@ -742,7 +750,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614803915402</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="adding translation to star">
+      <created>1614806197433</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1614806197433</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +789,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="adding player controller" />
     <MESSAGE value="adding gm" />
     <MESSAGE value="setup pc to gm" />
     <MESSAGE value="some methods to star" />
@@ -799,6 +813,28 @@
     <MESSAGE value="fix star" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="fix attach parent" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix attach parent" />
+    <MESSAGE value="adding translation to star" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding translation to star" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp</url>
+          <line>30</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp</url>
+          <line>95</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp</url>
+          <line>63</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

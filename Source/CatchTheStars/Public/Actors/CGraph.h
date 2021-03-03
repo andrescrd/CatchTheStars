@@ -15,12 +15,17 @@ class CATCHTHESTARS_API ACGraph : public AActor
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
 	ACGraph();
 
 protected:
+
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
-	TArray<class ACNode*> Nodes;
+	TMap<class ACNode*, bool> NodesSucessMap;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
+	int CurrentSuccess;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
+	int MaxSuccess;
+
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
 	TArray<class UNiagaraComponent*> Paths;
 
@@ -36,8 +41,10 @@ protected:
 	
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void SuccessAttached(const ACNode* Node, const bool Success);
+	
 public:
-
 	virtual void OnConstruction(const FTransform& Transform) override;
 
 	UFUNCTION(CallInEditor)

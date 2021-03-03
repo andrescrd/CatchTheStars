@@ -5,6 +5,8 @@
 
 #include "CNode.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ACNode*, Node, const bool, Success);
+
 UCLASS()
 class CATCHTHESTARS_API ACNode : public AActor
 
@@ -40,7 +42,8 @@ protected:
 	CStarTypesEnum StarType;
 
 	void SetupChildren();
-
+	void SetupType() const;
+	
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 
@@ -50,4 +53,6 @@ public:
 	bool IsSuccessAttach() const;
 	bool HasStar() const;
 	void RemoveStar();
+
+	FSuccessAttachSignature OnSuccessAttached;
 };
