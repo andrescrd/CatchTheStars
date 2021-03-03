@@ -66,8 +66,6 @@ void ACPlayerController::OnSelected()
 
 void ACPlayerController::SetSelectedStar(ACStar* Star)
 {
-	GEngine->AddOnScreenDebugMessage(0, 3, FColor::Green, FString::Printf(TEXT("Star clicked")));
-
 	if (SelectedStar != nullptr && SelectedStar != Star)
 		SelectedStar->SetSelected(false);
 
@@ -79,16 +77,14 @@ void ACPlayerController::SetSelectedStar(ACStar* Star)
 
 void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 {
-	GEngine->AddOnScreenDebugMessage(0, 3, FColor::Green, FString::Printf(TEXT("Target clicked")));
-
 	if (SelectedTarget != nullptr && SelectedTarget != Target)
 		SelectedTarget->SetSelected(false);
 
 	SelectedTarget = Target;
 	SelectedTarget->SetSelected(true);
 
-	auto ParentTarget = Cast<ACNode>(SelectedTarget->GetAttachParentActor());
-	auto ParentStar = Cast<ACNode>(SelectedStar->GetAttachParentActor());
+	ACNode* ParentTarget = Cast<ACNode>(SelectedTarget->GetAttachParentActor());
+	ACNode* ParentStar = Cast<ACNode>(SelectedStar->GetAttachParentActor());
 	
 	if (ParentTarget == ParentStar || ParentTarget->HasStar())
 		return;

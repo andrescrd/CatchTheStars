@@ -15,7 +15,7 @@ ACGraph::ACGraph()
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
 
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 void ACGraph::BeginPlay()
@@ -24,8 +24,8 @@ void ACGraph::BeginPlay()
 
 	for (auto Node : NodesSucessMap)
 	{
-		Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached);
-		NodesSucessMap[Node.Key] = Node.Key->IsSuccessAttach();
+		Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached); // bind to event
+		NodesSucessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
 
 		if (Node.Key->HasStar())
 			MaxSuccess++;
@@ -37,29 +37,11 @@ void ACGraph::BeginPlay()
 
 void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
 {
-	UE_LOG(LogTemp,Warning, TEXT("i am the node %s - success is: %s"), *Node->GetActorLabel(), Success ? TEXT("True"):TEXT("False"));
 	NodesSucessMap[Node] = Success;
-
-	if (Success)
-	{
-		CurrentSuccess++;
-	}
-	else
-	{
-		CurrentSuccess--;
-	}	
+	Success ? CurrentSuccess++ : CurrentSuccess--;
 	
-	// CurrentSuccess = 0;
-	// for (auto Node2 : NodesSucessMap)
-	// {		
-	// 	if(NodesSucessMap[Node2.Key])
-	// 		CurrentSuccess++;
-	// }	
-}
-
-void ACGraph::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
+	if(CurrentSuccess == MaxSuccess)
+		UE_LOG(LogTemp,Warning, TEXT("WIN!!! %s"), *GetActorLabel());
 }
 
 void ACGraph::GenerateGraph()
@@ -81,10 +63,7 @@ void ACGraph::GenerateGraph()
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 		if (ACNode* Node = Cast<ACNode>(ChildActor))
-		{
-			// Node->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached);
 			NodesSucessMap.Add(Node,Node->IsSuccessAttach());
-		}
 	}
 }
 

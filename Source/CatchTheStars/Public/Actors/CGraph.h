@@ -45,7 +45,7 @@ protected:
 	void SuccessAttached(const ACNode* Node, const bool Success);
 	
 public:
-	virtual void OnConstruction(const FTransform& Transform) override;
+	// virtual void OnConstruction(const FTransform& Transform) override;
 
 	UFUNCTION(CallInEditor)
 	void GenerateGraph();
