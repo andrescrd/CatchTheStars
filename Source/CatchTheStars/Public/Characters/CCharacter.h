@@ -16,8 +16,10 @@ public:
 	ACCharacter();
 
 protected:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float AcceptanceRadius;
 	
 public:
-	void MoveToDestination(FVector Destination) const;
-	
+	void MoveToDestination(FVector Destination) const;	
 };

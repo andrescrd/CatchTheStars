@@ -34,6 +34,10 @@ protected:
 	class UCMovableComponent* MovableComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FVector NewLocation;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float Speed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSelected;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	CStarTypesEnum Type;
@@ -41,9 +45,11 @@ protected:
 	TSubclassOf<class UCTypeWidget> UserWidgetClass;
 
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
 
-public:
+public:	
 	virtual void OnConstruction(const FTransform& Transform) override;
+
 	
 	void SetSelected(bool Selected);
 	

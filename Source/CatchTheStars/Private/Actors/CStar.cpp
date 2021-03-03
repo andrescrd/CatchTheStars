@@ -14,7 +14,8 @@ ACStar::ACStar()
 {
 	IsSelected = false;
 	Type = CStarTypesEnum::A;
-
+	Speed = 10;
+	
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->InitSphereRadius(128.f);
 	RootComponent = SphereComponent;
@@ -32,10 +33,16 @@ ACStar::ACStar()
 	MovableComponent = CreateDefaultSubobject<UCMovableComponent>(TEXT("MovableComponent"));
 	MovableComponent->SetAutoActivate(false);
 
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 }
 
-void ACStar::BeginPlay() { Super::BeginPlay(); }
+void ACStar::BeginPlay() { Super::BeginPlay();}
+
+void ACStar::Tick(float DeltaSeconds)
+{
+	if((NewLocation - GetActorLocation()).Size() > 0 && !NewLocation.IsZero())
+		SetActorLocation(FMath::VInterpTo(GetActorLocation(), NewLocation, DeltaSeconds, Speed));
+}
 
 void ACStar::OnConstruction(const FTransform& Transform)
 {
@@ -61,7 +68,6 @@ CStarTypesEnum ACStar::GetType() { return Type; }
 
 void ACStar::SetNewLocation(const FVector& Vector)
 {
-	auto NewLocation = Vector;
+	NewLocation = Vector;
 	NewLocation.Z = MeshComponent->GetComponentLocation().Z;
-	SetActorLocation(NewLocation);
 }

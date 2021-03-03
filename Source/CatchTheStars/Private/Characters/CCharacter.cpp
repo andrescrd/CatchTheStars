@@ -11,6 +11,8 @@
 // Sets default values
 ACCharacter::ACCharacter()
 {
+	AcceptanceRadius = 50;
+
 	GetCapsuleComponent()->InitCapsuleSize(56.0f, 56.0f);
 
 	bUseControllerRotationPitch = false;
@@ -29,5 +31,5 @@ ACCharacter::ACCharacter()
 void ACCharacter::MoveToDestination(const FVector Destination) const
 {
 	if (AAIController* AI = Cast<AAIController>(GetController()))
-		AI->MoveToLocation(Destination, 100, false);
+		AI->MoveToLocation(Destination, AcceptanceRadius, false);
 }
