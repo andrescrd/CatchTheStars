@@ -46,8 +46,7 @@ void ACPlayerController::OnSelected()
 		ACStar* Star = Cast<ACStar>(HitResult.GetActor());
 		SetSelectedStar(Star);
 	}
-	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()) && SelectedStar != nullptr &&
-		SelectedStar->GetParentActor() != HitResult.GetActor()->GetParentActor())
+	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()) && SelectedStar != nullptr)
 	{
 		ACTarget* Target = Cast<ACTarget>(HitResult.GetActor());
 		SetSelectedTarget(Target);
@@ -59,6 +58,9 @@ void ACPlayerController::OnSelected()
 
 		if (SelectedTarget)
 			SelectedTarget->SetSelected(false);
+
+		SelectedStar = nullptr;
+		SelectedTarget = nullptr;
 	}
 }
 
@@ -85,9 +87,22 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	SelectedTarget = Target;
 	SelectedTarget->SetSelected(true);
 
-	SelectedStar->SetSelected(false);
+	auto ParentTarget = Cast<ACNode>(SelectedTarget->GetAttachParentActor());
+	auto ParentStar = Cast<ACNode>(SelectedStar->GetAttachParentActor());
+	
+	if (ParentTarget == ParentStar || ParentTarget->HasStar())
+		return;
+
+	ParentStar->RemoveStar();
+	ParentTarget->SetStar(SelectedStar);
+	
+	// SelectedStar->SetSelected(false);
+	SelectedStar->SetNewLocation(SelectedTarget->GetActorLocation());
 
 	MoveCharacterTo(SelectedTarget->GetActorLocation());
+
+	SelectedTarget = nullptr;
+	SelectedStar = nullptr;
 }
 
 void ACPlayerController::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }

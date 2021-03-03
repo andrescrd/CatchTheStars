@@ -26,7 +26,28 @@ ACTarget* ACNode::GetTarget() const { return Target; }
 
 ACStar* ACNode::GetStar() const { return Star; }
 
-void ACNode::BeginPlay() { Super::BeginPlay(); }
+void ACNode::SetStar(ACStar* NewStar)
+{
+	if (bHasStar && Star)
+		return;
+
+	NewStar->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);	
+	NewStar->GetRootComponent()->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepWorldTransform);
+	
+	Star = NewStar;
+	bHasStar = true;
+}
+
+void ACNode::RemoveStar()
+{
+	Star->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);	
+	Star = nullptr;
+	bHasStar = false;
+}
+
+bool ACNode::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
+
+bool ACNode::HasStar() const { return bHasStar && Star; }
 
 void ACNode::OnConstruction(const FTransform& Transform)
 {
@@ -44,7 +65,7 @@ void ACNode::SetupChildren()
 	}
 
 	if (StarChild && StarClass)
-	{	
+	{
 		if (bHasStar)
 		{
 			StarChild->SetChildActorClass(StarClass);
@@ -53,10 +74,10 @@ void ACNode::SetupChildren()
 		}
 		else
 		{
-			StarChild->SetChildActorClass(nullptr);			
+			StarChild->SetChildActorClass(nullptr);
 			StarChild->DestroyChildActor();
 
-			if(Star)
+			if (Star)
 				Star->Destroy();
 		}
 	}

@@ -22,7 +22,7 @@ ACGraph::ACGraph()
 void ACGraph::BeginPlay()
 {
 	Super::BeginPlay();
-	GeneratePaths();
+	// GeneratePaths();
 }
 
 void ACGraph::OnConstruction(const FTransform& Transform)
@@ -34,23 +34,20 @@ void ACGraph::GenerateGraph()
 {
 	while (Nodes.Num() > 0)
 	{
-		ACNode* Node = Nodes.Pop();
-		Node->Destroy(true);
+		if(ACNode* Node = Nodes.Pop())
+			Node->Destroy();
 	}
 
-	if (NodeClass)
+	if (!NodeClass)
+		return;
+	
+	for (int i = 0; i < NodesCounter; ++i)
 	{
-		for (int i = 0; i < NodesCounter; ++i)
-		{
-			AActor* ChildActor = GetWorld()->SpawnActor<ACNode>(NodeClass, GetActorLocation(), FRotator::ZeroRotator, FActorSpawnParameters());
-			ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
+		AActor* ChildActor = GetWorld()->SpawnActor<ACNode>(NodeClass, GetActorLocation(), FRotator::ZeroRotator, FActorSpawnParameters());
+		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
-			if (ChildActor)
-			{
-				ACNode* Node = Cast<ACNode>(ChildActor);
-				Nodes.AddUnique(Node);
-			}
-		}
+		if (ACNode* Node = Cast<ACNode>(ChildActor))
+			Nodes.AddUnique(Node);
 	}
 }
 

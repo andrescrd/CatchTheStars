@@ -47,5 +47,5 @@ public:
 
 	// ITypeInterface implementation
 	void SetType(CStarTypesEnum NewType);
-	CStarTypesEnum GetType() const;
+	CStarTypesEnum GetType();
 };

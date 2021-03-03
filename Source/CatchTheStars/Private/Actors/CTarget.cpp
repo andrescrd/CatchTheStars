@@ -44,4 +44,4 @@ void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }
 
 void ACTarget::SetType(const CStarTypesEnum NewType) { Type = NewType; }
 
-CStarTypesEnum ACTarget::GetType() const { return Type; }
+CStarTypesEnum ACTarget::GetType() { return Type; }

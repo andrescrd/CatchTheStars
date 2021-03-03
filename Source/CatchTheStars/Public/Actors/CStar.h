@@ -49,5 +49,6 @@ public:
 	
 	// ITypeInterface implementation
 	void SetType(CStarTypesEnum NewType);
-	CStarTypesEnum GetType() const;
+	CStarTypesEnum GetType();
+	void SetNewLocation(const FVector& Vector);
 };

@@ -14,11 +14,11 @@ ACStar::ACStar()
 {
 	IsSelected = false;
 	Type = CStarTypesEnum::A;
-	
+
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->InitSphereRadius(128.f);
 	RootComponent = SphereComponent;
-	
+
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
 	MeshComponent->SetupAttachment(RootComponent);
 
@@ -48,13 +48,20 @@ void ACStar::OnConstruction(const FTransform& Transform)
 void ACStar::SetSelected(const bool Selected)
 {
 	IsSelected = Selected;
-
-	if (IsSelected)
-		MovableComponent->Activate(true);
-	else
-		MovableComponent->Deactivate();
+	//
+	// if (IsSelected)
+	// 	MovableComponent->Activate(true);
+	// else
+	// 	MovableComponent->Deactivate();
 }
 
 void ACStar::SetType(const CStarTypesEnum NewType) { Type = NewType; }
 
-CStarTypesEnum ACStar::GetType() const { return Type; }
+CStarTypesEnum ACStar::GetType() { return Type; }
+
+void ACStar::SetNewLocation(const FVector& Vector)
+{
+	auto NewLocation = Vector;
+	NewLocation.Z = MeshComponent->GetComponentLocation().Z;
+	SetActorLocation(NewLocation);
+}
