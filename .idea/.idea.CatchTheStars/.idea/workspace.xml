@@ -5,20 +5,10 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Interfaces/TypeInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Interfaces/TypeInterface.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/CTypeWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/CTypeWidget.h" afterDir="false" />
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding widget">
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +54,6 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Enums/CStarTypesEnum.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/CStarTypesEnum.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/CMovableComponent.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structs/CNode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structs/CNode.h" />
@@ -78,16 +66,18 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/CTypeWidget.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Interfaces/TypeInterface.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -539,7 +529,7 @@
       <workItem from="1614637098029" duration="17329000" />
       <workItem from="1614710816336" duration="631000" />
       <workItem from="1614800224663" duration="588000" />
-      <workItem from="1614800867678" duration="20748000" />
+      <workItem from="1614800867678" duration="21528000" />
     </task>
     <task id="LOCAL-00001" summary="adding star actor">
       <created>1612746041376</created>
@@ -786,7 +776,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614815090120</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="adding widget">
+      <created>1614826280307</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1614826280307</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -827,7 +824,6 @@
     <MESSAGE value="adding movable component" />
     <MESSAGE value="adding curve" />
     <MESSAGE value="adding selection star" />
-    <MESSAGE value="adding widget" />
     <MESSAGE value="update target" />
     <MESSAGE value="update star" />
     <MESSAGE value="adding node" />
@@ -843,6 +839,7 @@
     <MESSAGE value="adding translation to star" />
     <MESSAGE value="adding event notify" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="adding widget" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding widget" />
   </component>
 </project>

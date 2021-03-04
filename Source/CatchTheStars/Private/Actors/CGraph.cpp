@@ -6,6 +6,7 @@
 #include "Actors/CNode.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
+#include "World/GameModes/CGameplayGameMode.h"
 
 // Sets default values
 ACGraph::ACGraph()
@@ -30,40 +31,41 @@ void ACGraph::BeginPlay()
 		if (Node.Key->HasStar())
 			MaxSuccess++;
 
-		if(NodesSucessMap[Node.Key])
+		if (NodesSucessMap[Node.Key])
 			CurrentSuccess++;
-	}	
+	}
 }
 
 void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
 {
 	NodesSucessMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
-	
-	if(CurrentSuccess == MaxSuccess)
-		UE_LOG(LogTemp,Warning, TEXT("WIN!!! %s"), *GetActorLabel());
+
+	if (CurrentSuccess == MaxSuccess)
+		GetWorld()->GetAuthGameMode<ACGameplayGameMode>()->Finish();
 }
 
 void ACGraph::GenerateGraph()
-{	
+{
 	for (auto It = NodesSucessMap.CreateConstIterator(); It; ++It)
 	{
-		if(IsValid(It.Key()))
+		if (IsValid(It.Key()))
 			It.Key()->Destroy();
 
 		NodesSucessMap.Remove(It.Key());
 	}
-	
+
 	if (!NodeClass)
 		return;
-	
+
 	for (int i = 0; i < NodesCounter; ++i)
 	{
-		AActor* ChildActor = GetWorld()->SpawnActor<ACNode>(NodeClass, GetActorLocation(), FRotator::ZeroRotator, FActorSpawnParameters());
+		AActor* ChildActor = GetWorld()->SpawnActor<ACNode>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
+		                                                    FActorSpawnParameters());
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 		if (ACNode* Node = Cast<ACNode>(ChildActor))
-			NodesSucessMap.Add(Node,Node->IsSuccessAttach());
+			NodesSucessMap.Add(Node, Node->IsSuccessAttach());
 	}
 }
 
@@ -71,7 +73,7 @@ void ACGraph::GeneratePaths()
 {
 	while (Paths.Num() > 0)
 	{
-		if(UNiagaraComponent* Node = Paths.Pop())
+		if (UNiagaraComponent* Node = Paths.Pop())
 			Node->DestroyComponent(true);
 	}
 

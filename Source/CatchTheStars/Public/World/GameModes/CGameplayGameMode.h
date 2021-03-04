@@ -16,4 +16,11 @@ class CATCHTHESTARS_API ACGameplayGameMode : public AGameModeBase
 
 public:
 	ACGameplayGameMode();
+
+protected:
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnGameFinish();
+
+public:
+	void Finish();
 };

@@ -10,3 +10,8 @@ ACGameplayGameMode::ACGameplayGameMode()
 	PlayerControllerClass = ACPlayerController::StaticClass();
 	DefaultPawnClass = nullptr;
 }
+
+void ACGameplayGameMode::Finish()
+{
+	OnGameFinish();
+}
