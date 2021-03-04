@@ -7,7 +7,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
 #include "World/GameModes/CGameplayGameMode.h"
+#include "NiagaraComponent.h"
 
+const FName NiagaraParameterEnd = FName("BeamEnd");
+	
 // Sets default values
 ACGraph::ACGraph()
 {
@@ -86,12 +89,11 @@ void ACGraph::GenerateGraph()
 	}
 }
 
-
 void ACGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const
 {
 	if (!FXTemplate)
 		return;
 
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
-	Niagara->SetVectorParameter(FName("BeamEnd"), ToVector);
+	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
 }

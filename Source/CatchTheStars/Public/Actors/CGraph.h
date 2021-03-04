@@ -37,7 +37,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	TSubclassOf<class ACNode> NodeClass;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
-	UNiagaraSystem* FXTemplate;
+	class UNiagaraSystem* FXTemplate;
 
 	virtual void BeginPlay() override;
 

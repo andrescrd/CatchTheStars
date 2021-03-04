@@ -26,5 +26,5 @@ public:
 	void SetOwnParent(ITypeInterface*  NewParent);
 
 	UFUNCTION(BlueprintCallable)
-	CStarTypesEnum GetParentType();
+	CStarTypesEnum GetParentType() const;
 };

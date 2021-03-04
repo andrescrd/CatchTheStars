@@ -102,7 +102,7 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	if (ParentTarget == ParentStar || ParentTarget->HasStar())
 		return;
 
-	if(!GetCurrentGraph()->IsAvailableLink(ParentStar, ParentTarget))
+	if(!GetCurrentGraph()->IsAvailableLink(ParentStar, ParentTarget)) // validate if graph  has valid link
 		return;
 	
 	MoveCharacterTo(SelectedTarget->GetActorLocation()); // move character to target location

@@ -43,11 +43,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	virtual void OnConstruction(const FTransform& Transform) override;
-
 	void SetSelected(bool Selected);
 
 	// ITypeInterface implementation
-	virtual  void SetType(CStarTypesEnum NewType) override;
+	virtual void SetType(const CStarTypesEnum NewType) override;
 	virtual CStarTypesEnum GetType() override;
 };

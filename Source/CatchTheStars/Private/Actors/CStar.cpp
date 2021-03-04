@@ -50,25 +50,9 @@ void ACStar::Tick(float DeltaSeconds)
 		SetActorLocation(FMath::VInterpTo(GetActorLocation(), NewLocation, DeltaSeconds, Speed));
 }
 
-void ACStar::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);
-}
+void ACStar::SetSelected(const bool Selected) { IsSelected = Selected; }
 
-void ACStar::SetSelected(const bool Selected)
-{
-	IsSelected = Selected;
-	//
-	// if (IsSelected)
-	// 	MovableComponent->Activate(true);
-	// else
-	// 	MovableComponent->Deactivate();
-}
-
-void ACStar::SetType(CStarTypesEnum NewType)
-{
-	Type=NewType;
-}
+void ACStar::SetType(const CStarTypesEnum NewType) { Type=NewType; }
 
 CStarTypesEnum ACStar::GetType() { return Type; }
 

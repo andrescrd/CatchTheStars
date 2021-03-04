@@ -11,7 +11,4 @@ ACGameplayGameMode::ACGameplayGameMode()
 	DefaultPawnClass = nullptr;
 }
 
-void ACGameplayGameMode::Finish()
-{
-	OnGameFinish();
-}
+void ACGameplayGameMode::Finish() { OnGameFinish(); }

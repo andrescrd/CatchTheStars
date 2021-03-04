@@ -50,14 +50,11 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
-public:	
-	virtual void OnConstruction(const FTransform& Transform) override;
-
-	
+public:
 	void SetSelected(bool Selected);
 	
 	// ITypeInterface implementation
-	virtual  void SetType(CStarTypesEnum NewType) override;
+	virtual void SetType(const CStarTypesEnum NewType) override;
 	virtual CStarTypesEnum GetType() override;
 	
 	void SetNewLocation(const FVector& Vector);

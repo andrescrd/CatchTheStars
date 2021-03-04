@@ -1,6 +1,5 @@
 #pragma once
 
-#include "NiagaraComponent.h"
 #include "Support/Enums/CStarTypesEnum.h"
 
 #include "CNode.generated.h"
@@ -41,16 +40,17 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	CStarTypesEnum StarType;
 
-	void RemoveChild(UChildActorComponent* Child);
-	void SetupChildren();
+	void RemoveChild(class UChildActorComponent* Child);
 	void SetupType() const;
+	void SetupTarget();
+	void SetupStar();
 	
 public:
-	virtual void OnConstruction(const FTransform& Transform) override;
-	
+	virtual void OnConstruction(const FTransform& Transform) override;	
+
 	class ACTarget* GetTarget() const;
-	class ACStar* GetStar() const;
-	void SetStar(class ACStar* NewStar);
+	class ACStar* GetStar() const;	
+	void SetStar(class ACStar* NewStar);	
 	bool IsSuccessAttach() const;
 	bool HasStar() const;
 	void RemoveStar();

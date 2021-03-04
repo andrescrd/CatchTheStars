@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Actors/CNode.h"
 
 #include "Actors/CStar.h"
@@ -39,15 +38,10 @@ void ACNode::SetStar(ACStar* NewStar)
 	Star = NewStar;
 	bHasStar = true;
 
-	// notify if it was success or not
-	if (WasSuccess && !IsSuccessAttach())
-	{
+	if (WasSuccess && !IsSuccessAttach()) // notify if it was success or not
 		OnSuccessAttached.Broadcast(this, false);
-	}
 	else if (!WasSuccess && IsSuccessAttach())
-	{
 		OnSuccessAttached.Broadcast(this, true);
-	}
 }
 
 void ACNode::RemoveStar()
@@ -58,15 +52,10 @@ void ACNode::RemoveStar()
 	Star = nullptr;
 	bHasStar = false;
 
-	// notify if it was success or not
-	if (WasSuccess && !IsSuccessAttach())
-	{
+	if (WasSuccess && !IsSuccessAttach()) // notify if it was success or not
 		OnSuccessAttached.Broadcast(this, false);
-	}
 	else if (!WasSuccess && IsSuccessAttach())
-	{
 		OnSuccessAttached.Broadcast(this, true);
-	}
 }
 
 bool ACNode::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
@@ -77,11 +66,12 @@ void ACNode::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	SetupChildren();
+	SetupTarget();
+	SetupStar();
 	SetupType();
 }
 
-void ACNode::SetupChildren()
+void ACNode::SetupTarget()
 {
 	if (TargetChild && TargetClass)
 	{
@@ -93,7 +83,10 @@ void ACNode::SetupChildren()
 	{
 		RemoveChild(TargetChild);
 	}
+}
 
+void ACNode::SetupStar()
+{
 	if (StarChild && StarClass)
 	{
 		if (bHasStar)
@@ -113,12 +106,6 @@ void ACNode::SetupChildren()
 	}
 }
 
-void ACNode::RemoveChild(UChildActorComponent* Child)
-{
-	Child->SetChildActorClass(nullptr);
-	Child->DestroyChildActor();	
-}
-
 void ACNode::SetupType() const
 {
 	if (IsValid(Star))
@@ -126,4 +113,10 @@ void ACNode::SetupType() const
 
 	if (IsValid(Target))
 		Target->SetType(TargetType);
+}
+
+void ACNode::RemoveChild(UChildActorComponent* Child)
+{
+	Child->SetChildActorClass(nullptr);
+	Child->DestroyChildActor();
 }

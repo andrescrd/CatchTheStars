@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Actors/CTarget.h"
 
 #include "Blueprint/UserWidget.h"
@@ -36,11 +35,6 @@ void ACTarget::BeginPlay()
 	CurrentWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
 	if(CurrentWidget)
 		CurrentWidget->SetOwnParent(this);
-}
-
-void ACTarget::OnConstruction(const FTransform& Transform)
-{
-	Super::OnConstruction(Transform);	
 }
 
 void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }
