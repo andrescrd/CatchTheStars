@@ -22,7 +22,10 @@ class CATCHTHESTARS_API ACStar : public AActor, public ITypeInterface
 public:
 	ACStar();
 
-protected:	
+protected:
+	UPROPERTY(VisibleAnywhere,  BlueprintReadOnly)
+	class UCTypeWidget* CurrentWidget;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* MeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -43,7 +46,7 @@ protected:
 	CStarTypesEnum Type;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<class UCTypeWidget> UserWidgetClass;
-
+	
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -54,7 +57,8 @@ public:
 	void SetSelected(bool Selected);
 	
 	// ITypeInterface implementation
-	void SetType(CStarTypesEnum NewType);
-	CStarTypesEnum GetType();
+	virtual  void SetType(CStarTypesEnum NewType) override;
+	virtual CStarTypesEnum GetType() override;
+	
 	void SetNewLocation(const FVector& Vector);
 };

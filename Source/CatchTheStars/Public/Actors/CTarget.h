@@ -22,6 +22,8 @@ public:
 	ACTarget();
 
 protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UCTypeWidget* CurrentWidget;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* StaticMeshComponent;
@@ -46,6 +48,6 @@ public:
 	void SetSelected(bool Selected);
 
 	// ITypeInterface implementation
-	void SetType(CStarTypesEnum NewType);
-	CStarTypesEnum GetType();
+	virtual  void SetType(CStarTypesEnum NewType) override;
+	virtual CStarTypesEnum GetType() override;
 };

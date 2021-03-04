@@ -30,7 +30,12 @@ ACTarget::ACTarget()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ACTarget::BeginPlay() { Super::BeginPlay(); }
+void ACTarget::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
+	CurrentWidget->SetOwnParent(this);
+}
 
 void ACTarget::OnConstruction(const FTransform& Transform)
 {

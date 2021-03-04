@@ -15,7 +15,7 @@ ACStar::ACStar()
 	IsSelected = false;
 	Type = CStarTypesEnum::A;
 	Speed = 10;
-	
+
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	SphereComponent->InitSphereRadius(128.f);
 	RootComponent = SphereComponent;
@@ -36,11 +36,16 @@ ACStar::ACStar()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void ACStar::BeginPlay() { Super::BeginPlay();}
+void ACStar::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
+	CurrentWidget->SetOwnParent(this);
+}
 
 void ACStar::Tick(float DeltaSeconds)
 {
-	if((NewLocation - GetActorLocation()).Size() > 0 && !NewLocation.IsZero())
+	if ((NewLocation - GetActorLocation()).Size() > 0 && !NewLocation.IsZero())
 		SetActorLocation(FMath::VInterpTo(GetActorLocation(), NewLocation, DeltaSeconds, Speed));
 }
 
@@ -49,7 +54,16 @@ void ACStar::OnConstruction(const FTransform& Transform)
 	Super::OnConstruction(Transform);
 
 	if (WidgetComponent && UserWidgetClass)
-		WidgetComponent->SetWidgetClass(UserWidgetClass);
+	{
+		// WidgetComponent->SetWidgetClass(UserWidgetClass);
+
+		// TypeWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
+		//
+		// if(IsValid(TypeWidget))
+		// 	TypeWidget->SetType(Type);
+		//
+		// TypeWidget->SetType(Type);
+	}
 }
 
 void ACStar::SetSelected(const bool Selected)
@@ -62,7 +76,10 @@ void ACStar::SetSelected(const bool Selected)
 	// 	MovableComponent->Deactivate();
 }
 
-void ACStar::SetType(const CStarTypesEnum NewType) { Type = NewType; }
+void ACStar::SetType(CStarTypesEnum NewType)
+{
+	Type=NewType;
+}
 
 CStarTypesEnum ACStar::GetType() { return Type; }
 
