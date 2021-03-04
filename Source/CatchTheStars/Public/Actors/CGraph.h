@@ -18,7 +18,9 @@ public:
 	ACGraph();
 
 protected:
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int CurrentSuccess;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int MaxSuccess;
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)

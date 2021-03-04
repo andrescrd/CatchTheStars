@@ -29,14 +29,17 @@ void ACGraph::BeginPlay()
 
 	for (auto Node : NodesSuccessMap)
 	{
-		Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached); // bind to event
-		NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
+		if(IsValid(Node.Key))
+		{
+			Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached); // bind to event
+			NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
 
-		if (Node.Key->HasStar())
-			MaxSuccess++;
+			if (Node.Key->HasStar())
+				MaxSuccess++;
 
-		if (NodesSuccessMap[Node.Key])
-			CurrentSuccess++;
+			if (NodesSuccessMap[Node.Key])
+				CurrentSuccess++;
+		}
 	}
 
 	for (auto Link : LinkMap) // add link and niagara
