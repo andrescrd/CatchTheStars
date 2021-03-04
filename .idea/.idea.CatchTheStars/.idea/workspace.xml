@@ -5,14 +5,15 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="clean code">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/CStarDataAsset.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/CStarDataAsset.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Background.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Background.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX/FX_ElectricArc.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX/FX_ElectricArc.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map2.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,16 +24,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/CGraph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/UnrealString.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/UObject/ScriptDelegates.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/CGraph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/PanelSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Actor.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -44,7 +42,6 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Private/Math/UnrealMath.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveDrawingUtils.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/CGraph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/World.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Map.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h" root0="FORCE_HIGHLIGHTING" />
@@ -53,7 +50,6 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/Widget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/LevelActor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/WidgetComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h" root0="FORCE_HIGHLIGHTING" />
@@ -540,7 +536,8 @@
       <workItem from="1614637098029" duration="17329000" />
       <workItem from="1614710816336" duration="631000" />
       <workItem from="1614800224663" duration="588000" />
-      <workItem from="1614800867678" duration="29810000" />
+      <workItem from="1614800867678" duration="30613000" />
+      <workItem from="1614868454355" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="adding star actor">
       <created>1612746041376</created>
@@ -822,7 +819,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614834270961</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="fix is valid node">
+      <created>1614835893512</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1614835893512</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -854,7 +858,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="adding pc movment for character" />
     <MESSAGE value="adding uassets" />
     <MESSAGE value="adding movable component" />
     <MESSAGE value="adding curve" />
@@ -879,6 +882,7 @@
     <MESSAGE value="adding paths" />
     <MESSAGE value="adding niagara" />
     <MESSAGE value="clean code" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean code" />
+    <MESSAGE value="fix is valid node" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix is valid node" />
   </component>
 </project>
