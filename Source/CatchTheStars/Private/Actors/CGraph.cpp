@@ -12,8 +12,8 @@
 ACGraph::ACGraph()
 {
 	NodesCounter = 3;
-	Links = TSet<FString>();
-	
+	Links = TMap<FString, FLinkStruct>();
+
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
 
@@ -36,10 +36,13 @@ void ACGraph::BeginPlay()
 			CurrentSuccess++;
 	}
 
-	for (auto Link : LinkMap)
+	for (auto Link : LinkMap) // add link and niagara
 	{
-		Links.Add(Link.GetId());
-		Links.Add(Link.GetIdInverted());
+		if (Links.Contains(Link.GetId()) || Links.Contains(Link.GetIdInverted()))
+			continue;
+
+		Links.Add(Link.GetId(), Link);
+		AddNiagaraLink(Link.From->GetActorLocation(), Link.To->GetActorLocation());
 	}
 }
 
@@ -51,7 +54,6 @@ void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
 	if (CurrentSuccess == MaxSuccess)
 		GetWorld()->GetAuthGameMode<ACGameplayGameMode>()->Finish();
 }
-
 
 bool ACGraph::IsAvailableLink(ACNode* From, ACNode* To)
 {
@@ -84,34 +86,12 @@ void ACGraph::GenerateGraph()
 	}
 }
 
-void ACGraph::GeneratePaths()
-{
-	while (Paths.Num() > 0)
-	{
-		if (UNiagaraComponent* Node = Paths.Pop())
-			Node->DestroyComponent(true);
-	}
 
-	if (FXTemplate)
-	{
-		// for (int i = 0; i < Nodes.Num(); ++i)
-		// {
-		// 	ACNode* Node = Nodes[i];
-		//
-		//
-		// 	const TArray<FVector> Locations = Node->GetRelationLocations();
-		// 	for (int x = 0; x < Locations.Num(); ++x)
-		// 	{
-		// 		// UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, FXTemplate,  Node->GetStartLocation(), FRotator::ZeroRotator);
-		// 		UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAttached(FXTemplate, Node->GetRootComponent(), NAME_None,
-		// 		                                                                          Node->GetStartLocation(), FRotator::ZeroRotator, EAttachLocation::KeepRelativeOffset,
-		// 		                                                                          true);
-		// 		Niagara->SetRelativeLocation(FVector(0));
-		// 		Niagara->AttachToComponent(Node->GetRootComponent(), FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
-		//
-		// 		Niagara->SetVectorParameter(FName("BeamEnd"), Locations[x]);
-		// 		Paths.AddUnique(Niagara);
-		// 	}
-		// }
-	}
+void ACGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const
+{
+	if (!FXTemplate)
+		return;
+
+	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
+	Niagara->SetVectorParameter(FName("BeamEnd"), ToVector);
 }

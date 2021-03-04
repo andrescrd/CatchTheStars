@@ -5,19 +5,10 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="gm finish">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding paths">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,9 +81,9 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/CLink.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/CLink.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/CLink.h" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -544,7 +535,7 @@
       <workItem from="1614637098029" duration="17329000" />
       <workItem from="1614710816336" duration="631000" />
       <workItem from="1614800224663" duration="588000" />
-      <workItem from="1614800867678" duration="26297000" />
+      <workItem from="1614800867678" duration="27803000" />
     </task>
     <task id="LOCAL-00001" summary="adding star actor">
       <created>1612746041376</created>
@@ -805,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614826642426</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="adding paths">
+      <created>1614831440731</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1614831440731</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -837,7 +835,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="some methods to star" />
     <MESSAGE value="click to pc" />
     <MESSAGE value="addng character" />
     <MESSAGE value="adding pc movment for character" />
@@ -862,6 +859,7 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="adding widget" />
     <MESSAGE value="gm finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="gm finish" />
+    <MESSAGE value="adding paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding paths" />
   </component>
 </project>
