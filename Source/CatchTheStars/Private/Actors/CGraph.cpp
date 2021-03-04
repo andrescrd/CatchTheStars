@@ -12,7 +12,8 @@
 ACGraph::ACGraph()
 {
 	NodesCounter = 3;
-
+	Links = TSet<FString>();
+	
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
 
@@ -23,36 +24,50 @@ void ACGraph::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto Node : NodesSucessMap)
+	for (auto Node : NodesSuccessMap)
 	{
 		Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached); // bind to event
-		NodesSucessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
+		NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
 
 		if (Node.Key->HasStar())
 			MaxSuccess++;
 
-		if (NodesSucessMap[Node.Key])
+		if (NodesSuccessMap[Node.Key])
 			CurrentSuccess++;
+	}
+
+	for (auto Link : LinkMap)
+	{
+		Links.Add(Link.GetId());
+		Links.Add(Link.GetIdInverted());
 	}
 }
 
 void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
 {
-	NodesSucessMap[Node] = Success;
+	NodesSuccessMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
 	if (CurrentSuccess == MaxSuccess)
 		GetWorld()->GetAuthGameMode<ACGameplayGameMode>()->Finish();
 }
 
+
+bool ACGraph::IsAvailableLink(ACNode* From, ACNode* To)
+{
+	const FString Name = From->GetName() + To->GetName();
+	const FString InvertedName = To->GetName() + From->GetName();
+	return Links.Find(Name) || Links.Find(InvertedName);
+}
+
 void ACGraph::GenerateGraph()
 {
-	for (auto It = NodesSucessMap.CreateConstIterator(); It; ++It)
+	for (auto It = NodesSuccessMap.CreateConstIterator(); It; ++It)
 	{
 		if (IsValid(It.Key()))
 			It.Key()->Destroy();
 
-		NodesSucessMap.Remove(It.Key());
+		NodesSuccessMap.Remove(It.Key());
 	}
 
 	if (!NodeClass)
@@ -65,7 +80,7 @@ void ACGraph::GenerateGraph()
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 		if (ACNode* Node = Cast<ACNode>(ChildActor))
-			NodesSucessMap.Add(Node, Node->IsSuccessAttach());
+			NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
 	}
 }
 

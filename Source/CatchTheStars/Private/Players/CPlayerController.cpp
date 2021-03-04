@@ -2,6 +2,8 @@
 
 #include "Players/CPlayerController.h"
 
+
+#include "Actors/CGraph.h"
 #include "Actors/CNode.h"
 #include "Actors/CStar.h"
 #include "Actors/CTarget.h"
@@ -34,6 +36,17 @@ ACCharacter* ACPlayerController::GetCurrentCharacter()
 	}
 
 	return CurrentCharacter;
+}
+
+ACGraph* ACPlayerController::GetCurrentGraph()
+{
+	if (!IsValid(CurrentGraph))
+	{
+		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), ACGraph::StaticClass()))
+			CurrentGraph = Cast<ACGraph>(Actor);
+	}
+
+	return CurrentGraph;
 }
 
 void ACPlayerController::OnSelected()
@@ -72,7 +85,7 @@ void ACPlayerController::SetSelectedStar(ACStar* Star)
 	SelectedStar = Star;
 	SelectedStar->SetSelected(true);
 
-	MoveCharacterTo(SelectedStar->GetActorLocation());
+	MoveCharacterTo(SelectedStar->GetActorLocation()); // move character to star location
 }
 
 void ACPlayerController::SetSelectedTarget(ACTarget* Target)
@@ -89,13 +102,16 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	if (ParentTarget == ParentStar || ParentTarget->HasStar())
 		return;
 
+	if(!GetCurrentGraph()->IsAvailableLink(ParentStar, ParentTarget))
+		return;
+	
+	MoveCharacterTo(SelectedTarget->GetActorLocation()); // move character to target location
+	
 	ParentStar->RemoveStar();
 	ParentTarget->SetStar(SelectedStar);
 	
 	// SelectedStar->SetSelected(false);
 	SelectedStar->SetNewLocation(SelectedTarget->GetActorLocation());
-
-	MoveCharacterTo(SelectedTarget->GetActorLocation());
 
 	SelectedTarget = nullptr;
 	SelectedStar = nullptr;

@@ -40,7 +40,8 @@ void ACStar::BeginPlay()
 {
 	Super::BeginPlay();
 	CurrentWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
-	CurrentWidget->SetOwnParent(this);
+	if(CurrentWidget)
+		CurrentWidget->SetOwnParent(this);
 }
 
 void ACStar::Tick(float DeltaSeconds)
@@ -52,18 +53,6 @@ void ACStar::Tick(float DeltaSeconds)
 void ACStar::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
-
-	if (WidgetComponent && UserWidgetClass)
-	{
-		// WidgetComponent->SetWidgetClass(UserWidgetClass);
-
-		// TypeWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
-		//
-		// if(IsValid(TypeWidget))
-		// 	TypeWidget->SetType(Type);
-		//
-		// TypeWidget->SetType(Type);
-	}
 }
 
 void ACStar::SetSelected(const bool Selected)

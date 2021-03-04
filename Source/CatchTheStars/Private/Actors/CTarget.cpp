@@ -34,15 +34,13 @@ void ACTarget::BeginPlay()
 {
 	Super::BeginPlay();
 	CurrentWidget = Cast<UCTypeWidget>(WidgetComponent->GetWidget());
-	CurrentWidget->SetOwnParent(this);
+	if(CurrentWidget)
+		CurrentWidget->SetOwnParent(this);
 }
 
 void ACTarget::OnConstruction(const FTransform& Transform)
 {
-	Super::OnConstruction(Transform);
-
-	if(WidgetComponent && UserWidgetClass)
-		WidgetComponent->SetWidgetClass(UserWidgetClass);
+	Super::OnConstruction(Transform);	
 }
 
 void ACTarget::SetSelected(const bool Selected) { IsSelected = Selected; }

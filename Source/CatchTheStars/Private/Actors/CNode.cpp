@@ -89,6 +89,10 @@ void ACNode::SetupChildren()
 		TargetChild->CreateChildActor();
 		Target = Cast<ACTarget>(TargetChild->GetChildActor());
 	}
+	else
+	{
+		RemoveChild(TargetChild);
+	}
 
 	if (StarChild && StarClass)
 	{
@@ -100,13 +104,19 @@ void ACNode::SetupChildren()
 		}
 		else
 		{
-			StarChild->SetChildActorClass(nullptr);
-			StarChild->DestroyChildActor();
-
-			if (Star)
-				Star->Destroy();
+			RemoveChild(StarChild);;
 		}
 	}
+	else
+	{
+		RemoveChild(StarChild);
+	}
+}
+
+void ACNode::RemoveChild(UChildActorComponent* Child)
+{
+	Child->SetChildActorClass(nullptr);
+	Child->DestroyChildActor();	
 }
 
 void ACNode::SetupType() const

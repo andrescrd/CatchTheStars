@@ -41,12 +41,13 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	CStarTypesEnum StarType;
 
+	void RemoveChild(UChildActorComponent* Child);
 	void SetupChildren();
 	void SetupType() const;
 	
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
-
+	
 	class ACTarget* GetTarget() const;
 	class ACStar* GetStar() const;
 	void SetStar(class ACStar* NewStar);

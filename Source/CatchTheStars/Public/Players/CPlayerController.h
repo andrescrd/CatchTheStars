@@ -26,13 +26,16 @@ protected:
 	class ACStar* SelectedStar;
 	UPROPERTY(VisibleInstanceOnly)	
 	class ACCharacter* CurrentCharacter;
+	UPROPERTY(VisibleInstanceOnly)	
+	class ACGraph* CurrentGraph;
 
 	virtual void SetupInputComponent() override;
-	ACCharacter* GetCurrentCharacter();
+	class ACCharacter* GetCurrentCharacter();
+	class ACGraph* GetCurrentGraph();
 	
 	void SetSelectedTarget(class ACTarget* Target);
 	void SetSelectedStar(class ACStar* Star);
-	
+
 	void MoveCharacterTo(FVector Location);
 
 	UFUNCTION()

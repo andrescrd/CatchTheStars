@@ -5,10 +5,19 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding widget">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="gm finish">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +32,9 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/UnrealString.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/UObject/ScriptDelegates.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/CGraph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/PanelSlot.h" root0="FORCE_HIGHLIGHTING" />
@@ -46,6 +57,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/Widget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/LevelActor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/WidgetComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h" root0="FORCE_HIGHLIGHTING" />
@@ -59,25 +71,28 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structs/CNode.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/CTypeInterface.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/CMovableComponent.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Characters/CCharacter.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Characters/CCharacter.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/CTypeWidget.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Interfaces/TypeInterface.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/CGameplayGameMode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/Link.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/CLink.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/CLink.h" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -529,7 +544,7 @@
       <workItem from="1614637098029" duration="17329000" />
       <workItem from="1614710816336" duration="631000" />
       <workItem from="1614800224663" duration="588000" />
-      <workItem from="1614800867678" duration="21528000" />
+      <workItem from="1614800867678" duration="26297000" />
     </task>
     <task id="LOCAL-00001" summary="adding star actor">
       <created>1612746041376</created>
@@ -783,7 +798,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614826280307</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="gm finish">
+      <created>1614826642426</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1614826642426</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -815,7 +837,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="setup pc to gm" />
     <MESSAGE value="some methods to star" />
     <MESSAGE value="click to pc" />
     <MESSAGE value="addng character" />
@@ -840,6 +861,7 @@
     <MESSAGE value="adding event notify" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="adding widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding widget" />
+    <MESSAGE value="gm finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="gm finish" />
   </component>
 </project>

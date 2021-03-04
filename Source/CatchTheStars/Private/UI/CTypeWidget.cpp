@@ -4,7 +4,6 @@
 #include "UI/CTypeWidget.h"
 #include "Support/Enums/CStarTypesEnum.h"
 
-
 void UCTypeWidget::SetOwnParent(ITypeInterface*  NewParent)
 {
 	OwnParent = NewParent;

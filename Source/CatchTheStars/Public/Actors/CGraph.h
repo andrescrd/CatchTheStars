@@ -6,6 +6,8 @@
 
 #include "NiagaraSystem.h"
 #include "GameFramework/Actor.h"
+#include "Support/Structures/CLink.h"
+
 
 #include "CGraph.generated.h"
 
@@ -18,25 +20,28 @@ public:
 	ACGraph();
 
 protected:
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
-	TMap<class ACNode*, bool> NodesSucessMap;
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
 	int CurrentSuccess;
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
 	int MaxSuccess;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly)
+	
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly ,Category=Setup)
+	TSet<FString> Links;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly ,Category=Setup)
+	TMap<class ACNode*, bool> NodesSuccessMap;	
+	
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly ,Category=Setup)
 	TArray<class UNiagaraComponent*> Paths;
 
 	UPROPERTY()
 	USceneComponent* Root;
+
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly,Category=Setup)
+	TArray<FLinkStruct> LinkMap;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly,Category=Setup)
 	int NodesCounter;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,Category=Setup)
 	TSubclassOf<class ACNode> NodeClass;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,Category=Setup)
 	UNiagaraSystem* FXTemplate;
 	
 	virtual void BeginPlay() override;
@@ -47,8 +52,9 @@ protected:
 public:
 	// virtual void OnConstruction(const FTransform& Transform) override;
 
-	UFUNCTION(CallInEditor)
+	UFUNCTION(CallInEditor,Category=Setup)
 	void GenerateGraph();
-	UFUNCTION(CallInEditor)
+	UFUNCTION(CallInEditor,Category=Setup)
     void GeneratePaths();
+	bool IsAvailableLink(ACNode* From, ACNode* To);
 };
