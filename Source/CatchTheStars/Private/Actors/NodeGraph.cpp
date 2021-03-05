@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Actors/CNode.h"
+#include "Actors/NodeGraph.h"
 
-#include "Actors/CStar.h"
-#include "Actors/CTarget.h"
+#include "Actors/Star.h"
+#include "Actors/Target.h"
 #include "NiagaraComponent.h"
 
-ACNode::ACNode()
+ANodeGraph::ANodeGraph()
 {
 	bHasStar = true;
 
@@ -21,11 +21,11 @@ ACNode::ACNode()
 	StarChild->SetupAttachment(RootComponent);
 }
 
-ACTarget* ACNode::GetTarget() const { return Target; }
+ATarget* ANodeGraph::GetTarget() const { return Target; }
 
-ACStar* ACNode::GetStar() const { return Star; }
+AStar* ANodeGraph::GetStar() const { return Star; }
 
-void ACNode::SetStar(ACStar* NewStar)
+void ANodeGraph::SetStar(AStar* NewStar)
 {
 	const bool WasSuccess = IsSuccessAttach();
 
@@ -44,7 +44,7 @@ void ACNode::SetStar(ACStar* NewStar)
 		OnSuccessAttached.Broadcast(this, true);
 }
 
-void ACNode::RemoveStar()
+void ANodeGraph::RemoveStar()
 {
 	const bool WasSuccess = IsSuccessAttach();
 
@@ -58,11 +58,11 @@ void ACNode::RemoveStar()
 		OnSuccessAttached.Broadcast(this, true);
 }
 
-bool ACNode::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
+bool ANodeGraph::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
 
-bool ACNode::HasStar() const { return bHasStar && Star; }
+bool ANodeGraph::HasStar() const { return bHasStar && Star; }
 
-void ACNode::OnConstruction(const FTransform& Transform)
+void ANodeGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
@@ -71,13 +71,13 @@ void ACNode::OnConstruction(const FTransform& Transform)
 	SetupType();
 }
 
-void ACNode::SetupTarget()
+void ANodeGraph::SetupTarget()
 {
 	if (TargetChild && TargetClass)
 	{
 		TargetChild->SetChildActorClass(TargetClass);
 		TargetChild->CreateChildActor();
-		Target = Cast<ACTarget>(TargetChild->GetChildActor());
+		Target = Cast<ATarget>(TargetChild->GetChildActor());
 	}
 	else
 	{
@@ -85,7 +85,7 @@ void ACNode::SetupTarget()
 	}
 }
 
-void ACNode::SetupStar()
+void ANodeGraph::SetupStar()
 {
 	if (StarChild && StarClass)
 	{
@@ -93,7 +93,7 @@ void ACNode::SetupStar()
 		{
 			StarChild->SetChildActorClass(StarClass);
 			StarChild->CreateChildActor();
-			Star = Cast<ACStar>(StarChild->GetChildActor());
+			Star = Cast<AStar>(StarChild->GetChildActor());
 		}
 		else
 		{
@@ -106,7 +106,7 @@ void ACNode::SetupStar()
 	}
 }
 
-void ACNode::SetupType() const
+void ANodeGraph::SetupType() const
 {
 	if (IsValid(Star))
 		Star->SetType(StarType);
@@ -115,7 +115,7 @@ void ACNode::SetupType() const
 		Target->SetType(TargetType);
 }
 
-void ACNode::RemoveChild(UChildActorComponent* Child)
+void ANodeGraph::RemoveChild(UChildActorComponent* Child)
 {
 	Child->SetChildActorClass(nullptr);
 	Child->DestroyChildActor();

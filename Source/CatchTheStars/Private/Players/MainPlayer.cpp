@@ -1,18 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Players/CPlayerController.h"
+#include "Players/MainPlayer.h"
 
 
-#include "Actors/CGraph.h"
-#include "Actors/CNode.h"
-#include "Actors/CStar.h"
-#include "Actors/CTarget.h"
-#include "Characters/CCharacter.h"
+#include "Actors/Graph.h"
+#include "Actors/NodeGraph.h"
+#include "Actors/Star.h"
+#include "Actors/Target.h"
+#include "Characters/MainCharacter.h"
 #include "Kismet/GameplayStatics.h"
 
 const FName ActionName = "Selection";
 
-ACPlayerController::ACPlayerController()
+AMainPlayer::AMainPlayer()
 {
 	bShowMouseCursor = true;
 	bEnableClickEvents = true;
@@ -21,47 +21,47 @@ ACPlayerController::ACPlayerController()
 	DefaultMouseCursor = EMouseCursor::Crosshairs;
 }
 
-void ACPlayerController::SetupInputComponent()
+void AMainPlayer::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-	InputComponent->BindAction(ActionName, IE_Pressed, this, &ACPlayerController::OnSelected);
+	InputComponent->BindAction(ActionName, IE_Pressed, this, &AMainPlayer::OnSelected);
 }
 
-ACCharacter* ACPlayerController::GetCurrentCharacter()
+AMainCharacter* AMainPlayer::GetCurrentCharacter()
 {
 	if (!IsValid(CurrentCharacter))
 	{
-		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), ACCharacter::StaticClass()))
-			CurrentCharacter = Cast<ACCharacter>(Actor);
+		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), AMainCharacter::StaticClass()))
+			CurrentCharacter = Cast<AMainCharacter>(Actor);
 	}
 
 	return CurrentCharacter;
 }
 
-ACGraph* ACPlayerController::GetCurrentGraph()
+AGraph* AMainPlayer::GetCurrentGraph()
 {
 	if (!IsValid(CurrentGraph))
 	{
-		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), ACGraph::StaticClass()))
-			CurrentGraph = Cast<ACGraph>(Actor);
+		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), AGraph::StaticClass()))
+			CurrentGraph = Cast<AGraph>(Actor);
 	}
 
 	return CurrentGraph;
 }
 
-void ACPlayerController::OnSelected()
+void AMainPlayer::OnSelected()
 {
 	FHitResult HitResult;
 	GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);
 
-	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACStar::StaticClass()))
+	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(AStar::StaticClass()))
 	{
-		ACStar* Star = Cast<ACStar>(HitResult.GetActor());
+		AStar* Star = Cast<AStar>(HitResult.GetActor());
 		SetSelectedStar(Star);
 	}
-	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ACTarget::StaticClass()) && SelectedStar != nullptr)
+	else if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(ATarget::StaticClass()) && SelectedStar != nullptr)
 	{
-		ACTarget* Target = Cast<ACTarget>(HitResult.GetActor());
+		ATarget* Target = Cast<ATarget>(HitResult.GetActor());
 		SetSelectedTarget(Target);
 	}
 	else
@@ -77,7 +77,7 @@ void ACPlayerController::OnSelected()
 	}
 }
 
-void ACPlayerController::SetSelectedStar(ACStar* Star)
+void AMainPlayer::SetSelectedStar(AStar* Star)
 {
 	if (SelectedStar != nullptr && SelectedStar != Star)
 		SelectedStar->SetSelected(false);
@@ -88,7 +88,7 @@ void ACPlayerController::SetSelectedStar(ACStar* Star)
 	MoveCharacterTo(SelectedStar->GetActorLocation()); // move character to star location
 }
 
-void ACPlayerController::SetSelectedTarget(ACTarget* Target)
+void AMainPlayer::SetSelectedTarget(ATarget* Target)
 {
 	if (SelectedTarget != nullptr && SelectedTarget != Target)
 		SelectedTarget->SetSelected(false);
@@ -96,8 +96,8 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	SelectedTarget = Target;
 	SelectedTarget->SetSelected(true);
 
-	ACNode* ParentTarget = Cast<ACNode>(SelectedTarget->GetAttachParentActor());
-	ACNode* ParentStar = Cast<ACNode>(SelectedStar->GetAttachParentActor());
+	ANodeGraph* ParentTarget = Cast<ANodeGraph>(SelectedTarget->GetAttachParentActor());
+	ANodeGraph* ParentStar = Cast<ANodeGraph>(SelectedStar->GetAttachParentActor());
 	
 	if (ParentTarget == ParentStar || ParentTarget->HasStar())
 		return;
@@ -117,4 +117,4 @@ void ACPlayerController::SetSelectedTarget(ACTarget* Target)
 	SelectedStar = nullptr;
 }
 
-void ACPlayerController::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }
+void AMainPlayer::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }

@@ -5,20 +5,20 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Interfaces/TypeInterface.h"
-#include "Support/Enums/CStarTypesEnum.h"
-#include "CTypeWidget.generated.h"
+#include "Support/Enums/StarTypesEnum.h"
+#include "TypeWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class CATCHTHESTARS_API UCTypeWidget : public UUserWidget
+class CATCHTHESTARS_API UTypeWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	CStarTypesEnum CurrentType;
+	StarTypesEnum CurrentType;
 	// UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	ITypeInterface* OwnParent;
 
@@ -26,5 +26,5 @@ public:
 	void SetOwnParent(ITypeInterface*  NewParent);
 
 	UFUNCTION(BlueprintCallable)
-	CStarTypesEnum GetParentType() const;
+	StarTypesEnum GetParentType() const;
 };

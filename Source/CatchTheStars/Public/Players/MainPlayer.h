@@ -4,37 +4,37 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "CPlayerController.generated.h"
+#include "MainPlayer.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class CATCHTHESTARS_API ACPlayerController : public APlayerController
+class CATCHTHESTARS_API AMainPlayer : public APlayerController
 {
 	GENERATED_BODY()
 	
 public:
-	ACPlayerController();
+	AMainPlayer();
 		
 protected:
 	UPROPERTY(VisibleInstanceOnly)
-	class ACNode* SelectedNode;
+	class ANodeGraph* SelectedNode;
 	UPROPERTY(VisibleInstanceOnly)
-	class ACTarget* SelectedTarget;
+	class ATarget* SelectedTarget;
 	UPROPERTY(VisibleInstanceOnly)
-	class ACStar* SelectedStar;
+	class AStar* SelectedStar;
 	UPROPERTY(VisibleInstanceOnly)	
-	class ACCharacter* CurrentCharacter;
+	class AMainCharacter* CurrentCharacter;
 	UPROPERTY(VisibleInstanceOnly)	
-	class ACGraph* CurrentGraph;
+	class AGraph* CurrentGraph;
 
 	virtual void SetupInputComponent() override;
-	class ACCharacter* GetCurrentCharacter();
-	class ACGraph* GetCurrentGraph();
+	class AMainCharacter* GetCurrentCharacter();
+	class AGraph* GetCurrentGraph();
 	
-	void SetSelectedTarget(class ACTarget* Target);
-	void SetSelectedStar(class ACStar* Star);
+	void SetSelectedTarget(class ATarget* Target);
+	void SetSelectedStar(class AStar* Star);
 
 	void MoveCharacterTo(FVector Location);
 

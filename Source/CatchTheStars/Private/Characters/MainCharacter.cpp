@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Characters/CCharacter.h"
+#include "Characters/MainCharacter.h"
 
 
 #include "AIController.h"
@@ -9,7 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
-ACCharacter::ACCharacter()
+AMainCharacter::AMainCharacter()
 {
 	AcceptanceRadius = 50;
 
@@ -28,7 +28,7 @@ ACCharacter::ACCharacter()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 }
 
-void ACCharacter::MoveToDestination(const FVector Destination) const
+void AMainCharacter::MoveToDestination(const FVector Destination) const
 {
 	if (AAIController* AI = Cast<AAIController>(GetController()))
 		AI->MoveToLocation(Destination, AcceptanceRadius, false);

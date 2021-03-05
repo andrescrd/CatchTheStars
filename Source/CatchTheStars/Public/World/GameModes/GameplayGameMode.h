@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "CGameplayGameMode.generated.h"
+#include "GameplayGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class CATCHTHESTARS_API ACGameplayGameMode : public AGameModeBase
+class CATCHTHESTARS_API AGameplayGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	ACGameplayGameMode();
+	AGameplayGameMode();
 
 protected:
 	UFUNCTION(BlueprintImplementableEvent)

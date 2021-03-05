@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 #pragma once
-#include "Actors/CNode.h"
-#include "CLink.generated.h"
+#include "Actors/NodeGraph.h"
+#include "LinkStruct.generated.h"
 
 USTRUCT(BlueprintType)
 struct FLinkStruct
@@ -10,9 +10,9 @@ struct FLinkStruct
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class ACNode* From;
+	class ANodeGraph* From;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class ACNode* To;
+	class ANodeGraph* To;
 
 	FString GetId() const { return From->GetName() + To->GetName(); }
 	FString GetIdInverted() const { return To->GetName() + From->GetName(); }

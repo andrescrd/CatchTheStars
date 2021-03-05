@@ -5,17 +5,18 @@
 #include "CoreMinimal.h"
 
 #include "GameFramework/Actor.h"
-#include "Support/Structures/CLink.h"
+#include "Support/Structures/LinkStruct.h"
 
-#include "CGraph.generated.h"
+
+#include "Graph.generated.h"
 
 UCLASS()
-class CATCHTHESTARS_API ACGraph : public AActor
+class CATCHTHESTARS_API AGraph : public AActor
 {
 	GENERATED_BODY()
 
 public:
-	ACGraph();
+	AGraph();
 
 protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
@@ -26,7 +27,7 @@ protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<FString, FLinkStruct> Links;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
-	TMap<class ACNode*, bool> NodesSuccessMap;
+	TMap<class ANodeGraph*, bool> NodesSuccessMap;
 
 	UPROPERTY()
 	USceneComponent* Root;
@@ -37,18 +38,18 @@ protected:
 	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int NodesCounter;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
-	TSubclassOf<class ACNode> NodeClass;
+	TSubclassOf<class ANodeGraph> NodeClass;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UNiagaraSystem* FXTemplate;
 
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
-	void SuccessAttached(const ACNode* Node, const bool Success);
+	void SuccessAttached(const ANodeGraph* Node, const bool Success);
 
 	void AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const;
 public:
-	bool IsAvailableLink(ACNode* From, ACNode* To);
+	bool IsAvailableLink(ANodeGraph* From, ANodeGraph* To);
 
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();

@@ -3,12 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CStarTypesEnum.generated.h"
+#include "StarTypesEnum.generated.h"
 
 
 UENUM(BlueprintType)
-enum class CStarTypesEnum : uint8
+enum class StarTypesEnum : uint8
 {
+	NONE,
 	A,
 	B,
 	C,

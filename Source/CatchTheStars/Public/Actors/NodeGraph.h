@@ -1,25 +1,25 @@
 #pragma once
 
-#include "Support/Enums/CStarTypesEnum.h"
+#include "Support/Enums/StarTypesEnum.h"
 
-#include "CNode.generated.h"
+#include "NodeGraph.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ACNode*, Node, const bool, Success);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ANodeGraph*, Node, const bool, Success);
 
 UCLASS()
-class CATCHTHESTARS_API ACNode : public AActor
+class CATCHTHESTARS_API ANodeGraph : public AActor
 
 {
 	GENERATED_BODY()
 
 public:
-	ACNode();
+	ANodeGraph();
 
 protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
-	class ACTarget* Target;
+	class ATarget* Target;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
-	class ACStar* Star;
+	class AStar* Star;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class USceneComponent* Root;
@@ -29,16 +29,16 @@ protected:
 	class UChildActorComponent* StarChild;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
-	TSubclassOf<class ACTarget> TargetClass;
+	TSubclassOf<class ATarget> TargetClass;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
-	TSubclassOf<class ACStar> StarClass;
+	TSubclassOf<class AStar> StarClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	bool bHasStar;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	CStarTypesEnum TargetType;
+	StarTypesEnum TargetType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	CStarTypesEnum StarType;
+	StarTypesEnum StarType;
 
 	void RemoveChild(class UChildActorComponent* Child);
 	void SetupType() const;
@@ -48,9 +48,9 @@ protected:
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;	
 
-	class ACTarget* GetTarget() const;
-	class ACStar* GetStar() const;	
-	void SetStar(class ACStar* NewStar);	
+	class ATarget* GetTarget() const;
+	class AStar* GetStar() const;	
+	void SetStar(class AStar* NewStar);	
 	bool IsSuccessAttach() const;
 	bool HasStar() const;
 	void RemoveStar();

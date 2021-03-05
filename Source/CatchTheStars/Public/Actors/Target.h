@@ -8,35 +8,28 @@
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/TypeInterface.h"
-#include "Support/Enums/CStarTypesEnum.h"
+#include "Support/Enums/StarTypesEnum.h"
 
-#include "CTarget.generated.h"
+#include "Target.generated.h"
 
 UCLASS()
-class CATCHTHESTARS_API ACTarget : public AActor, public ITypeInterface
+class CATCHTHESTARS_API ATarget : public AActor, public ITypeInterface
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	ACTarget();
+	ATarget();
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UCTypeWidget* CurrentWidget;
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* StaticMeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UBoxComponent* BoxComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UWidgetComponent* WidgetComponent;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<class UCTypeWidget> UserWidgetClass;
+	class UBoxComponent* BoxComponent;	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	CStarTypesEnum Type;
+	StarTypesEnum Type;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSelected;
 
@@ -46,6 +39,6 @@ public:
 	void SetSelected(bool Selected);
 
 	// ITypeInterface implementation
-	virtual void SetType(const CStarTypesEnum NewType) override;
-	virtual CStarTypesEnum GetType() override;
+	virtual void SetType(const StarTypesEnum NewType) override;
+	virtual StarTypesEnum GetType() override;
 };

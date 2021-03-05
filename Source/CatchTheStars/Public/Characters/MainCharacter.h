@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "CCharacter.generated.h"
+#include "MainCharacter.generated.h"
 
 UCLASS()
-class CATCHTHESTARS_API ACCharacter : public ACharacter
+class CATCHTHESTARS_API AMainCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	ACCharacter();
+	AMainCharacter();
 
 protected:
 

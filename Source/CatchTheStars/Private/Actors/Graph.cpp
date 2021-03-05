@@ -1,18 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Actors/CGraph.h"
+#include "Actors/Graph.h"
 #include "CollisionDebugDrawingPublic.h"
-#include "Actors/CNode.h"
+#include "Actors/NodeGraph.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
-#include "World/GameModes/CGameplayGameMode.h"
 #include "NiagaraComponent.h"
+#include "World/GameModes/GameplayGameMode.h"
 
 const FName NiagaraParameterEnd = FName("BeamEnd");
 	
 // Sets default values
-ACGraph::ACGraph()
+AGraph::AGraph()
 {
 	NodesCounter = 3;
 	Links = TMap<FString, FLinkStruct>();
@@ -23,7 +23,7 @@ ACGraph::ACGraph()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ACGraph::BeginPlay()
+void AGraph::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -31,7 +31,7 @@ void ACGraph::BeginPlay()
 	{
 		if(IsValid(Node.Key))
 		{
-			Node.Key->OnSuccessAttached.AddDynamic(this, &ACGraph::SuccessAttached); // bind to event
+			Node.Key->OnSuccessAttached.AddDynamic(this, &AGraph::SuccessAttached); // bind to event
 			NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
 
 			if (Node.Key->HasStar())
@@ -52,23 +52,23 @@ void ACGraph::BeginPlay()
 	}
 }
 
-void ACGraph::SuccessAttached(const ACNode* Node, const bool Success)
+void AGraph::SuccessAttached(const ANodeGraph* Node, const bool Success)
 {
 	NodesSuccessMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
 	if (CurrentSuccess == MaxSuccess)
-		GetWorld()->GetAuthGameMode<ACGameplayGameMode>()->Finish();
+		GetWorld()->GetAuthGameMode<AGameplayGameMode>()->Finish();
 }
 
-bool ACGraph::IsAvailableLink(ACNode* From, ACNode* To)
+bool AGraph::IsAvailableLink(ANodeGraph* From, ANodeGraph* To)
 {
 	const FString Name = From->GetName() + To->GetName();
 	const FString InvertedName = To->GetName() + From->GetName();
 	return Links.Find(Name) || Links.Find(InvertedName);
 }
 
-void ACGraph::GenerateGraph()
+void AGraph::GenerateGraph()
 {
 	for (auto It = NodesSuccessMap.CreateConstIterator(); It; ++It)
 	{
@@ -83,16 +83,16 @@ void ACGraph::GenerateGraph()
 
 	for (int i = 0; i < NodesCounter; ++i)
 	{
-		AActor* ChildActor = GetWorld()->SpawnActor<ACNode>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
+		AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
 		                                                    FActorSpawnParameters());
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
-		if (ACNode* Node = Cast<ACNode>(ChildActor))
+		if (ANodeGraph* Node = Cast<ANodeGraph>(ChildActor))
 			NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
 	}
 }
 
-void ACGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const
+void AGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const
 {
 	if (!FXTemplate)
 		return;

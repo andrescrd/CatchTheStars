@@ -2,13 +2,14 @@
 
 
 #include "Interfaces/TypeInterface.h"
+#include "Support/Enums/StarTypesEnum.h"
 
 // Add default functionality here for any ICTypeInterface functions that are not pure virtual.
-void ITypeInterface::SetType(CStarTypesEnum NewType)
+void ITypeInterface::SetType(StarTypesEnum NewType)
 {
 }
 
-CStarTypesEnum ITypeInterface::GetType()
+StarTypesEnum ITypeInterface::GetType()
 {
-	return CStarTypesEnum::A;
+	return StarTypesEnum::NONE;
 }

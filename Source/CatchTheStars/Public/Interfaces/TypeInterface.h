@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 
-#include "Support/Enums/CStarTypesEnum.h"
+#include "Support/Enums/StarTypesEnum.h"
 #include "UObject/Interface.h"
 #include "TypeInterface.generated.h"
 
@@ -23,6 +23,6 @@ class CATCHTHESTARS_API ITypeInterface
 	GENERATED_BODY()
 
 public:
-	virtual void SetType(const CStarTypesEnum NewType);
-	virtual CStarTypesEnum GetType();
+	virtual void SetType(const StarTypesEnum NewType);
+	virtual StarTypesEnum GetType();
 };
