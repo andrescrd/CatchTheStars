@@ -2,6 +2,8 @@
 
 #include "Actors/Target.h"
 
+
+#include "Assets/TypeDataAsset.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/BoxComponent.h"
 
@@ -23,6 +25,9 @@ ATarget::ATarget()
 void ATarget::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if(TypeDataAsset)
+		StaticMeshComponent->SetStaticMesh(TypeDataAsset->GetStarMesh(Type));
 }
 
 void ATarget::SetSelected(const bool Selected) { IsSelected = Selected; }

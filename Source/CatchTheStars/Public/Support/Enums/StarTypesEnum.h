@@ -15,5 +15,19 @@ enum class StarTypesEnum : uint8
 	C,
 	D,
 	E,
-	F
+	F,
+	G,
+	H,
+	I,
+	J,
+	K,
+	L,
+	M,
+	N,
+	O,
+	P,
+	Q,
+	R,
+	S,
+	T
 };

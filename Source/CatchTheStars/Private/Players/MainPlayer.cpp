@@ -117,4 +117,4 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 	SelectedStar = nullptr;
 }
 
-void AMainPlayer::MoveCharacterTo(const FVector Location) { GetCurrentCharacter()->MoveToDestination(Location); }
+void AMainPlayer::MoveCharacterTo(const FVector Location) { GetCurrentCharacter() ? GetCurrentCharacter()->MoveToDestination(Location) : NULL; }

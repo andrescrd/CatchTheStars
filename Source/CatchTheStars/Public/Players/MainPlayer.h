@@ -18,6 +18,7 @@ public:
 	AMainPlayer();
 		
 protected:
+	
 	UPROPERTY(VisibleInstanceOnly)
 	class ANodeGraph* SelectedNode;
 	UPROPERTY(VisibleInstanceOnly)

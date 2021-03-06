@@ -35,7 +35,7 @@ void AStar::BeginPlay()
 	Super::BeginPlay();
 
 	if(TypeDataAsset)
-		MeshComponent->SetStaticMesh(TypeDataAsset->GetMesh(Type));
+		MeshComponent->SetStaticMesh(TypeDataAsset->GetStarMesh(Type));
 }
 
 void AStar::Tick(float DeltaSeconds)

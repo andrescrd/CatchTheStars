@@ -1,9 +1,25 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Assets/TypeDataAsset.h"
 
-UStaticMesh* UTypeDataAsset::GetMesh(const StarTypesEnum Type)
+UStaticMesh* UTypeDataAsset::GetStarMesh(const StarTypesEnum Type)
 {
-	return (Type!= StarTypesEnum::NONE) ? Meshes[Type] : nullptr;
+	for (const auto Elem : AssetTypes)
+	{
+		if(Elem.Type == Type)
+			return Elem.StartMesh;
+	}
+
+	return nullptr;
+}
+
+UStaticMesh* UTypeDataAsset::GetTargetMesh(const StarTypesEnum Type)
+{
+	for (const auto Elem : AssetTypes)
+	{
+		if(Elem.Type == Type)
+			return Elem.TargetMesh;
+	}
+
+	return nullptr;
 }

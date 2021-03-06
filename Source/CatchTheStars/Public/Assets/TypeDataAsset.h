@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "Support/Enums/StarTypesEnum.h"
+#include "Support/Structures/AssetTypeStruct.h"
+
 
 #include "TypeDataAsset.generated.h"
 
@@ -18,7 +20,8 @@ class CATCHTHESTARS_API UTypeDataAsset : public UDataAsset
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TMap<StarTypesEnum,class UStaticMesh*> Meshes;
+	TArray<FAssetTypeStruct> AssetTypes;
 	
-	class UStaticMesh* GetMesh(StarTypesEnum Type);
+	class UStaticMesh* GetStarMesh(StarTypesEnum Type);
+	class UStaticMesh* GetTargetMesh(StarTypesEnum Type);
 };

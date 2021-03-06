@@ -23,14 +23,16 @@ public:
 
 protected:
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
 	class UStaticMeshComponent* StaticMeshComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
 	class UBoxComponent* BoxComponent;	
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	class UTypeDataAsset* TypeDataAsset;	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category=Setup)
 	StarTypesEnum Type;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
 	bool IsSelected;
 
 	virtual void BeginPlay() override;
