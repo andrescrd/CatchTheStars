@@ -25,6 +25,8 @@ ATarget* ANodeGraph::GetTarget() const { return Target; }
 
 AStar* ANodeGraph::GetStar() const { return Star; }
 
+FVector ANodeGraph::	GetStarLocation() const { return StarChild->GetComponentLocation(); }
+
 void ANodeGraph::SetStar(AStar* NewStar)
 {
 	const bool WasSuccess = IsSuccessAttach();

@@ -16,6 +16,7 @@ AGraph::AGraph()
 {
 	NodesCounter = 3;
 	Links = TMap<FString, FLinkStruct>();
+	LinkMap = TArray<FLinkStruct>();
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;

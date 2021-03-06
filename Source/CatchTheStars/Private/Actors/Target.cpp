@@ -14,6 +14,8 @@ ATarget::ATarget()
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
 	BoxComponent->SetBoxExtent(FVector(128.f));
+	BoxComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
+	BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECR_Block);
 	RootComponent = BoxComponent;
 
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
@@ -27,7 +29,7 @@ void ATarget::BeginPlay()
 	Super::BeginPlay();
 
 	if(TypeDataAsset)
-		StaticMeshComponent->SetStaticMesh(TypeDataAsset->GetStarMesh(Type));
+		StaticMeshComponent->SetStaticMesh(TypeDataAsset->GetTargetMesh(Type));
 }
 
 void ATarget::SetSelected(const bool Selected) { IsSelected = Selected; }

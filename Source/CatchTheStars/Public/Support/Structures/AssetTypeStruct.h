@@ -9,11 +9,11 @@ struct FAssetTypeStruct
 	GENERATED_USTRUCT_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UStaticMesh* StartMesh;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UStaticMesh* TargetMesh;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	StarTypesEnum Type;
 
 	FAssetTypeStruct(): StartMesh(nullptr), TargetMesh(nullptr), Type(StarTypesEnum::NONE)

@@ -54,6 +54,9 @@ void AMainPlayer::OnSelected()
 	FHitResult HitResult;
 	GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery1, false, HitResult);
 
+	if(HitResult.GetActor())
+		GEngine->AddOnScreenDebugMessage(1,3,FColor::Green,FString::Printf(TEXT("Actor: %s"), *HitResult.GetActor()->GetName()));
+	
 	if (HitResult.GetActor() != nullptr && HitResult.GetActor()->IsA(AStar::StaticClass()))
 	{
 		AStar* Star = Cast<AStar>(HitResult.GetActor());
@@ -111,7 +114,7 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 	ParentTarget->SetStar(SelectedStar);
 	
 	// SelectedStar->SetSelected(false);
-	SelectedStar->SetNewLocation(SelectedTarget->GetActorLocation());
+	SelectedStar->SetNewLocation(ParentTarget->GetStarLocation());
 
 	SelectedTarget = nullptr;
 	SelectedStar = nullptr;

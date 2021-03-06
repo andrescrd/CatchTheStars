@@ -4,10 +4,9 @@
 #include "Actors/Star.h"
 
 #include "Assets/TypeDataAsset.h"
+#include "Components/BoxComponent.h"
 #include "Components/CMovableComponent.h"
-#include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "Components/WidgetComponent.h"
 #include "UI/TypeWidget.h"
 
 // Sets default values
@@ -17,9 +16,11 @@ AStar::AStar()
 	Type = StarTypesEnum::A;
 	Speed = 10;
 
-	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
-	SphereComponent->InitSphereRadius(128.f);
-	RootComponent = SphereComponent;
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
+	BoxComponent->SetBoxExtent(FVector(128.f));
+	BoxComponent->SetCollisionResponseToAllChannels(ECR_Overlap);
+	BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECR_Block);
+	RootComponent = BoxComponent;
 
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
 	MeshComponent->SetupAttachment(RootComponent);
@@ -41,7 +42,9 @@ void AStar::BeginPlay()
 void AStar::Tick(float DeltaSeconds)
 {
 	if ((NewLocation - GetActorLocation()).Size() > 0 && !NewLocation.IsZero())
+	{
 		SetActorLocation(FMath::VInterpTo(GetActorLocation(), NewLocation, DeltaSeconds, Speed));
+	}
 }
 
 void AStar::SetSelected(const bool Selected) { IsSelected = Selected; }
@@ -53,5 +56,6 @@ StarTypesEnum AStar::GetType() { return Type; }
 void AStar::SetNewLocation(const FVector& Vector)
 {
 	NewLocation = Vector;
-	NewLocation.Z = MeshComponent->GetComponentLocation().Z;
+	// MeshComponent->GetRelativeLocation();
+	// NewLocation.Z = MeshComponent->GetComponentLocation().Z;	
 }

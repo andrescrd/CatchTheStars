@@ -50,6 +50,7 @@ public:
 
 	class ATarget* GetTarget() const;
 	class AStar* GetStar() const;	
+	FVector GetStarLocation() const;	
 	void SetStar(class AStar* NewStar);	
 	bool IsSuccessAttach() const;
 	bool HasStar() const;
