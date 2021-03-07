@@ -6,6 +6,7 @@
 #include "Assets/TypeDataAsset.h"
 #include "Components/BoxComponent.h"
 #include "Components/CMovableComponent.h"
+#include "Components/SelecteableComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "UI/TypeWidget.h"
 
@@ -28,6 +29,8 @@ AStar::AStar()
 	MovableComponent = CreateDefaultSubobject<UCMovableComponent>(TEXT("MovableComponent"));
 	MovableComponent->SetAutoActivate(false);
 
+	SelectableComponent = CreateDefaultSubobject<USelecteableComponent>(TEXT("SelecteableComponent"));
+
 	PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -37,6 +40,8 @@ void AStar::BeginPlay()
 
 	if(TypeDataAsset)
 		MeshComponent->SetStaticMesh(TypeDataAsset->GetStarMesh(Type));
+
+	SelectableComponent->SetStaticMesh(MeshComponent);
 }
 
 void AStar::Tick(float DeltaSeconds)
@@ -47,7 +52,11 @@ void AStar::Tick(float DeltaSeconds)
 	}
 }
 
-void AStar::SetSelected(const bool Selected) { IsSelected = Selected; }
+void AStar::SetSelected(const bool Selected)
+{
+	IsSelected = Selected;
+	SelectableComponent->OnSelected(Selected);
+}
 
 void AStar::SetType(const StarTypesEnum NewType) { Type=NewType; }
 

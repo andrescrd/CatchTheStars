@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Support/Enums/StarTypesEnum.h"
-
 #include "NodeGraph.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ANodeGraph*, Node, const bool, Success);
@@ -27,6 +26,8 @@ protected:
 	class UChildActorComponent* TargetChild;
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class UChildActorComponent* StarChild;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
+	class UNiagaraComponent* Niagara;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	TSubclassOf<class ATarget> TargetClass;
@@ -39,6 +40,10 @@ protected:
 	StarTypesEnum TargetType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	StarTypesEnum StarType;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
+	TSet<class ANodeGraph*> Links;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	class UNiagaraSystem* FXTemplate;
 
 	void RemoveChild(class UChildActorComponent* Child);
 	void SetupType() const;
@@ -49,7 +54,8 @@ public:
 	virtual void OnConstruction(const FTransform& Transform) override;	
 
 	class ATarget* GetTarget() const;
-	class AStar* GetStar() const;	
+	class AStar* GetStar() const;
+	TSet<class ANodeGraph*> GetLinks() const;
 	FVector GetStarLocation() const;	
 	void SetStar(class AStar* NewStar);	
 	bool IsSuccessAttach() const;
@@ -57,4 +63,7 @@ public:
 	void RemoveStar();
 
 	FSuccessAttachSignature OnSuccessAttached;
+
+	UFUNCTION(CallInEditor, Category=Setup)
+	void ShowLinks();
 };

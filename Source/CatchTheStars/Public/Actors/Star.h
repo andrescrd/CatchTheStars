@@ -32,6 +32,8 @@ protected:
 	class UWidgetComponent* WidgetComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)
+	class USelecteableComponent* SelectableComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)
 	class UCMovableComponent* MovableComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)

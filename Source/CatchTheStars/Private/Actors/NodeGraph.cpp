@@ -2,6 +2,8 @@
 
 #include "Actors/NodeGraph.h"
 
+
+#include "DrawDebugHelpers.h"
 #include "Actors/Star.h"
 #include "Actors/Target.h"
 #include "NiagaraComponent.h"
@@ -12,6 +14,11 @@ ANodeGraph::ANodeGraph()
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
+
+	Niagara = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
+	Niagara->SetAutoActivate(true);
+	Niagara->SetAsset(FXTemplate);
+	Niagara->SetupAttachment(Root);
 
 	TargetChild = CreateDefaultSubobject<UChildActorComponent>(TEXT("TargetComponent"));
 	TargetChild->SetupAttachment(RootComponent);
@@ -25,7 +32,9 @@ ATarget* ANodeGraph::GetTarget() const { return Target; }
 
 AStar* ANodeGraph::GetStar() const { return Star; }
 
-FVector ANodeGraph::	GetStarLocation() const { return StarChild->GetComponentLocation(); }
+TSet<ANodeGraph*> ANodeGraph::GetLinks() const { return Links; }
+
+FVector ANodeGraph::GetStarLocation() const { return StarChild->GetComponentLocation(); }
 
 void ANodeGraph::SetStar(AStar* NewStar)
 {
@@ -44,6 +53,9 @@ void ANodeGraph::SetStar(AStar* NewStar)
 		OnSuccessAttached.Broadcast(this, false);
 	else if (!WasSuccess && IsSuccessAttach())
 		OnSuccessAttached.Broadcast(this, true);
+
+	if (IsSuccessAttach() && FXTemplate)
+		Niagara->Activate();
 }
 
 void ANodeGraph::RemoveStar()
@@ -58,6 +70,9 @@ void ANodeGraph::RemoveStar()
 		OnSuccessAttached.Broadcast(this, false);
 	else if (!WasSuccess && IsSuccessAttach())
 		OnSuccessAttached.Broadcast(this, true);
+
+	if (!IsSuccessAttach() && FXTemplate)
+		Niagara->Deactivate();
 }
 
 bool ANodeGraph::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
@@ -121,4 +136,11 @@ void ANodeGraph::RemoveChild(UChildActorComponent* Child)
 {
 	Child->SetChildActorClass(nullptr);
 	Child->DestroyChildActor();
+}
+
+
+void ANodeGraph::ShowLinks()
+{
+	for (auto Link : Links)
+		DrawDebugLine(GetWorld(), GetActorLocation(), Link->GetStarLocation(), FColor::Green, false, 5, 0, 5);
 }

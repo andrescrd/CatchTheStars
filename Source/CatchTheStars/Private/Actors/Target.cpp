@@ -28,8 +28,8 @@ void ATarget::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(TypeDataAsset)
-		StaticMeshComponent->SetStaticMesh(TypeDataAsset->GetTargetMesh(Type));
+	// if(TypeDataAsset)
+		// StaticMeshComponent->SetStaticMesh(TypeDataAsset->GetTargetMesh(Type));
 }
 
 void ATarget::SetSelected(const bool Selected) { IsSelected = Selected; }

@@ -32,8 +32,8 @@ protected:
 	UPROPERTY()
 	USceneComponent* Root;
 
-	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
-	TArray<FLinkStruct> LinkMap;
+	// UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
+	// TArray<FLinkStruct> LinkMap;
 
 	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int NodesCounter;
@@ -43,14 +43,17 @@ protected:
 	class UNiagaraSystem* FXTemplate;
 
 	virtual void BeginPlay() override;
-
+	
 	UFUNCTION()
 	void SuccessAttached(const ANodeGraph* Node, const bool Success);
 
+	void SetupLinks(ANodeGraph* Node);	
 	void AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const;
 public:
 	bool IsAvailableLink(ANodeGraph* From, ANodeGraph* To);
 
+	UFUNCTION(CallInEditor, Category=Setup)
+	void ShowLinks();
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();
 };

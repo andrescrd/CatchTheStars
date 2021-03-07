@@ -10,13 +10,12 @@
 #include "World/GameModes/GameplayGameMode.h"
 
 const FName NiagaraParameterEnd = FName("BeamEnd");
-	
+
 // Sets default values
 AGraph::AGraph()
 {
 	NodesCounter = 3;
 	Links = TMap<FString, FLinkStruct>();
-	LinkMap = TArray<FLinkStruct>();
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
@@ -30,7 +29,7 @@ void AGraph::BeginPlay()
 
 	for (auto Node : NodesSuccessMap)
 	{
-		if(IsValid(Node.Key))
+		if (IsValid(Node.Key))
 		{
 			Node.Key->OnSuccessAttached.AddDynamic(this, &AGraph::SuccessAttached); // bind to event
 			NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
@@ -40,16 +39,9 @@ void AGraph::BeginPlay()
 
 			if (NodesSuccessMap[Node.Key])
 				CurrentSuccess++;
+
+			SetupLinks(Node.Key);
 		}
-	}
-
-	for (auto Link : LinkMap) // add link and niagara
-	{
-		if (Links.Contains(Link.GetId()) || Links.Contains(Link.GetIdInverted()))
-			continue;
-
-		Links.Add(Link.GetId(), Link);
-		AddNiagaraLink(Link.From->GetActorLocation(), Link.To->GetActorLocation());
 	}
 }
 
@@ -85,11 +77,30 @@ void AGraph::GenerateGraph()
 	for (int i = 0; i < NodesCounter; ++i)
 	{
 		AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
-		                                                    FActorSpawnParameters());
+		                                                        FActorSpawnParameters());
 		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 		if (ANodeGraph* Node = Cast<ANodeGraph>(ChildActor))
 			NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
+	}
+}
+
+void AGraph::SetupLinks(ANodeGraph* Node)
+{
+	auto NodeLinks = Node->GetLinks();
+
+	FLinkStruct LinkStruct = FLinkStruct();
+	LinkStruct.From = Node;
+
+	for (auto NodeLink : NodeLinks)
+	{
+		LinkStruct.To = NodeLink;
+
+		if (Links.Contains(LinkStruct.GetId()) || Links.Contains(LinkStruct.GetIdInverted()))
+			continue;
+
+		Links.Add(LinkStruct.GetId(), LinkStruct);
+		AddNiagaraLink(LinkStruct.From->GetActorLocation(), LinkStruct.To->GetActorLocation());
 	}
 }
 
@@ -100,4 +111,10 @@ void AGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) 
 
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
 	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
+}
+
+void AGraph::ShowLinks()
+{
+	for (auto Node : NodesSuccessMap)
+		if (IsValid(Node.Key)) Node.Key->ShowLinks();
 }

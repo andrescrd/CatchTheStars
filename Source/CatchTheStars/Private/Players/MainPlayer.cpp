@@ -113,7 +113,7 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 	ParentStar->RemoveStar();
 	ParentTarget->SetStar(SelectedStar);
 	
-	// SelectedStar->SetSelected(false);
+	SelectedStar->SetSelected(false);
 	SelectedStar->SetNewLocation(ParentTarget->GetStarLocation());
 
 	SelectedTarget = nullptr;
