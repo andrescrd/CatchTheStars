@@ -6,7 +6,7 @@
 // Sets default values for this component's properties
 USelecteableComponent::USelecteableComponent()
 {
-	bUseHeightlight = true;	
+	bUseHighlight = true;	
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
@@ -17,7 +17,7 @@ void USelecteableComponent::BeginPlay()
 	if (OwnerMeshComponent)
 		MainMaterial = OwnerMeshComponent->GetMaterial(MaterialIndex);
 
-	if(bUseHeightlight)
+	if(bUseHighlight)
 	{
 		 GetOwner()->OnBeginCursorOver.AddDynamic(this, &USelecteableComponent::OnCursorOverStartHandle);
 		 GetOwner()->OnEndCursorOver.AddDynamic(this, &USelecteableComponent::OnCursorOverEndHandle);

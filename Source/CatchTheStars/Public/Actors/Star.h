@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 
 
-#include "Components/CMovableComponent.h"
+#include "Components/MovableComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/WidgetComponent.h"
 #include "GameFramework/Actor.h"
@@ -34,7 +34,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)
 	class USelecteableComponent* SelectableComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)
-	class UCMovableComponent* MovableComponent;
+	class UMovableComponent* MovableComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Setup)
 	FVector NewLocation;
@@ -48,9 +48,10 @@ protected:
 	StarTypesEnum Type;
 
 	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaSeconds) override;
 
 public:
+	virtual void Tick(float DeltaSeconds) override;
+	
 	void SetSelected(bool Selected);
 	
 	// ITypeInterface implementation

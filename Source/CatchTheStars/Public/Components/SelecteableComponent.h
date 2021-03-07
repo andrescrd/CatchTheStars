@@ -17,6 +17,7 @@ public:
 	USelecteableComponent();
 
 protected:
+	
 	UPROPERTY(VisibleInstanceOnly)
 	bool bIsSelected;
 	UPROPERTY(VisibleInstanceOnly)
@@ -31,13 +32,17 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	class UMaterialInterface* HighlightMaterial;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	bool bUseHeightlight;
+	bool bUseHighlight;
 	
-	virtual void BeginPlay() override;
+	virtual void BeginPlay() override;	
+	
 public:
-	void SetStaticMesh(class UMeshComponent* Mesh);
 	
+	UFUNCTION(BlueprintCallable)
+	void SetStaticMesh(class UMeshComponent* Mesh);
+	UFUNCTION(BlueprintCallable)	
 	void OnSelected(const bool Selected);
+	UFUNCTION(BlueprintCallable)	
 	void OnHeightLight(const bool Height);
 	
 	UFUNCTION()

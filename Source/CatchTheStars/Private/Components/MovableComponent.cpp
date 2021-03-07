@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Components/CMovableComponent.h"
+#include "Components/MovableComponent.h"
 
 #include "Components/TimelineComponent.h"
 
 // Sets default values for this component's properties
-UCMovableComponent::UCMovableComponent()
+UMovableComponent::UMovableComponent()
 {
 	bAutoActivate = false;
 	OffsetZ = 50;
@@ -16,7 +16,7 @@ UCMovableComponent::UCMovableComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-void UCMovableComponent::BeginPlay()
+void UMovableComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	SetupTimeline();
@@ -27,7 +27,7 @@ void UCMovableComponent::BeginPlay()
 	InitialLocation = GetOwner()->GetActorLocation();
 }
 
-void UCMovableComponent::SetupTimeline()
+void UMovableComponent::SetupTimeline()
 {
 	if (!Curve)
 		return;
@@ -44,7 +44,7 @@ void UCMovableComponent::SetupTimeline()
 	TimelineComponent->SetIgnoreTimeDilation(true);
 }
 
-void UCMovableComponent::GetNewLocation()
+void UMovableComponent::GetNewLocation()
 {
 	if (AActor* Actor = GetOwner())
 	{
@@ -55,19 +55,19 @@ void UCMovableComponent::GetNewLocation()
 	}
 }
 
-void UCMovableComponent::PlayTimeline()
+void UMovableComponent::PlayTimeline()
 {
 	GetNewLocation();
 	TimelineComponent->PlayFromStart();
 }
 
-void UCMovableComponent::OnTimelineHandler(float Value)
+void UMovableComponent::OnTimelineHandler(float Value)
 {
 	if (AActor* Actor = GetOwner())
 		Actor->SetActorLocation(FMath::Lerp(StartLocation, EndLocation, Value), true);
 }
 
-void UCMovableComponent::OnFinishHandler()
+void UMovableComponent::OnFinishHandler()
 {
 	if (TimelineComponent->GetPlaybackPosition() <= 0)
 		TimelineComponent->PlayFromStart();
@@ -76,13 +76,13 @@ void UCMovableComponent::OnFinishHandler()
 		TimelineComponent->ReverseFromEnd();
 }
 
-void UCMovableComponent::Activate(bool bReset)
+void UMovableComponent::Activate(bool bReset)
 {
 	Super::Activate(bReset);
 	PlayTimeline();
 }
 
-void UCMovableComponent::Deactivate()
+void UMovableComponent::Deactivate()
 {
 	Super::Deactivate();
 	TimelineComponent->Deactivate();

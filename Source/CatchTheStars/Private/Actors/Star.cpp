@@ -5,7 +5,7 @@
 
 #include "Assets/TypeDataAsset.h"
 #include "Components/BoxComponent.h"
-#include "Components/CMovableComponent.h"
+#include "Components/MovableComponent.h"
 #include "Components/SelecteableComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "UI/TypeWidget.h"
@@ -26,11 +26,12 @@ AStar::AStar()
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
 	MeshComponent->SetupAttachment(RootComponent);
 
-	MovableComponent = CreateDefaultSubobject<UCMovableComponent>(TEXT("MovableComponent"));
+	MovableComponent = CreateDefaultSubobject<UMovableComponent>(TEXT("MovableComponent"));
 	MovableComponent->SetAutoActivate(false);
 
 	SelectableComponent = CreateDefaultSubobject<USelecteableComponent>(TEXT("SelecteableComponent"));
-
+	SelectableComponent->SetStaticMesh(MeshComponent);
+	
 	PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -41,15 +42,13 @@ void AStar::BeginPlay()
 	if(TypeDataAsset)
 		MeshComponent->SetStaticMesh(TypeDataAsset->GetStarMesh(Type));
 
-	SelectableComponent->SetStaticMesh(MeshComponent);
+	// SelectableComponent->SetStaticMesh(MeshComponent);
 }
 
 void AStar::Tick(float DeltaSeconds)
 {
 	if ((NewLocation - GetActorLocation()).Size() > 0 && !NewLocation.IsZero())
-	{
 		SetActorLocation(FMath::VInterpTo(GetActorLocation(), NewLocation, DeltaSeconds, Speed));
-	}
 }
 
 void AStar::SetSelected(const bool Selected)

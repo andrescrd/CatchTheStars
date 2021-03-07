@@ -6,16 +6,16 @@
 #include "Components/ActorComponent.h"
 #include "Components/TimelineComponent.h"
 
-#include "CMovableComponent.generated.h"
+#include "MovableComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class CATCHTHESTARS_API UCMovableComponent : public UActorComponent
+class CATCHTHESTARS_API UMovableComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:
-	UCMovableComponent();
+	UMovableComponent();
 
 protected:
 	FVector InitialLocation;
