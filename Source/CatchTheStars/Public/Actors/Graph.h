@@ -27,6 +27,8 @@ protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<FString, FLinkStruct> Links;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
+	TMap<FString, class UNiagaraComponent*> NiagaraMap;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<class ANodeGraph*, bool> NodesSuccessMap;
 
 	UPROPERTY(VisibleInstanceOnly)
@@ -42,19 +44,20 @@ protected:
 	class UNiagaraSystem* FXTemplate;
 
 	virtual void BeginPlay() override;
-	
+
 	UFUNCTION()
-	void SuccessAttached(const ANodeGraph* Node, const bool Success);
+	void SuccessAttached(const class ANodeGraph* Node, const bool Success);
 
-	void SetupLinks(ANodeGraph* Node);	
-	void AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const;
+	void SetupLinks(class ANodeGraph* Node);
+	void AddNiagaraLink(FString Id, const ANodeGraph* From, const ANodeGraph* To);
 
-	void ShowLinks();
+	void ShowDebugLinks();
+	void ShowSuccessLinks();
 
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
-	
-	bool IsAvailableLink(ANodeGraph* From, ANodeGraph* To);
+
+	bool IsAvailableLink(class ANodeGraph* From, class ANodeGraph* To);
 
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();

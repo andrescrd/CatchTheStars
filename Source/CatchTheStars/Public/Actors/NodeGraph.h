@@ -65,5 +65,5 @@ public:
 	FSuccessAttachSignature OnSuccessAttached;
 
 	UFUNCTION(CallInEditor, Category=Setup)
-	void ShowLinks();
+	void ShowDebugLinks();
 };

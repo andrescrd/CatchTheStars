@@ -52,7 +52,10 @@ void AGraph::SuccessAttached(const ANodeGraph* Node, const bool Success)
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
 	if (CurrentSuccess == MaxSuccess)
+	{
+		ShowSuccessLinks();
 		GetWorld()->GetAuthGameMode<AGameplayGameMode>()->Finish();
+	}
 }
 
 bool AGraph::IsAvailableLink(ANodeGraph* From, ANodeGraph* To)
@@ -101,17 +104,23 @@ void AGraph::SetupLinks(ANodeGraph* Node)
 			continue;
 
 		Links.Add(LinkStruct.GetId(), LinkStruct);
-		AddNiagaraLink(LinkStruct.From->GetActorLocation(), LinkStruct.To->GetActorLocation());
+		AddNiagaraLink(LinkStruct.GetId(), LinkStruct.From, LinkStruct.To);
 	}
 }
 
-void AGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const
+void AGraph::AddNiagaraLink(const FString Id, const ANodeGraph* From, const ANodeGraph* To)
+
 {
 	if (!FXTemplate)
 		return;
 
+	const FVector FromVector = From->GetActorLocation();
+	const FVector ToVector = To->GetActorLocation();
+
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
 	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
+
+	NiagaraMap.Add(Id, Niagara);
 }
 
 void AGraph::OnConstruction(const FTransform& Transform)
@@ -122,12 +131,34 @@ void AGraph::OnConstruction(const FTransform& Transform)
 	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
 
 	if (bShowLinks)
-		ShowLinks();
+		ShowDebugLinks();
 #endif
 }
 
-void AGraph::ShowLinks()
+void AGraph::ShowDebugLinks()
 {
 	for (auto Node : NodesSuccessMap)
-		if (IsValid(Node.Key)) Node.Key->ShowLinks();
+		if (IsValid(Node.Key)) Node.Key->ShowDebugLinks();
+}
+
+void AGraph::ShowSuccessLinks()
+{
+	for (const auto Node : NodesSuccessMap)
+	{
+		if (!Node.Value)
+			continue;
+
+		auto NodeLinks = Node.Key->GetLinks();
+
+		FLinkStruct LinkStruct = FLinkStruct();
+		LinkStruct.From = Node.Key;
+
+		for (auto NodeLink : NodeLinks)
+		{
+			LinkStruct.To = NodeLink;
+
+			if (!NodesSuccessMap[NodeLink])
+				NiagaraMap[LinkStruct.GetId()]->Deactivate();
+		}
+	}
 }

@@ -11,4 +11,10 @@ AGameplayGameMode::AGameplayGameMode()
 	DefaultPawnClass = nullptr;
 }
 
-void AGameplayGameMode::Finish() { OnGameFinish(); }
+void AGameplayGameMode::Finish()
+{
+	APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	PC->DisableInput(nullptr);
+	
+	OnGameFinish();
+}
