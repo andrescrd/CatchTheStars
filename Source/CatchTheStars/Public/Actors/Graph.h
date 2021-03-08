@@ -29,12 +29,11 @@ protected:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<class ANodeGraph*, bool> NodesSuccessMap;
 
-	UPROPERTY()
+	UPROPERTY(VisibleInstanceOnly)
 	USceneComponent* Root;
 
-	// UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
-	// TArray<FLinkStruct> LinkMap;
-
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
+	bool bShowLinks;
 	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int NodesCounter;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
@@ -49,11 +48,14 @@ protected:
 
 	void SetupLinks(ANodeGraph* Node);	
 	void AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) const;
+
+	void ShowLinks();
+
 public:
+	virtual void OnConstruction(const FTransform& Transform) override;
+	
 	bool IsAvailableLink(ANodeGraph* From, ANodeGraph* To);
 
-	UFUNCTION(CallInEditor, Category=Setup)
-	void ShowLinks();
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();
 };

@@ -142,5 +142,5 @@ void ANodeGraph::RemoveChild(UChildActorComponent* Child)
 void ANodeGraph::ShowLinks()
 {
 	for (auto Link : Links)
-		DrawDebugLine(GetWorld(), GetActorLocation(), Link->GetStarLocation(), FColor::Green, false, 5, 0, 5);
+		DrawDebugLine(GetWorld(), GetActorLocation(), Link->GetStarLocation(), FColor::Green, true, 0, 0, 5);
 }

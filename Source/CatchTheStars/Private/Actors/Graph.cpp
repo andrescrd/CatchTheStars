@@ -14,6 +14,7 @@ const FName NiagaraParameterEnd = FName("BeamEnd");
 // Sets default values
 AGraph::AGraph()
 {
+	bShowLinks = false;
 	NodesCounter = 3;
 	Links = TMap<FString, FLinkStruct>();
 
@@ -111,6 +112,15 @@ void AGraph::AddNiagaraLink(const FVector& FromVector, const FVector& ToVector) 
 
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
 	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
+}
+
+void AGraph::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines"));
+	if (bShowLinks)
+		ShowLinks();
 }
 
 void AGraph::ShowLinks()
