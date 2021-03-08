@@ -10,6 +10,7 @@
 #include "World/GameModes/GameplayGameMode.h"
 
 const FName NiagaraParameterEnd = FName("BeamEnd");
+const FName NiagaraParameterColor = FName("ColorEnd");
 
 // Sets default values
 AGraph::AGraph()
@@ -159,6 +160,8 @@ void AGraph::ShowSuccessLinks()
 
 			if (!NodesSuccessMap[NodeLink])
 				NiagaraMap[LinkStruct.GetId()]->Deactivate();
+			else
+				NiagaraMap[LinkStruct.GetId()]->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
 		}
 	}
 }

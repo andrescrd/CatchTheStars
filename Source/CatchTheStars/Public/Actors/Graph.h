@@ -10,6 +10,8 @@
 
 #include "Graph.generated.h"
 
+// DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnTimelineColor, FLinearColor, Output, FString, Name);
+
 UCLASS()
 class CATCHTHESTARS_API AGraph : public AActor
 {
@@ -19,6 +21,7 @@ public:
 	AGraph();
 
 protected:
+
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	int CurrentSuccess;
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
@@ -42,7 +45,9 @@ protected:
 	TSubclassOf<class ANodeGraph> NodeClass;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UNiagaraSystem* FXTemplate;
-
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	FLinearColor LinearColorCurve;
+		
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
