@@ -118,9 +118,12 @@ void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines"));
+#if WITH_EDITOR
+	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
+
 	if (bShowLinks)
 		ShowLinks();
+#endif
 }
 
 void AGraph::ShowLinks()
