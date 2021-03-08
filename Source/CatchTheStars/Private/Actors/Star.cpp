@@ -8,6 +8,7 @@
 #include "Components/MovableComponent.h"
 #include "Components/SelecteableComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "UI/TypeWidget.h"
 
 // Sets default values
@@ -64,6 +65,10 @@ StarTypesEnum AStar::GetType() { return Type; }
 void AStar::SetNewLocation(const FVector& Vector)
 {
 	NewLocation = Vector;
+
+	if(MoveStarSound)
+		UGameplayStatics::PlaySound2D(this,MoveStarSound);
+
 	// MeshComponent->GetRelativeLocation();
 	// NewLocation.Z = MeshComponent->GetComponentLocation().Z;	
 }

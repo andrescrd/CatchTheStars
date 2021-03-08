@@ -17,14 +17,14 @@ public:
 	USelecteableComponent();
 
 protected:
-	
+
 	UPROPERTY(VisibleInstanceOnly)
 	bool bIsSelected;
 	UPROPERTY(VisibleInstanceOnly)
 	class UMeshComponent* OwnerMeshComponent;
 	UPROPERTY(VisibleInstanceOnly)
 	class UMaterialInterface* MainMaterial;
-	
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int MaterialIndex;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -33,20 +33,25 @@ protected:
 	class UMaterialInterface* HighlightMaterial;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool bUseHighlight;
-	
-	virtual void BeginPlay() override;	
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class USoundBase* HeightLightSound;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class USoundBase* SelectedSound;
+
+	virtual void BeginPlay() override;
+
 public:
-	
+
 	UFUNCTION(BlueprintCallable)
 	void SetStaticMesh(class UMeshComponent* Mesh);
-	UFUNCTION(BlueprintCallable)	
+	UFUNCTION(BlueprintCallable)
 	void OnSelected(const bool Selected);
-	UFUNCTION(BlueprintCallable)	
+	UFUNCTION(BlueprintCallable)
 	void OnHeightLight(const bool Height);
-	
+
 	UFUNCTION()
-    void OnCursorOverStartHandle(class AActor* TouchedActor);
+	void OnCursorOverStartHandle(class AActor* TouchedActor);
 	UFUNCTION()
-    void OnCursorOverEndHandle(class AActor* TouchedActor);
+	void OnCursorOverEndHandle(class AActor* TouchedActor);
 };

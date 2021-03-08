@@ -44,6 +44,8 @@ protected:
 	TSet<class ANodeGraph*> Links;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UNiagaraSystem* FXTemplate;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	class USoundBase* AttachSound;
 
 	void RemoveChild(class UChildActorComponent* Child);
 	void SetupType() const;

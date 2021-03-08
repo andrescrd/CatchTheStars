@@ -3,6 +3,8 @@
 
 #include "Components/SelecteableComponent.h"
 
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values for this component's properties
 USelecteableComponent::USelecteableComponent()
 {
@@ -34,12 +36,20 @@ void USelecteableComponent::OnSelected(const bool Selected)
 	bIsSelected =Selected;  
 	if (OwnerMeshComponent && SelectedMaterial)
 		OwnerMeshComponent->SetMaterial(MaterialIndex, Selected ? SelectedMaterial : MainMaterial);
+
+	if(SelectedSound && bIsSelected)
+		UGameplayStatics::PlaySound2D(this,SelectedSound);
 }
 
 void USelecteableComponent::OnHeightLight(const bool Height)
 {
 	if (OwnerMeshComponent && HighlightMaterial && !bIsSelected)
+	{
 		OwnerMeshComponent->SetMaterial(MaterialIndex, Height ? HighlightMaterial : MainMaterial);
+
+		if(HeightLightSound && Height)
+			UGameplayStatics::PlaySound2D(this,HeightLightSound);
+	}	
 }
 
 void USelecteableComponent::OnCursorOverStartHandle(AActor* TouchedActor) { OnHeightLight(true); }

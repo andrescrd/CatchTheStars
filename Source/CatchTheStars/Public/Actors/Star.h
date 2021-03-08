@@ -46,6 +46,8 @@ protected:
 	class UTypeDataAsset* TypeDataAsset;	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Setup)
 	StarTypesEnum Type;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	class USoundBase* MoveStarSound;
 
 	virtual void BeginPlay() override;
 

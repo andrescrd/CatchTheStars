@@ -7,6 +7,7 @@
 #include "Actors/Star.h"
 #include "Actors/Target.h"
 #include "NiagaraComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 ANodeGraph::ANodeGraph()
 {
@@ -56,6 +57,9 @@ void ANodeGraph::SetStar(AStar* NewStar)
 
 	if (IsSuccessAttach() && FXTemplate)
 		Niagara->Activate();
+
+	if(IsSuccessAttach() && AttachSound)
+		UGameplayStatics::PlaySound2D(this, AttachSound);		
 }
 
 void ANodeGraph::RemoveStar()
