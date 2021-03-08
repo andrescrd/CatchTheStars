@@ -23,5 +23,4 @@ public:
 	TArray<FAssetTypeStruct> AssetTypes;
 	
 	class UStaticMesh* GetStarMesh(StarTypesEnum Type);
-	class UStaticMesh* GetTargetMesh(StarTypesEnum Type);
 };

@@ -12,14 +12,3 @@ UStaticMesh* UTypeDataAsset::GetStarMesh(const StarTypesEnum Type)
 
 	return nullptr;
 }
-
-UStaticMesh* UTypeDataAsset::GetTargetMesh(const StarTypesEnum Type)
-{
-	for (const auto Elem : AssetTypes)
-	{
-		if(Elem.Type == Type)
-			return Elem.TargetMesh;
-	}
-
-	return nullptr;
-}

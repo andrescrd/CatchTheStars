@@ -26,8 +26,12 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
 	class UStaticMeshComponent* StaticMeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
-	class UBoxComponent* BoxComponent;	
+	class UBoxComponent* BoxComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
+	class UWidgetComponent* WidgetComponent;	
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)	
+	TSubclassOf<class UTypeWidget> TypeWidgetClass;	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UTypeDataAsset* TypeDataAsset;	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category=Setup)
@@ -38,6 +42,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	virtual void OnConstruction(const FTransform& Transform) override;
+	
 	void SetSelected(bool Selected);
 
 	// ITypeInterface implementation
