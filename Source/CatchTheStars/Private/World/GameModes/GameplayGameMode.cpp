@@ -18,3 +18,8 @@ void AGameplayGameMode::Finish()
 	
 	OnGameFinish();
 }
+
+void AGameplayGameMode::Restart()
+{
+	
+}
