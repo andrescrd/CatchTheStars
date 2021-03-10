@@ -18,7 +18,7 @@ class CATCHTHESTARS_API UTypeWidget : public UUserWidget
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	StarTypesEnum CurrentType;
+	EStarTypesEnum CurrentType;
 	// UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	ITypeInterface* OwnParent;
 
@@ -26,5 +26,5 @@ public:
 	void SetOwnParent(ITypeInterface*  NewParent);
 
 	UFUNCTION(BlueprintCallable)
-	StarTypesEnum GetParentType() const;	
+	EStarTypesEnum GetParentType() const;	
 };

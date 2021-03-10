@@ -55,7 +55,7 @@ void AGraph::SuccessAttached(const ANodeGraph* Node, const bool Success)
 	if (CurrentSuccess == MaxSuccess)
 	{
 		ShowSuccessLinks();
-		GetWorld()->GetAuthGameMode<AGameplayGameMode>()->Finish();
+		GetWorld()->GetAuthGameMode<AGameplayGameMode>()->LevelComplete();
 	}
 }
 
@@ -128,12 +128,10 @@ void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-#if WITH_EDITOR
 	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
 
 	if (bShowLinks)
 		ShowDebugLinks();
-#endif
 }
 
 void AGraph::ShowDebugLinks()

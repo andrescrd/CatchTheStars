@@ -12,7 +12,7 @@ void UTypeWidget::SetOwnParent(ITypeInterface*  NewParent)
 	OwnParent = NewParent;
 }
 
-StarTypesEnum UTypeWidget::GetParentType() const
+EStarTypesEnum UTypeWidget::GetParentType() const
 {
-	 return OwnParent && IsValid(OwnParent->_getUObject()) ? OwnParent->GetType() : StarTypesEnum::NONE;
+	 return OwnParent && IsValid(OwnParent->_getUObject()) ? OwnParent->GetType() : EStarTypesEnum::NONE;
 }

@@ -10,7 +10,7 @@
 // Sets default values
 ATarget::ATarget()
 {
-	Type = StarTypesEnum::A;
+	Type = EStarTypesEnum::A;
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
 	BoxComponent->SetBoxExtent(FVector(128.f));
@@ -50,6 +50,6 @@ void ATarget::OnConstruction(const FTransform& Transform)
 
 void ATarget::SetSelected(const bool Selected) { IsSelected = Selected; }
 
-void ATarget::SetType(const StarTypesEnum NewType) { Type = NewType; }
+void ATarget::SetType(const EStarTypesEnum NewType) { Type = NewType; }
 
-StarTypesEnum ATarget::GetType() { return Type; }
+EStarTypesEnum ATarget::GetType() { return Type; }

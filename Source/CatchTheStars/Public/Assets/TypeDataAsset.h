@@ -22,5 +22,5 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TArray<FAssetTypeStruct> AssetTypes;
 	
-	class UStaticMesh* GetStarMesh(StarTypesEnum Type);
+	class UStaticMesh* GetStarMesh(EStarTypesEnum Type);
 };

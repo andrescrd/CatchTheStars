@@ -35,7 +35,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UTypeDataAsset* TypeDataAsset;	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category=Setup)
-	StarTypesEnum Type;
+	EStarTypesEnum Type;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,Category=Setup)
 	bool IsSelected;
 
@@ -47,6 +47,6 @@ public:
 	void SetSelected(bool Selected);
 
 	// ITypeInterface implementation
-	virtual void SetType(const StarTypesEnum NewType) override;
-	virtual StarTypesEnum GetType() override;
+	virtual void SetType(const EStarTypesEnum NewType) override;
+	virtual EStarTypesEnum GetType() override;
 };

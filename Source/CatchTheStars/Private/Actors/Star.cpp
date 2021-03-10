@@ -15,7 +15,7 @@
 AStar::AStar()
 {
 	IsSelected = false;
-	Type = StarTypesEnum::A;
+	Type = EStarTypesEnum::A;
 	Speed = 10;
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComponent"));
@@ -58,9 +58,9 @@ void AStar::SetSelected(const bool Selected)
 	SelectableComponent->OnSelected(Selected);
 }
 
-void AStar::SetType(const StarTypesEnum NewType) { Type=NewType; }
+void AStar::SetType(const EStarTypesEnum NewType) { Type=NewType; }
 
-StarTypesEnum AStar::GetType() { return Type; }
+EStarTypesEnum AStar::GetType() { return Type; }
 
 void AStar::SetNewLocation(const FVector& Vector)
 {

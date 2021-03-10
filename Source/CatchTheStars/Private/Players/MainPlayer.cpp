@@ -11,9 +11,6 @@
 #include "Kismet/GameplayStatics.h"
 
 const FName SelectActionName = "Selection";
-const FName RestartActionName = "Restart";
-const FName PauseActionName = "Pause";
-const FName QuitActionName = "Quit";
 
 AMainPlayer::AMainPlayer()
 {
@@ -28,8 +25,6 @@ void AMainPlayer::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 	InputComponent->BindAction(SelectActionName, IE_Pressed, this, &AMainPlayer::OnSelected);
-	InputComponent->BindAction(PauseActionName, IE_Pressed, this, &AMainPlayer::OnPaused);
-	InputComponent->BindAction(QuitActionName, IE_Pressed, this, &AMainPlayer::OnQuit);
 }
 
 AMainCharacter* AMainPlayer::GetCurrentCharacter()
@@ -126,7 +121,3 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 }
 
 void AMainPlayer::MoveCharacterTo(const FVector Location) { GetCurrentCharacter() ? GetCurrentCharacter()->MoveToDestination(Location) : NULL; }
-
-void AMainPlayer::OnQuit() { ConsoleCommand("quit"); }
-
-void AMainPlayer::OnPaused() { SetPause(!IsPaused()); }

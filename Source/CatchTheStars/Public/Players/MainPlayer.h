@@ -40,9 +40,5 @@ protected:
 	void MoveCharacterTo(FVector Location);
 
 	UFUNCTION()
-	void OnQuit();
-	UFUNCTION()
-	void  OnPaused();
-	UFUNCTION()
 	void OnSelected();
 };

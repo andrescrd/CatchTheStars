@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Support/Enums/GameStatusEnum.h"
+#include "World/GameInstance/OwnGameInstance.h"
+
 #include "GameplayGameMode.generated.h"
 
 /**
@@ -18,10 +21,31 @@ public:
 	AGameplayGameMode();
 
 protected:
-	UFUNCTION(BlueprintImplementableEvent)
-	void OnGameFinish();
+	FTimerHandle CounterTimerHandle;
 
+	UPROPERTY()
+	class UOwnGameInstance* GameInstance;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	EGameStatusEnum GameStatus;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float MaxTime;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	float Time;
+	
+	void StartCounter();
+	
+	void SetGameStatus(EGameStatusEnum CurrentGameStatus);
+	void HandleGameStatus(EGameStatusEnum CurrentGameStatus);
+
+	void OnWaiting();
+	void OnPlaying();
+	void ToggleInput() const;
+	void OnFinished();
+	
+	UFUNCTION(BlueprintImplementableEvent)
+    void OnGameStatusChange(EGameStatusEnum CurrentGameStatus);
+	
 public:
-	void Finish();
-	void Restart();
+	virtual void StartPlay() override;
+	void LevelComplete();
 };

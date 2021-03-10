@@ -12,9 +12,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	class UStaticMesh* StartMesh;	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	StarTypesEnum Type;
+	EStarTypesEnum Type;
 
-	FAssetTypeStruct(): StartMesh(nullptr), Type(StarTypesEnum::NONE)
+	FAssetTypeStruct(): StartMesh(nullptr), Type(EStarTypesEnum::NONE)
 	{
 	}
 };

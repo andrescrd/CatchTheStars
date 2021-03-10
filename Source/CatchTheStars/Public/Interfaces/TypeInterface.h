@@ -23,6 +23,6 @@ class CATCHTHESTARS_API ITypeInterface
 	GENERATED_BODY()
 
 public:
-	virtual void SetType(const StarTypesEnum NewType);
-	virtual StarTypesEnum GetType();
+	virtual void SetType(const EStarTypesEnum NewType);
+	virtual EStarTypesEnum GetType();
 };

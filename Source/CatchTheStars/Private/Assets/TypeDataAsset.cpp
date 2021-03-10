@@ -2,7 +2,7 @@
 
 #include "Assets/TypeDataAsset.h"
 
-UStaticMesh* UTypeDataAsset::GetStarMesh(const StarTypesEnum Type)
+UStaticMesh* UTypeDataAsset::GetStarMesh(const EStarTypesEnum Type)
 {
 	for (const auto Elem : AssetTypes)
 	{

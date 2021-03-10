@@ -37,9 +37,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	bool bHasStar;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	StarTypesEnum TargetType;
+	EStarTypesEnum TargetType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	StarTypesEnum StarType;
+	EStarTypesEnum StarType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	TSet<class ANodeGraph*> Links;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)

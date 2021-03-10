@@ -7,7 +7,7 @@
 
 
 UENUM(BlueprintType)
-enum class StarTypesEnum : uint8
+enum class EStarTypesEnum : uint8
 {
 	NONE,
 	A,
