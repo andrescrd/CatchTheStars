@@ -14,7 +14,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float MaxTime;
 
-	FLevelStruct(): IsAvailable(false), MaxTime(20), MapName(NAME_None)
+	FLevelStruct(): MapName(NAME_None), IsAvailable(false), MaxTime(20)
 	{
 	}
 };

@@ -29,7 +29,7 @@ protected:
 	class AMainCharacter* CurrentCharacter;
 	UPROPERTY(VisibleInstanceOnly)	
 	class AGraph* CurrentGraph;
-
+	
 	virtual void SetupInputComponent() override;
 	class AMainCharacter* GetCurrentCharacter();
 	class AGraph* GetCurrentGraph();
@@ -39,6 +39,10 @@ protected:
 
 	void MoveCharacterTo(FVector Location);
 
+	UFUNCTION()
+	void OnQuit();
+	UFUNCTION()
+	void  OnPaused();
 	UFUNCTION()
 	void OnSelected();
 };

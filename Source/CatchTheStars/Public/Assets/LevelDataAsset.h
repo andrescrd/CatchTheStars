@@ -19,6 +19,10 @@ class CATCHTHESTARS_API ULevelDataAsset : public UDataAsset
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)	
 	TArray<FLevelStruct> LevelSetup;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)	
+	FName MainMenu;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)	
+	FName End;
 	
 	UFUNCTION(BlueprintCallable)
 	TArray<FLevelStruct> GetLevels() const;
