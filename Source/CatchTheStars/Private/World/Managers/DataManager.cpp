@@ -8,7 +8,6 @@
 
 const FString SlotName = "CStar";
 
-
 class UOwnSaveGame* UDataManager::GetSaveGameInstance()
 {
 	return IsValid(SaveGameInstance)

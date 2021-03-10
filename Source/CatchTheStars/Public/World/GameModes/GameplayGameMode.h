@@ -23,4 +23,5 @@ protected:
 
 public:
 	void Finish();
+	void Restart();
 };

@@ -17,6 +17,7 @@ class CATCHTHESTARS_API UDataManager : public UObject
 	GENERATED_BODY()
 
 protected:
+	UPROPERTY(VisibleInstanceOnly)
 	class UOwnSaveGame* SaveGameInstance;
 	class UOwnSaveGame* GetSaveGameInstance();
 	
