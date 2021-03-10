@@ -23,6 +23,6 @@ protected:
 	
 public:
 	void SaveLevels(const TArray<FLevelStruct> LevelStructs);
-	TArray<FLevelStruct>  GetLevels();
+	TArray<FLevelStruct> GetLevels();
 	void ClearData();	
 };

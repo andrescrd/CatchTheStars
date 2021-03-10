@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 
+
+#include "Assets/LevelDataAsset.h"
 #include "Support/Structures/LevelStruct.h"
 #include "UObject/NoExportTypes.h"
 #include "LevelManager.generated.h"
@@ -11,11 +13,10 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class CATCHTHESTARS_API ULevelManager : public UObject
 {
 	GENERATED_BODY()
-
 
 protected:
 	UPROPERTY(VisibleInstanceOnly)
@@ -24,14 +25,13 @@ protected:
 	FName LastLevelLoaded;	
 
 	UPROPERTY(EditDefaultsOnly)
-	FLevelStruct Menu;
+	FName Menu;
 	UPROPERTY(EditDefaultsOnly)
-	FLevelStruct End;
+	FName End;
 	UPROPERTY(EditDefaultsOnly)
 	TArray<FLevelStruct> Levels;
 	
 public:
-	void SetGameplayLevels(TArray<FLevelStruct> LevelStructs);
 	TArray<FLevelStruct> GetGameplayLevels() const;
 	
 	UFUNCTION(BlueprintCallable)
@@ -42,4 +42,6 @@ public:
     void LoadGameplayLevel(class UWorld* World, FName MapName);
 	UFUNCTION(BlueprintCallable)
     void Restart(class UWorld* Context);
+
+	void Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd);
 };

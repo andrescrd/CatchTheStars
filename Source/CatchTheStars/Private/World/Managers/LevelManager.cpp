@@ -3,25 +3,28 @@
 
 #include "World/Managers/LevelManager.h"
 
-#include "Assets/LevelDataAsset.h"
 #include "Engine/LevelStreaming.h"
 #include "Kismet/GameplayStatics.h"
 
-
-void ULevelManager::SetGameplayLevels(TArray<FLevelStruct> LevelStructs) { Levels = LevelStructs; }
+void ULevelManager::Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd)
+{
+	Levels = OwnLevels;
+	Menu =OwnMainMenu;
+	End = OwnEnd;
+}
 
 TArray<FLevelStruct> ULevelManager::GetGameplayLevels() const { return Levels; }
 
 void ULevelManager::LoadMenuLevel(UWorld* Context)
 {
-	LastLevelLoaded = Menu.MapName;
-	UGameplayStatics::OpenLevel(Context, Menu.MapName);
+	LastLevelLoaded = Menu;
+	UGameplayStatics::OpenLevel(Context, Menu);
 }
 
 void ULevelManager::LoadEndLevel(UWorld* Context)
 {
-	LastLevelLoaded = End.MapName;
-	UGameplayStatics::OpenLevel(Context, End.MapName);
+	LastLevelLoaded = End;
+	UGameplayStatics::OpenLevel(Context, End);
 }
 
 void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
