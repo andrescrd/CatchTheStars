@@ -42,6 +42,39 @@ void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
 	LastLevelLoaded = MapName;
 }
 
+void ULevelManager::LoadNextGameplayLevel(UWorld* World)
+{
+	FName NextGameplayLevel = NAME_None;
+
+	for (int32 Index = 0; Index < Levels.Num(); Index++)
+	{
+		if (Levels[Index].MapName.IsEqual(LastLevelLoaded))
+		{
+			NextGameplayLevel = (Index + 1 == Levels.Num()) ?  End : Levels[Index + 1].MapName;
+			break;
+		}
+	}
+
+	if (NextGameplayLevel == Menu)
+		LoadMenuLevel(World);
+
+	else if (NextGameplayLevel == End)
+		LoadEndLevel(World);
+	else
+	{
+		const int32 Index = Levels.FindLastByPredicate([NextGameplayLevel](const FLevelStruct LevelSetup)
+        {
+            return LevelSetup.MapName == NextGameplayLevel;
+        });
+
+		if (Index != INDEX_NONE)
+		{
+			Levels[Index].IsAvailable = true;
+			LoadGameplayLevel(World, NextGameplayLevel);
+		}
+	}
+}
+
 void ULevelManager::Restart(UWorld* Context)
 {
 	const FString LevelName = UGameplayStatics::GetCurrentLevelName(Context);

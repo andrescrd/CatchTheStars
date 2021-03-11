@@ -11,6 +11,7 @@ enum class EGameStatusEnum : uint8
 {
 	Waiting,
 	Playing,
-	Finished,
+	Completed,
+	GameOver,
 	Unknown
 };

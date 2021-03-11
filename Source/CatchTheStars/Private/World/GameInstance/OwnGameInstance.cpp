@@ -24,4 +24,18 @@ void UOwnGameInstance::Init()
 	}
 }
 
-ULevelManager* UOwnGameInstance::GetLevelManager() const { return  LevelManagerInstance; }
+ULevelManager* UOwnGameInstance::GetLevelManager() const { return LevelManagerInstance; }
+
+TArray<FLevelStruct> UOwnGameInstance::GetAllLevels() const { return GetLevelManager()->GetGameplayLevels(); }
+
+void UOwnGameInstance::LoadMap(UObject* Context, const FName MapName) const
+{
+	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
+	GetLevelManager()->LoadGameplayLevel(World, MapName);
+}
+
+void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
+{
+	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
+	GetLevelManager()->LoadNextGameplayLevel(World);
+}

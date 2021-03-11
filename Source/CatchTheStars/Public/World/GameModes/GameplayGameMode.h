@@ -29,9 +29,9 @@ protected:
 	EGameStatusEnum GameStatus;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float MaxTime;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	float Time;
-	
+	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	// float Time;
+
 	void StartCounter();
 	
 	void SetGameStatus(EGameStatusEnum CurrentGameStatus);
@@ -48,4 +48,7 @@ protected:
 public:
 	virtual void StartPlay() override;
 	void LevelComplete();
+
+	UFUNCTION(BlueprintCallable)
+	void OwnRestart() const;
 };

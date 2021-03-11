@@ -110,7 +110,6 @@ void AGraph::SetupLinks(ANodeGraph* Node)
 }
 
 void AGraph::AddNiagaraLink(const FString Id, const ANodeGraph* From, const ANodeGraph* To)
-
 {
 	if (!FXTemplate)
 		return;
@@ -128,10 +127,10 @@ void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
-
-	if (bShowLinks)
-		ShowDebugLinks();
+	// GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
+	//
+	// if(bShowLinks)
+	// 	ShowDebugLinks();
 }
 
 void AGraph::ShowDebugLinks()

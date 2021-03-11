@@ -32,16 +32,18 @@ protected:
 	TArray<FLevelStruct> Levels;
 	
 public:
-	TArray<FLevelStruct> GetGameplayLevels() const;
-	
+	UFUNCTION(BlueprintCallable)    
+	TArray<FLevelStruct> GetGameplayLevels() const;	
 	UFUNCTION(BlueprintCallable)
     void LoadMenuLevel(class UWorld* Context);
 	UFUNCTION(BlueprintCallable)
     void LoadEndLevel(class UWorld* Context);
 	UFUNCTION(BlueprintCallable)
     void LoadGameplayLevel(class UWorld* World, FName MapName);
+	UFUNCTION(BlueprintCallable)    
+	void LoadNextGameplayLevel(UWorld* World);
 	UFUNCTION(BlueprintCallable)
-    void Restart(class UWorld* Context);
+	static void Restart(class UWorld* Context);
 
 	void Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd);
 };

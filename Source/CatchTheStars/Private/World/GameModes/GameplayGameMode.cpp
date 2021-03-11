@@ -3,13 +3,15 @@
 
 #include "World/GameModes/GameplayGameMode.h"
 
+#include "Camera/CameraActor.h"
+#include "Kismet/GameplayStatics.h"
 #include "Players/MainPlayer.h"
 #include "World/GameInstance/OwnGameInstance.h"
 #include "World/Managers/LevelManager.h"
 
 AGameplayGameMode::AGameplayGameMode()
 {
-	MaxTime = 99;
+	MaxTime = 0;
 	GameStatus = EGameStatusEnum::Unknown;	
 	PlayerControllerClass = AMainPlayer::StaticClass();
 	DefaultPawnClass = nullptr;
@@ -19,21 +21,21 @@ void AGameplayGameMode::StartPlay()
 {
 	Super::StartPlay();
 
-	GameInstance = GetGameInstance<UOwnGameInstance>();
-	MaxTime = GameInstance->GetLevelManager()->GetGameplayLevels()[0].MaxTime;
-	Time = MaxTime;
+	if(GameInstance == nullptr)
+		GameInstance = GetGameInstance<UOwnGameInstance>();
+	
+	// MaxTime = GameInstance->GetLevelManager()->GetGameplayLevels()[0].MaxTime;
 	SetGameStatus(EGameStatusEnum::Waiting);
 }
 
-void AGameplayGameMode::LevelComplete() { SetGameStatus(EGameStatusEnum::Finished); }
+void AGameplayGameMode::LevelComplete() { SetGameStatus(EGameStatusEnum::Completed); }
 
-void AGameplayGameMode::StartCounter()
+void AGameplayGameMode::OwnRestart() const
 {
-	Time--;
-
-	if (Time <= 0)
-		SetGameStatus(EGameStatusEnum::Finished);
+	GameInstance->GetLevelManager()->Restart(GetWorld());
 }
+
+void AGameplayGameMode::StartCounter() { MaxTime++; }
 
 void AGameplayGameMode::SetGameStatus(const EGameStatusEnum CurrentGameStatus)
 {
@@ -81,7 +83,8 @@ void AGameplayGameMode::HandleGameStatus(const EGameStatusEnum CurrentGameStatus
 	case EGameStatusEnum::Playing:
 		OnPlaying();
 		break;
-	case EGameStatusEnum::Finished:
+	case EGameStatusEnum::Completed:		
+	case EGameStatusEnum::GameOver:
 		OnFinished();
 		break;
 	default:

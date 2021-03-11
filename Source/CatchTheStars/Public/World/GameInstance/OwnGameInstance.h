@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Support/Structures/LevelStruct.h"
+
 #include "OwnGameInstance.generated.h"
 
 /**
@@ -25,8 +27,14 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	class ULevelDataAsset* LevelDataAsset;
-
-public:
-	ULevelManager* GetLevelManager() const;
 	
+public:
+	class ULevelManager* GetLevelManager() const;
+
+	UFUNCTION(BlueprintCallable)
+	TArray<FLevelStruct> GetAllLevels() const;
+	UFUNCTION(BlueprintCallable)
+	void LoadMap(UObject* Context, FName MapName) const;
+	UFUNCTION(BlueprintCallable)
+    void LoadNextGameplayLevel(UObject* Context) const;	
 };
