@@ -32,8 +32,12 @@ void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
 	if (LastLevelLoaded.GetStringLength() > 0 && LastLevelLoaded != NAME_None)
 	{
 		ULevelStreaming* LevelStreaming = UGameplayStatics::GetStreamingLevel(World, LastLevelLoaded);
-		LevelStreaming->SetShouldBeVisible(false);
-		LevelStreaming->SetIsRequestingUnloadAndRemoval(true);
+
+		if(LevelStreaming != nullptr)
+		{
+			LevelStreaming->SetShouldBeVisible(false);
+			LevelStreaming->SetIsRequestingUnloadAndRemoval(true);
+		}
 	}
 
 	const FLatentActionInfo Info;
@@ -78,5 +82,6 @@ void ULevelManager::LoadNextGameplayLevel(UWorld* World)
 void ULevelManager::Restart(UWorld* Context)
 {
 	const FString LevelName = UGameplayStatics::GetCurrentLevelName(Context);
+	LastLevelLoaded = NAME_None;
 	UGameplayStatics::OpenLevel(Context, *LevelName);
 }

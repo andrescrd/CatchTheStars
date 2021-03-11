@@ -28,6 +28,18 @@ ULevelManager* UOwnGameInstance::GetLevelManager() const { return LevelManagerIn
 
 TArray<FLevelStruct> UOwnGameInstance::GetAllLevels() const { return GetLevelManager()->GetGameplayLevels(); }
 
+void UOwnGameInstance::Restart(UObject* Context) const
+{
+	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
+	GetLevelManager()->Restart(World);
+}
+
+void UOwnGameInstance::LoadMainMenu(UObject* Context) const
+{
+	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
+	GetLevelManager()->LoadMenuLevel(World);
+}
+
 void UOwnGameInstance::LoadMap(UObject* Context, const FName MapName) const
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);

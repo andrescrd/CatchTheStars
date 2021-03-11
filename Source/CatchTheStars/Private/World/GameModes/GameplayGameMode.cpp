@@ -20,20 +20,12 @@ AGameplayGameMode::AGameplayGameMode()
 void AGameplayGameMode::StartPlay()
 {
 	Super::StartPlay();
-
-	if(GameInstance == nullptr)
-		GameInstance = GetGameInstance<UOwnGameInstance>();
 	
 	// MaxTime = GameInstance->GetLevelManager()->GetGameplayLevels()[0].MaxTime;
 	SetGameStatus(EGameStatusEnum::Waiting);
 }
 
 void AGameplayGameMode::LevelComplete() { SetGameStatus(EGameStatusEnum::Completed); }
-
-void AGameplayGameMode::OwnRestart() const
-{
-	GameInstance->GetLevelManager()->Restart(GetWorld());
-}
 
 void AGameplayGameMode::StartCounter() { MaxTime++; }
 

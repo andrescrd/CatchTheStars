@@ -18,7 +18,7 @@ class CATCHTHESTARS_API UOwnGameInstance : public UGameInstance
 
 protected:
 	virtual void Init() override;
-	
+
 	// Managers
 	UPROPERTY(Transient)
 	class ULevelManager* LevelManagerInstance;
@@ -27,14 +27,19 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	class ULevelDataAsset* LevelDataAsset;
-	
+
 public:
 	class ULevelManager* GetLevelManager() const;
 
 	UFUNCTION(BlueprintCallable)
 	TArray<FLevelStruct> GetAllLevels() const;
+
+	UFUNCTION(BlueprintCallable)
+	void Restart(UObject* Context) const;
+	UFUNCTION(BlueprintCallable)
+	void LoadMainMenu(UObject* Context) const;
 	UFUNCTION(BlueprintCallable)
 	void LoadMap(UObject* Context, FName MapName) const;
 	UFUNCTION(BlueprintCallable)
-    void LoadNextGameplayLevel(UObject* Context) const;	
+	void LoadNextGameplayLevel(UObject* Context) const;
 };

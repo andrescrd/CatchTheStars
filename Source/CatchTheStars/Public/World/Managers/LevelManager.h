@@ -43,7 +43,7 @@ public:
 	UFUNCTION(BlueprintCallable)    
 	void LoadNextGameplayLevel(UWorld* World);
 	UFUNCTION(BlueprintCallable)
-	static void Restart(class UWorld* Context);
+	void Restart(class UWorld* Context);
 
 	void Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd);
 };

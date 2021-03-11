@@ -23,8 +23,8 @@ public:
 protected:
 	FTimerHandle CounterTimerHandle;
 
-	UPROPERTY()
-	class UOwnGameInstance* GameInstance;
+	// UPROPERTY()
+	// class UOwnGameInstance* GameInstance;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	EGameStatusEnum GameStatus;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -48,7 +48,4 @@ protected:
 public:
 	virtual void StartPlay() override;
 	void LevelComplete();
-
-	UFUNCTION(BlueprintCallable)
-	void OwnRestart() const;
 };
