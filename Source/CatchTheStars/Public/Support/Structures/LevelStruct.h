@@ -11,10 +11,10 @@ public:
 	FName MapName;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool IsAvailable;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
 	float MaxTime;
 
-	FLevelStruct(): MapName(NAME_None), IsAvailable(false), MaxTime(20)
+	FLevelStruct(): MapName(NAME_None), IsAvailable(false), MaxTime(0)
 	{
 	}
 };

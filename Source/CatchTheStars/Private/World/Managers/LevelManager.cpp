@@ -40,6 +40,7 @@ void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
 		}
 	}
 
+	UE_LOG(LogTemp, Warning, TEXT("Open level: %s"),*MapName.ToString());
 	const FLatentActionInfo Info;
 	UGameplayStatics::LoadStreamLevel(World, MapName, true, true, Info);
 

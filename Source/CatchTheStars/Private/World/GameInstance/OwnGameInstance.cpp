@@ -5,6 +5,7 @@
 
 #include "World/Managers/DataManager.h"
 #include "World/Managers/LevelManager.h"
+#include "World/Managers/SoundManager.h"
 
 void UOwnGameInstance::Init()
 {
@@ -14,17 +15,27 @@ void UOwnGameInstance::Init()
 	if (LevelManagerInstance == nullptr)
 		LevelManagerInstance = NewObject<ULevelManager>(this, TEXT("LevelManagerInstance"));
 
+	if (SoundManagerInstance == nullptr)
+		SoundManagerInstance = NewObject<USoundManager>(this, TEXT("SoundManagerInstance"));
+
 	if (LevelDataAsset)
 	{
 		const auto Levels = LevelDataAsset->GetLevels();
 		const auto Main = LevelDataAsset->MainMenu;
 		const auto End = LevelDataAsset->End;
 
-		LevelManagerInstance->Init(Levels, Main, End);
+		const auto StoredLevels = DataManagerInstance->GetLevels();
+
+		if(StoredLevels.Num() == 0)
+			DataManagerInstance->SaveLevels(Levels);	
+		
+		LevelManagerInstance->Init(StoredLevels.Num() == 0 ? Levels : StoredLevels, Main, End);
 	}
 }
 
 ULevelManager* UOwnGameInstance::GetLevelManager() const { return LevelManagerInstance; }
+
+USoundManager* UOwnGameInstance::GetSoundManager() const { return SoundManagerInstance; }
 
 TArray<FLevelStruct> UOwnGameInstance::GetAllLevels() const { return GetLevelManager()->GetGameplayLevels(); }
 
@@ -50,4 +61,10 @@ void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
 	GetLevelManager()->LoadNextGameplayLevel(World);
+}
+
+void UOwnGameInstance::Shutdown()
+{
+	Super::Shutdown();
+	DataManagerInstance->SaveLevels(GetAllLevels());
 }

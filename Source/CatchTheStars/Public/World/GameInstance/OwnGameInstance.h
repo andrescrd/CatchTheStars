@@ -24,12 +24,17 @@ protected:
 	class ULevelManager* LevelManagerInstance;
 	UPROPERTY(Transient)
 	class UDataManager* DataManagerInstance;
+	UPROPERTY(Transient)
+	class USoundManager* SoundManagerInstance;
 
 	UPROPERTY(EditDefaultsOnly)
 	class ULevelDataAsset* LevelDataAsset;
 
 public:
+	UFUNCTION(BlueprintCallable)
 	class ULevelManager* GetLevelManager() const;
+	UFUNCTION(BlueprintCallable)	
+	class USoundManager* GetSoundManager() const;
 
 	UFUNCTION(BlueprintCallable)
 	TArray<FLevelStruct> GetAllLevels() const;
@@ -42,4 +47,6 @@ public:
 	void LoadMap(UObject* Context, FName MapName) const;
 	UFUNCTION(BlueprintCallable)
 	void LoadNextGameplayLevel(UObject* Context) const;
+
+	virtual void Shutdown() override;
 };

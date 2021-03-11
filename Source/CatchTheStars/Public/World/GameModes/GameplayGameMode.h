@@ -46,6 +46,6 @@ protected:
     void OnGameStatusChange(EGameStatusEnum CurrentGameStatus);
 	
 public:
-	virtual void StartPlay() override;
+	virtual void BeginPlay() override;
 	void LevelComplete();
 };

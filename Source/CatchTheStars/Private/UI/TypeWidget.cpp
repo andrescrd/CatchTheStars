@@ -2,17 +2,14 @@
 
 #include "UI/TypeWidget.h"
 
-
-#include "K2Node_GetEnumeratorNameAsString.h"
-#include "Kismet/KismetTextLibrary.h"
 #include "Support/Enums/StarTypesEnum.h"
 
-void UTypeWidget::SetOwnParent(ITypeInterface*  NewParent)
+void UTypeWidget::SetOwnParent(ITypeInterface* NewParent)
 {
 	OwnParent = NewParent;
 }
 
 EStarTypesEnum UTypeWidget::GetParentType() const
 {
-	 return OwnParent && IsValid(OwnParent->_getUObject()) ? OwnParent->GetType() : EStarTypesEnum::NONE;
+	return OwnParent && IsValid(OwnParent->_getUObject()) ? OwnParent->GetType() : EStarTypesEnum::NONE;
 }

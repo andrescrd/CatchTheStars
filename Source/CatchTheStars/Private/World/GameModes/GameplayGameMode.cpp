@@ -17,9 +17,9 @@ AGameplayGameMode::AGameplayGameMode()
 	DefaultPawnClass = nullptr;
 }
 
-void AGameplayGameMode::StartPlay()
+void AGameplayGameMode::BeginPlay()
 {
-	Super::StartPlay();
+	Super::BeginPlay();
 	
 	// MaxTime = GameInstance->GetLevelManager()->GetGameplayLevels()[0].MaxTime;
 	SetGameStatus(EGameStatusEnum::Waiting);
@@ -57,6 +57,8 @@ void AGameplayGameMode::OnFinished()
 	UE_LOG(LogTemp, Warning, TEXT("GameMode: FINISHED"));
 	GetWorld()->GetTimerManager().ClearTimer(CounterTimerHandle);
 	ToggleInput();
+
+	GetGameInstance<UOwnGameInstance>()->LoadNextGameplayLevel(this);
 }
 
 void AGameplayGameMode::ToggleInput() const
