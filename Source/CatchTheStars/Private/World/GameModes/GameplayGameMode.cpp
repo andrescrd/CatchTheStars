@@ -12,7 +12,7 @@
 AGameplayGameMode::AGameplayGameMode()
 {
 	MaxTime = 0;
-	GameStatus = EGameStatusEnum::Unknown;	
+	GameStatus = EGameStatusEnum::Unknown;
 	PlayerControllerClass = AMainPlayer::StaticClass();
 	DefaultPawnClass = nullptr;
 }
@@ -20,12 +20,18 @@ AGameplayGameMode::AGameplayGameMode()
 void AGameplayGameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	// MaxTime = GameInstance->GetLevelManager()->GetGameplayLevels()[0].MaxTime;
+
+	GetGameInstance<UOwnGameInstance>()->LoadMap(this);
 	SetGameStatus(EGameStatusEnum::Waiting);
 }
 
 void AGameplayGameMode::LevelComplete() { SetGameStatus(EGameStatusEnum::Completed); }
+
+void AGameplayGameMode::NextLevel()
+{
+	GetGameInstance<UOwnGameInstance>()->LoadNextGameplayLevel(this);
+	SetGameStatus(EGameStatusEnum::Waiting);
+}
 
 void AGameplayGameMode::StartCounter() { MaxTime++; }
 
@@ -43,12 +49,14 @@ void AGameplayGameMode::SetGameStatus(const EGameStatusEnum CurrentGameStatus)
 void AGameplayGameMode::OnWaiting()
 {
 	UE_LOG(LogTemp, Warning, TEXT("GameMode: WAITING"));
+	MaxTime = 0;
 	SetGameStatus(EGameStatusEnum::Playing);
 }
 
 void AGameplayGameMode::OnPlaying()
 {
 	UE_LOG(LogTemp, Warning, TEXT("GameMode: PLAYING"));
+	ToggleInput(true);
 	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, this, &AGameplayGameMode::StartCounter, 1, true);
 }
 
@@ -56,15 +64,17 @@ void AGameplayGameMode::OnFinished()
 {
 	UE_LOG(LogTemp, Warning, TEXT("GameMode: FINISHED"));
 	GetWorld()->GetTimerManager().ClearTimer(CounterTimerHandle);
-	ToggleInput();
-
-	GetGameInstance<UOwnGameInstance>()->LoadNextGameplayLevel(this);
+	ToggleInput(false);
 }
 
-void AGameplayGameMode::ToggleInput() const
+void AGameplayGameMode::ToggleInput(const bool Enable) const
 {
 	APlayerController* PC = GetWorld()->GetFirstPlayerController();
-	(PC->InputEnabled()) ? PC->DisableInput(nullptr) : PC->EnableInput(nullptr);
+
+	if (Enable)
+		PC->EnableInput(nullptr);
+	else
+		PC->DisableInput(nullptr);
 }
 
 void AGameplayGameMode::HandleGameStatus(const EGameStatusEnum CurrentGameStatus)
@@ -77,7 +87,7 @@ void AGameplayGameMode::HandleGameStatus(const EGameStatusEnum CurrentGameStatus
 	case EGameStatusEnum::Playing:
 		OnPlaying();
 		break;
-	case EGameStatusEnum::Completed:		
+	case EGameStatusEnum::Completed:
 	case EGameStatusEnum::GameOver:
 		OnFinished();
 		break;

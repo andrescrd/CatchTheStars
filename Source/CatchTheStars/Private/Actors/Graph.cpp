@@ -118,7 +118,7 @@ void AGraph::AddNiagaraLink(const FString Id, const ANodeGraph* From, const ANod
 	const FVector ToVector = To->GetActorLocation();
 
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
-	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
+	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);	
 
 	NiagaraMap.Add(Id, Niagara);
 }
@@ -127,10 +127,23 @@ void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-	// GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
-	//
-	// if(bShowLinks)
-	// 	ShowDebugLinks();
+#if IF_WITH_EDITOR
+	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
+	
+	if(bShowLinks)
+		ShowDebugLinks();
+#endif	
+}
+
+void AGraph::BeginDestroy()
+{
+	Super::BeginDestroy();
+
+	for (auto It = NiagaraMap.CreateConstIterator(); It; ++It)
+	{
+		It.Value()->DestroyInstance();
+		NiagaraMap.Remove(It.Key());
+	}	
 }
 
 void AGraph::ShowDebugLinks()

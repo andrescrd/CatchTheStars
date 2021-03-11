@@ -51,10 +51,10 @@ void UOwnGameInstance::LoadMainMenu(UObject* Context) const
 	GetLevelManager()->LoadMenuLevel(World);
 }
 
-void UOwnGameInstance::LoadMap(UObject* Context, const FName MapName) const
+void UOwnGameInstance::LoadMap(UObject* Context) const
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
-	GetLevelManager()->LoadGameplayLevel(World, MapName);
+	GetLevelManager()->LoadGameplayLevel(World, CurrentMap);
 }
 
 void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
@@ -62,6 +62,8 @@ void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
 	GetLevelManager()->LoadNextGameplayLevel(World);
 }
+
+void UOwnGameInstance::SetMapNameToLoad(const FName MapName) {CurrentMap = MapName; }
 
 void UOwnGameInstance::Shutdown()
 {

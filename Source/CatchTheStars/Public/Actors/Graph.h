@@ -61,7 +61,8 @@ protected:
 
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
-
+	virtual void BeginDestroy() override;
+	
 	bool IsAvailableLink(class ANodeGraph* From, class ANodeGraph* To);
 
 	UFUNCTION(CallInEditor, Category=Setup)

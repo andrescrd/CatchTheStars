@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "Support/Enums/GameStatusEnum.h"
-#include "World/GameInstance/OwnGameInstance.h"
 
 #include "GameplayGameMode.generated.h"
 
@@ -22,15 +21,11 @@ public:
 
 protected:
 	FTimerHandle CounterTimerHandle;
-
-	// UPROPERTY()
-	// class UOwnGameInstance* GameInstance;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	EGameStatusEnum GameStatus;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	float MaxTime;
-	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	// float Time;
 
 	void StartCounter();
 	
@@ -39,7 +34,7 @@ protected:
 
 	void OnWaiting();
 	void OnPlaying();
-	void ToggleInput() const;
+	void ToggleInput(bool Enable) const;
 	void OnFinished();
 	
 	UFUNCTION(BlueprintImplementableEvent)
@@ -47,5 +42,9 @@ protected:
 	
 public:
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable)
 	void LevelComplete();
+	UFUNCTION(BlueprintCallable)
+	void NextLevel();
 };
