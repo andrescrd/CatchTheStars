@@ -5,24 +5,99 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding widget to target">
-      <change afterPath="$PROJECT_DIR$/Content/Audio/Background/Music_Temp_Cue.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Audio/Enter_Teleport_Cue.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Audio/Match_Combo_Cue.uasset" afterDir="false" />
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Assets/Materials/M_UIMenu.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Background/Menu.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Background/Menu_Cue.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/FXClass.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/MusicClass.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/SoundMix.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Enter_Teleport.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Enter_Teleport_Cue.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Match_Combo.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Match_Combo_Cue.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Match_Triple.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Tile_Deselect.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Tile_Invalid.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Tile_Select.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/Timer_Count.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Audio/Sounds/UI_Click.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Maps/Map3_BuiltData.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Maps/Menu_BuiltData.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/Mobile.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/PlanetEarth.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/PlanetMars.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/PlanetVenus.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/SpaceDust.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/StarSphere.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/StarSphereDynamic.umap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Maps/StarSphereDynamic_BuiltData.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_BlackHole_Mobile_A.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_BlackHole_Mobile_D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Earth_Mobile_A.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Earth_Mobile_D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Nebulas_Mobile.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Saturn_Mobile_A.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Saturn_Mobile_D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_StarsBig_Mobile.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_StarsPoints_Mobile.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Sun_Mobile_A.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/Mobile/T_Sun_Mobile_D.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_BlackHole.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_Earth.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_Nebulas.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetEarthClouds.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetEarthLights.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetEarthSurface.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetMarsLights.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetVenusLights.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_Saturn.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_StarsBig.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_StarsPoints.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_Sun.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SoundManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelDataAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelDataAsset.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme_Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme_Cue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme_Intro.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Background/Main_Theme_Intro.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Background/Music_Temp.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetMarsSurface.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Enter_Teleport.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Enter_Teleport.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Enter_Teleport_Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Enter_Teleport_Cue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Found.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetVenusClouds.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Lost.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarSphere/Textures/T_PlanetVenusSurface.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Match_Combo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Match_Combo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Match_Combo_Cue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Match_Combo_Cue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Match_Triple.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Match_Triple.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Tile_Deselect.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Tile_Deselect.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Tile_Invalid.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Tile_Invalid.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Tile_Select.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Tile_Select.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Audio/Timer_Count.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Audio/Timer_Count.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Node.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Node.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX/FX_Power.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX/FX_Power.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Background.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Background_BuiltData.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map1_BuiltData.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Map2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map2.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Map2_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map2_BuiltData.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/SelecteableComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/SelecteableComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Star.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Star.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/SelecteableComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/SelecteableComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map3.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/Components/WB_ButtonLevel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/Components/WB_ButtonLevel.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/WB_LevelComplete.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_LevelComplete.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/WB_Menu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_Menu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/WB_Stage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_Stage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/World/BP_GameInstance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/World/BP_GameInstance.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +132,6 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Map.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Set.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Public/Support/Structures/AssetTypeStruct.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/Widget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/LevelActor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Private/Components/WidgetComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -65,6 +139,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Timeline.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Developer/AITestSuite/Public/AITestSuite.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/UnrealString.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/NamedSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/TimelineComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/MeshComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -75,6 +150,8 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectBaseUtility.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Animation/Rig.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/UObject/UnrealNames.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectGlobals.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Public/ContentStreaming.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/AnimGraphRuntime/Public/AnimNodes/AnimNode_RotationOffsetBlendSpace.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -84,6 +161,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/UnrealEd/Public/Dialogs/Dialogs.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/LineBatchComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/BlueprintGraph/Private/K2Node_InputAxisKeyEvent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ChildActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/ContentStreaming.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -103,23 +181,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/CPlayerController.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/CLink.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CNode.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CNode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/CPlayerController.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/CTypeWidget.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/CGameplayGameMode.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/CStarDataAsset.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/CStarDataAsset.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/CStarTypesEnum.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/CTypeDataAsset.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/CTypeDataAsset.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/Player.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/Player.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Interfaces/TypeInterface.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Interfaces/TypeInterface.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Characters/MainCharacter.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
@@ -129,24 +190,16 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Node.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/MainPlayer.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/AssetType.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/AssetType.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/MainPlayer.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/LinkStruct.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LinkStruct.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/MovableComponent.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Target.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Target.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/AssetTypeStruct.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/TypeDataAsset.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/TypeDataAsset.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/StarTypesEnum.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" />
       <option value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/SelecteableComponent.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" />
@@ -154,6 +207,31 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/SelecteableComponent.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Star.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/LevelStruct.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SaveGameManager.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Helpers/OwnSaveGame.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/DataManager.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/LevelDataAsset.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/DataManager.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/StarTypesEnum.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/MainPlayer.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/MainPlayer.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/GameStatusEnum.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/LevelManager.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/SoundManager.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SoundManager.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -163,12 +241,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991798" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="C++ Project.CatchTheStars">
@@ -611,77 +690,15 @@
       <workItem from="1615052587792" duration="14782000" />
       <workItem from="1615083720192" duration="6095000" />
       <workItem from="1615211729781" duration="15722000" />
-      <workItem from="1615233934542" duration="4829000" />
-    </task>
-    <task id="LOCAL-00004" summary="update star">
-      <created>1612816953825</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1612816953825</updated>
-    </task>
-    <task id="LOCAL-00005" summary="setup pc to gm">
-      <created>1612818124283</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1612818124283</updated>
-    </task>
-    <task id="LOCAL-00006" summary="some methods to star">
-      <created>1612818133217</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1612818133217</updated>
-    </task>
-    <task id="LOCAL-00007" summary="click to pc">
-      <created>1612818141177</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1612818141177</updated>
-    </task>
-    <task id="LOCAL-00008" summary="addng character">
-      <created>1612820421192</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1612820421192</updated>
-    </task>
-    <task id="LOCAL-00009" summary="adding pc movment for character">
-      <created>1612820439208</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1612820439208</updated>
-    </task>
-    <task id="LOCAL-00010" summary="adding uassets">
-      <created>1612820448173</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1612820448173</updated>
-    </task>
-    <task id="LOCAL-00011" summary="adding uassets">
-      <created>1612821532007</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1612821532007</updated>
-    </task>
-    <task id="LOCAL-00012" summary="adding movable component">
-      <created>1612826585746</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1612826585746</updated>
-    </task>
-    <task id="LOCAL-00013" summary="adding movable component">
-      <created>1612828253442</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1612828253443</updated>
+      <workItem from="1615233934542" duration="7057000" />
+      <workItem from="1615304416431" duration="5950000" />
+      <workItem from="1615365832095" duration="9040000" />
+      <workItem from="1615379686232" duration="10674000" />
+      <workItem from="1615425578127" duration="8049000" />
+      <workItem from="1615440846775" duration="51000" />
+      <workItem from="1615442456432" duration="121000" />
+      <workItem from="1615442604436" duration="119000" />
+      <workItem from="1615471870112" duration="7631000" />
     </task>
     <task id="LOCAL-00014" summary="adding curve">
       <created>1612828260838</created>
@@ -956,7 +973,77 @@
       <option name="project" value="LOCAL" />
       <updated>1615235761262</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="addin gaudios implementation">
+      <created>1615247454550</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1615247454550</updated>
+    </task>
+    <task id="LOCAL-00054" summary="adding data manager">
+      <created>1615313910039</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1615313910039</updated>
+    </task>
+    <task id="LOCAL-00055" summary="addign buttons">
+      <created>1615369983993</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1615369983993</updated>
+    </task>
+    <task id="LOCAL-00056" summary="adding assets">
+      <created>1615370009100</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1615370009100</updated>
+    </task>
+    <task id="LOCAL-00057" summary="adding music">
+      <created>1615370053006</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1615370053006</updated>
+    </task>
+    <task id="LOCAL-00058" summary=".">
+      <created>1615370681665</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1615370681665</updated>
+    </task>
+    <task id="LOCAL-00059" summary=".">
+      <created>1615375797154</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1615375797154</updated>
+    </task>
+    <task id="LOCAL-00060" summary="update levels">
+      <created>1615387902654</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1615387902654</updated>
+    </task>
+    <task id="LOCAL-00061" summary="adding levels">
+      <created>1615439033301</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1615439033301</updated>
+    </task>
+    <task id="LOCAL-00062" summary="update gm">
+      <created>1615440594154</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1615440594154</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -988,14 +1075,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="." />
-    <MESSAGE value="update assets" />
-    <MESSAGE value="update start and target" />
-    <MESSAGE value="fix star" />
-    <MESSAGE value="fix attach parent" />
-    <MESSAGE value="adding translation to star" />
-    <MESSAGE value="adding event notify" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="adding widget" />
     <MESSAGE value="gm finish" />
     <MESSAGE value="adding paths" />
@@ -1004,7 +1083,6 @@
     <MESSAGE value="fix is valid node" />
     <MESSAGE value="adding data asset" />
     <MESSAGE value="full refactoring" />
-    <MESSAGE value="adding assets" />
     <MESSAGE value="fix" />
     <MESSAGE value="update" />
     <MESSAGE value="update star select" />
@@ -1013,7 +1091,16 @@
     <MESSAGE value="update success links niagara" />
     <MESSAGE value="update niagara color" />
     <MESSAGE value="adding widget to target" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding widget to target" />
+    <MESSAGE value="addin gaudios implementation" />
+    <MESSAGE value="adding data manager" />
+    <MESSAGE value="addign buttons" />
+    <MESSAGE value="adding assets" />
+    <MESSAGE value="adding music" />
+    <MESSAGE value="." />
+    <MESSAGE value="update levels" />
+    <MESSAGE value="adding levels" />
+    <MESSAGE value="update gm" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1022,6 +1109,21 @@
           <url>file://$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h</url>
           <line>4</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp</url>
+          <line>17</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp</url>
+          <line>28</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp</url>
+          <line>51</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
