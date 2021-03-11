@@ -7,7 +7,6 @@
 #include "Actors/NodeGraph.h"
 #include "Actors/Star.h"
 #include "Actors/Target.h"
-#include "Characters/MainCharacter.h"
 #include "Kismet/GameplayStatics.h"
 
 const FName SelectActionName = "Selection";
@@ -25,17 +24,6 @@ void AMainPlayer::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 	InputComponent->BindAction(SelectActionName, IE_Pressed, this, &AMainPlayer::OnSelected);
-}
-
-AMainCharacter* AMainPlayer::GetCurrentCharacter()
-{
-	if (!IsValid(CurrentCharacter))
-	{
-		if (AActor* Actor = UGameplayStatics::GetActorOfClass(GetWorld(), AMainCharacter::StaticClass()))
-			CurrentCharacter = Cast<AMainCharacter>(Actor);
-	}
-
-	return CurrentCharacter;
 }
 
 AGraph* AMainPlayer::GetCurrentGraph()
@@ -87,8 +75,6 @@ void AMainPlayer::SetSelectedStar(AStar* Star)
 
 	SelectedStar = Star;
 	SelectedStar->SetSelected(true);
-
-	MoveCharacterTo(SelectedStar->GetActorLocation()); // move character to star location
 }
 
 void AMainPlayer::SetSelectedTarget(ATarget* Target)
@@ -107,9 +93,7 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 
 	if(!GetCurrentGraph()->IsAvailableLink(ParentStar, ParentTarget)) // validate if graph  has valid link
 		return;
-	
-	MoveCharacterTo(SelectedTarget->GetActorLocation()); // move character to target location
-	
+		
 	ParentStar->RemoveStar();
 	ParentTarget->SetStar(SelectedStar);
 	
@@ -119,5 +103,3 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 	SelectedTarget = nullptr;
 	SelectedStar = nullptr;
 }
-
-void AMainPlayer::MoveCharacterTo(const FVector Location) { GetCurrentCharacter() ? GetCurrentCharacter()->MoveToDestination(Location) : NULL; }
