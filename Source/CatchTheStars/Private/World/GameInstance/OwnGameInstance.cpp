@@ -64,10 +64,11 @@ void UOwnGameInstance::LoadCurrentGameplayLevel(UObject* Context) const
 	GetLevelManager()->LoadGameplayLevel(World, CurrentMap);
 }
 
-void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
+void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context)
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
 	GetLevelManager()->LoadNextGameplayLevel(World);
+	CurrentMap = GetLevelManager()->GetLastLevelLoaded();
 }
 
 void UOwnGameInstance::SetLevelNameToLoad(const FName MapName) { CurrentMap = MapName; }

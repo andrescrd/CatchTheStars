@@ -13,6 +13,8 @@ void ULevelManager::Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMa
 	End = OwnEnd;
 }
 
+FName ULevelManager::GetLastLevelLoaded() const { return  LastLevelLoaded; }
+
 void ULevelManager::UpdateTime(const FName LevelName, const int Time)
 {
 	for (int i = 0; i < Levels.Num(); ++i)

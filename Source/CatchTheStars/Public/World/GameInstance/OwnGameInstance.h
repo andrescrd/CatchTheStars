@@ -49,7 +49,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoadCurrentGameplayLevel(UObject* Context) const;
 	UFUNCTION(BlueprintCallable)
-	void LoadNextGameplayLevel(UObject* Context) const;
+	void LoadNextGameplayLevel(UObject* Context);
 	UFUNCTION(BlueprintCallable)
 	void SetLevelNameToLoad(FName MapName);
 	UFUNCTION(BlueprintCallable)
