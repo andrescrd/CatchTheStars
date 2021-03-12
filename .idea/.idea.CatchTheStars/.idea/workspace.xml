@@ -5,7 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,18 +28,20 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/LevelManager.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/LevelManager.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/GameProjectGeneration/Public/AddToProjectConfig.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/AIModule/Private/Blueprint/AIBlueprintHelperLibrary.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/PanelSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Curves/CurveLinearColor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/LevelTick.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/EngineTypes.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Private/Math/UnrealMath.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/Object.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/HAL/Platform.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/World.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Map.h" root0="FORCE_HIGHLIGHTING" />
@@ -51,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Timeline.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Developer/AITestSuite/Public/AITestSuite.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/UObject/NameTypes.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/UnrealString.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/NamedSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -73,9 +76,9 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/UnrealEd/Public/Dialogs/Dialogs.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/LineBatchComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/BlueprintGraph/Private/K2Node_InputAxisKeyEvent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ChildActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/ContentStreaming.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -124,29 +127,29 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/LevelStruct.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SaveGameManager.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Helpers/OwnSaveGame.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/DataManager.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/LevelDataAsset.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/DataManager.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/StarTypesEnum.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/MainPlayer.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/MainPlayer.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Enums/GameStatusEnum.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/LevelManager.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/SoundManager.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SoundManager.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Players/MainPlayer.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/MainPlayer.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/DataManager.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/DataManager.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/LevelManager.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -156,7 +159,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991798" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34956238" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -615,20 +618,9 @@
       <workItem from="1615442604436" duration="119000" />
       <workItem from="1615471870112" duration="8257000" />
       <workItem from="1615494750571" duration="33000" />
-    </task>
-    <task id="LOCAL-00017" summary="update target">
-      <created>1612907982631</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1612907982631</updated>
-    </task>
-    <task id="LOCAL-00018" summary="update star">
-      <created>1612907987779</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1612907987780</updated>
+      <workItem from="1615494897922" duration="4719000" />
+      <workItem from="1615555388759" duration="2705000" />
+      <workItem from="1615558298930" duration="4441000" />
     </task>
     <task id="LOCAL-00019" summary="adding node">
       <created>1612907997332</created>
@@ -959,7 +951,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615494180171</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="removing unused character">
+      <created>1615495380666</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1615495380667</updated>
+    </task>
+    <task id="LOCAL-00067" summary="refactoring">
+      <created>1615563046114</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1615563046114</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -991,8 +997,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="adding widget" />
-    <MESSAGE value="gm finish" />
     <MESSAGE value="adding paths" />
     <MESSAGE value="adding niagara" />
     <MESSAGE value="clean code" />
@@ -1016,7 +1020,9 @@
     <MESSAGE value="adding levels" />
     <MESSAGE value="update gm" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="removing unused character" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1028,18 +1034,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp</url>
-          <line>17</line>
+          <line>14</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp</url>
-          <line>28</line>
+          <line>24</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/Managers/LevelManager.cpp</url>
-          <line>51</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
