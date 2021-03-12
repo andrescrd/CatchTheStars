@@ -66,5 +66,8 @@ public:
 	bool IsAvailableLink(class ANodeGraph* From, class ANodeGraph* To);
 
 	UFUNCTION(CallInEditor, Category=Setup)
+	void AddSingleNode();
+	class ANodeGraph*  CreateNewNode();
+	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();
 };

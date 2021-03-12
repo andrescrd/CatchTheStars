@@ -66,6 +66,25 @@ bool AGraph::IsAvailableLink(ANodeGraph* From, ANodeGraph* To)
 	return Links.Find(Name) || Links.Find(InvertedName);
 }
 
+ANodeGraph* AGraph::CreateNewNode()
+{
+	AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
+                                                            FActorSpawnParameters());
+	ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
+
+	return Cast<ANodeGraph>(ChildActor);
+}
+
+void AGraph::AddSingleNode()
+{
+	if (!NodeClass)
+		return;
+
+	const auto Node = CreateNewNode();
+	NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
+	NodesCounter++;
+}
+
 void AGraph::GenerateGraph()
 {
 	for (auto It = NodesSuccessMap.CreateConstIterator(); It; ++It)
@@ -81,12 +100,8 @@ void AGraph::GenerateGraph()
 
 	for (int i = 0; i < NodesCounter; ++i)
 	{
-		AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
-		                                                        FActorSpawnParameters());
-		ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
-
-		if (ANodeGraph* Node = Cast<ANodeGraph>(ChildActor))
-			NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
+		const auto Node = CreateNewNode();
+		NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
 	}
 }
 
@@ -118,7 +133,7 @@ void AGraph::AddNiagaraLink(const FString Id, const ANodeGraph* From, const ANod
 	const FVector ToVector = To->GetActorLocation();
 
 	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
-	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);	
+	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
 
 	NiagaraMap.Add(Id, Niagara);
 }
@@ -128,13 +143,16 @@ void AGraph::OnConstruction(const FTransform& Transform)
 	Super::OnConstruction(Transform);
 
 #if WITH_EDITOR
-	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
+	if(GEngine)
+	{
+		GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
+	}
 	
-	if(bShowLinks == true)
+	if (bShowLinks == true)
 	{
 		ShowDebugLinks();
 	}
-#endif	
+#endif
 }
 
 void AGraph::BeginDestroy()
@@ -143,11 +161,11 @@ void AGraph::BeginDestroy()
 
 	for (auto It = NiagaraMap.CreateConstIterator(); It; ++It)
 	{
-		if(It.Value())
+		if (It.Value())
 			It.Value()->DestroyInstance();
-		
+
 		NiagaraMap.Remove(It.Key());
-	}	
+	}
 }
 
 void AGraph::ShowDebugLinks()
@@ -160,9 +178,6 @@ void AGraph::ShowSuccessLinks()
 {
 	for (const auto Node : NodesSuccessMap)
 	{
-		if (!Node.Value)
-			continue;
-
 		auto NodeLinks = Node.Key->GetLinks();
 
 		FLinkStruct LinkStruct = FLinkStruct();
@@ -172,7 +187,7 @@ void AGraph::ShowSuccessLinks()
 		{
 			LinkStruct.To = NodeLink;
 
-			if (!NodesSuccessMap[NodeLink])
+			if (!NodesSuccessMap[NodeLink] || (!LinkStruct.To->HasStar() || !LinkStruct.From->HasStar()))
 				NiagaraMap[LinkStruct.GetId()]->Deactivate();
 			else
 				NiagaraMap[LinkStruct.GetId()]->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
