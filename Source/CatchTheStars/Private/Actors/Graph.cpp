@@ -127,11 +127,13 @@ void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 
-#if IF_WITH_EDITOR
+#if WITH_EDITOR
 	GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
 	
-	if(bShowLinks)
+	if(bShowLinks == true)
+	{
 		ShowDebugLinks();
+	}
 #endif	
 }
 

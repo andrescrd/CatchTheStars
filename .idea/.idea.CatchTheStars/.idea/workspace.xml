@@ -5,8 +5,45 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="refactoring">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="blender  models">
+      <change afterPath="$PROJECT_DIR$/Content/UI/Fonts/hermeticspellbook.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/UI/Fonts/hermeticspellbook_Font.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/I.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/N.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/O.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/U.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/V.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Star.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map3.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Menu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Menu.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Menu_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Menu_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WB_Target.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/A.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/A.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/B.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/C.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/C.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/D.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/D.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/E.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/E.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/F.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/F.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/G.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/G.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/H.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/H.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/J.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/J.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/K.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/K.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/L.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/L.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/M.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/M.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Material_003.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Material_004.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/P.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/P.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Q.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Q.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/R.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/R.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/S.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/S.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/T.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/T.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/W.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/X.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/X.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Y.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Y.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Z.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/untitled_category/untitled_asset/Z.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +136,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Characters/MainCharacter.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CTarget.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
@@ -140,7 +176,6 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Players/MainPlayer.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LevelStruct.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/DataManager.h" />
@@ -150,6 +185,8 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameInstance/OwnGameInstance.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" />
+      <option value="$PROJECT_DIR$/.gitignore" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -620,14 +657,7 @@
       <workItem from="1615494750571" duration="33000" />
       <workItem from="1615494897922" duration="4719000" />
       <workItem from="1615555388759" duration="2705000" />
-      <workItem from="1615558298930" duration="4441000" />
-    </task>
-    <task id="LOCAL-00019" summary="adding node">
-      <created>1612907997332</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1612907997332</updated>
+      <workItem from="1615558298930" duration="5911000" />
     </task>
     <task id="LOCAL-00020" summary="adding graph">
       <created>1612908005422</created>
@@ -965,7 +995,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615563046114</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="blender  models">
+      <created>1615563521460</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1615563521460</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -997,7 +1034,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="adding paths" />
     <MESSAGE value="adding niagara" />
     <MESSAGE value="clean code" />
     <MESSAGE value="fix is valid node" />
@@ -1022,7 +1058,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="removing unused character" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="blender  models" />
+    <option name="LAST_COMMIT_MESSAGE" value="blender  models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
