@@ -141,7 +141,9 @@ void AGraph::BeginDestroy()
 
 	for (auto It = NiagaraMap.CreateConstIterator(); It; ++It)
 	{
-		It.Value()->DestroyInstance();
+		if(It.Value())
+			It.Value()->DestroyInstance();
+		
 		NiagaraMap.Remove(It.Key());
 	}	
 }

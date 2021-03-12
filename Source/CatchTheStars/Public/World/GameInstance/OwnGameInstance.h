@@ -19,6 +19,7 @@ class CATCHTHESTARS_API UOwnGameInstance : public UGameInstance
 protected:
 	FName CurrentMap;
 
+	void SetupLevels() const;
 	virtual void Init() override;
 
 	// Managers
@@ -29,6 +30,7 @@ protected:
 	UPROPERTY(Transient)
 	class USoundManager* SoundManagerInstance;
 
+	// Assets
 	UPROPERTY(EditDefaultsOnly)
 	class ULevelDataAsset* LevelDataAsset;
 
@@ -41,17 +43,19 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	TArray<FLevelStruct> GetAllLevels() const;
-
-	UFUNCTION(BlueprintCallable)
-	void Restart(UObject* Context) const;
+	
 	UFUNCTION(BlueprintCallable)
 	void LoadMainMenu(UObject* Context) const;
 	UFUNCTION(BlueprintCallable)
-	void LoadMap(UObject* Context) const;
+	void LoadCurrentGameplayLevel(UObject* Context) const;
 	UFUNCTION(BlueprintCallable)
 	void LoadNextGameplayLevel(UObject* Context) const;
 	UFUNCTION(BlueprintCallable)
-	void SetMapNameToLoad(FName MapName);
+	void SetLevelNameToLoad(FName MapName);
+	UFUNCTION(BlueprintCallable)
+	void SetTimeOnCurrentLevel(int Time) const;
 
+	UFUNCTION(BlueprintCallable)
+    void Restart(UObject* Context) const;
 	virtual void Shutdown() override;
 };

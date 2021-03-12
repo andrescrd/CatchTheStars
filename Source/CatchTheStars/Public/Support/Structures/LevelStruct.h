@@ -8,13 +8,13 @@ struct FLevelStruct
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	FName MapName;
+	FName LevelName;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool IsAvailable;
 	UPROPERTY(BlueprintReadOnly)
-	float MaxTime;
+	int MaxTime;
 
-	FLevelStruct(): MapName(NAME_None), IsAvailable(false), MaxTime(0)
+	FLevelStruct(): LevelName(NAME_None), IsAvailable(false), MaxTime(0)
 	{
 	}
 };

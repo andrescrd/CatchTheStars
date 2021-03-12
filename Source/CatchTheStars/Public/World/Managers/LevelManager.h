@@ -4,46 +4,39 @@
 
 #include "CoreMinimal.h"
 
-
-#include "Assets/LevelDataAsset.h"
 #include "Support/Structures/LevelStruct.h"
 #include "UObject/NoExportTypes.h"
 #include "LevelManager.generated.h"
 
-/**
- * 
- */
-UCLASS(Blueprintable)
+UCLASS()
 class CATCHTHESTARS_API ULevelManager : public UObject
 {
 	GENERATED_BODY()
 
-protected:
-	UPROPERTY(VisibleInstanceOnly)
-	FLevelStruct CurrentLevel;	
-	UPROPERTY(VisibleInstanceOnly)
-	FName LastLevelLoaded;	
-
-	UPROPERTY(EditDefaultsOnly)
+protected:	
 	FName Menu;
-	UPROPERTY(EditDefaultsOnly)
 	FName End;
-	UPROPERTY(EditDefaultsOnly)
 	TArray<FLevelStruct> Levels;
+	FLevelStruct CurrentLevel;	
+	FName LastLevelLoaded;	
 	
 public:
+
 	UFUNCTION(BlueprintCallable)    
 	TArray<FLevelStruct> GetGameplayLevels() const;	
 	UFUNCTION(BlueprintCallable)
-    void LoadMenuLevel(class UWorld* Context);
+    void LoadMainMenu(class UWorld* World);
 	UFUNCTION(BlueprintCallable)
-    void LoadEndLevel(class UWorld* Context);
+    void LoadEnd(class UWorld* World);
 	UFUNCTION(BlueprintCallable)
-    void LoadGameplayLevel(class UWorld* World, FName MapName);
+    void LoadGameplayLevel(class UWorld* World, FName LevelName);
 	UFUNCTION(BlueprintCallable)    
 	void LoadNextGameplayLevel(UWorld* World);
-	UFUNCTION(BlueprintCallable)
-	void Restart(class UWorld* Context);
+	UFUNCTION(BlueprintCallable)    
+	void UpdateTime(const FName LevelName, const int Time);
 
-	void Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd);
+	UFUNCTION(BlueprintCallable)
+	void Restart(class UWorld* World);
+
+	void Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMainMenu,const FName OwnEnd);	
 };

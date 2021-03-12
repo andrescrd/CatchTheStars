@@ -21,11 +21,15 @@ void AGameplayGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GetGameInstance<UOwnGameInstance>()->LoadMap(this);
+	GetGameInstance<UOwnGameInstance>()->LoadCurrentGameplayLevel(this);
 	SetGameStatus(EGameStatusEnum::Waiting);
 }
 
-void AGameplayGameMode::LevelComplete() { SetGameStatus(EGameStatusEnum::Completed); }
+void AGameplayGameMode::LevelComplete()
+{
+	GetGameInstance<UOwnGameInstance>()->SetTimeOnCurrentLevel(MaxTime);	
+	SetGameStatus(EGameStatusEnum::Completed);
+}
 
 void AGameplayGameMode::NextLevel()
 {

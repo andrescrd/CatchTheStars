@@ -3,6 +3,8 @@
 
 #include "World/GameInstance/OwnGameInstance.h"
 
+
+#include "Assets/LevelDataAsset.h"
 #include "World/Managers/DataManager.h"
 #include "World/Managers/LevelManager.h"
 #include "World/Managers/SoundManager.h"
@@ -18,19 +20,24 @@ void UOwnGameInstance::Init()
 	if (SoundManagerInstance == nullptr)
 		SoundManagerInstance = NewObject<USoundManager>(this, TEXT("SoundManagerInstance"));
 
-	if (LevelDataAsset)
-	{
-		const auto Levels = LevelDataAsset->GetLevels();
-		const auto Main = LevelDataAsset->MainMenu;
-		const auto End = LevelDataAsset->End;
+	SetupLevels();
+}
 
-		const auto StoredLevels = DataManagerInstance->GetLevels();
+void UOwnGameInstance::SetupLevels() const
+{
+	if (!LevelDataAsset)
+		return;
+	
+	const auto Levels = LevelDataAsset->GetLevels();
+	const auto Main = LevelDataAsset->MainMenu;
+	const auto End = LevelDataAsset->End;
 
-		if(StoredLevels.Num() == 0)
-			DataManagerInstance->SaveLevels(Levels);	
-		
-		LevelManagerInstance->Init(StoredLevels.Num() == 0 ? Levels : StoredLevels, Main, End);
-	}
+	const auto StoredLevels = DataManagerInstance->GetLevels();
+
+	if (StoredLevels.Num() == 0)
+		DataManagerInstance->SaveLevels(Levels);
+
+	LevelManagerInstance->Init(StoredLevels.Num() == 0 ? Levels : StoredLevels, Main, End);
 }
 
 ULevelManager* UOwnGameInstance::GetLevelManager() const { return LevelManagerInstance; }
@@ -48,10 +55,10 @@ void UOwnGameInstance::Restart(UObject* Context) const
 void UOwnGameInstance::LoadMainMenu(UObject* Context) const
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
-	GetLevelManager()->LoadMenuLevel(World);
+	GetLevelManager()->LoadMainMenu(World);
 }
 
-void UOwnGameInstance::LoadMap(UObject* Context) const
+void UOwnGameInstance::LoadCurrentGameplayLevel(UObject* Context) const
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(Context);
 	GetLevelManager()->LoadGameplayLevel(World, CurrentMap);
@@ -63,7 +70,9 @@ void UOwnGameInstance::LoadNextGameplayLevel(UObject* Context) const
 	GetLevelManager()->LoadNextGameplayLevel(World);
 }
 
-void UOwnGameInstance::SetMapNameToLoad(const FName MapName) {CurrentMap = MapName; }
+void UOwnGameInstance::SetLevelNameToLoad(const FName MapName) { CurrentMap = MapName; }
+
+void UOwnGameInstance::SetTimeOnCurrentLevel(const int Time) const { GetLevelManager()->UpdateTime(CurrentMap, Time); }
 
 void UOwnGameInstance::Shutdown()
 {

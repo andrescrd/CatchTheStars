@@ -34,8 +34,8 @@ protected:
 
 	void OnWaiting();
 	void OnPlaying();
-	void ToggleInput(bool Enable) const;
 	void OnFinished();
+	void ToggleInput(bool Enable) const;
 	
 	UFUNCTION(BlueprintImplementableEvent)
     void OnGameStatusChange(EGameStatusEnum CurrentGameStatus);

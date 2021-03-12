@@ -13,21 +13,34 @@ void ULevelManager::Init(const TArray<FLevelStruct> OwnLevels, const FName OwnMa
 	End = OwnEnd;
 }
 
+void ULevelManager::UpdateTime(const FName LevelName, const int Time)
+{
+	for (int i = 0; i < Levels.Num(); ++i)
+	{
+		FLevelStruct& Level = Levels[i];		
+		if(Level.LevelName.IsEqual(LevelName) && (Level.MaxTime == 0 || Level.MaxTime > Time))
+		{
+			Level.MaxTime = Time;
+			break;
+		}
+	}	
+}
+
 TArray<FLevelStruct> ULevelManager::GetGameplayLevels() const { return Levels; }
 
-void ULevelManager::LoadMenuLevel(UWorld* Context)
+void ULevelManager::LoadMainMenu(UWorld* World)
 {
 	LastLevelLoaded = Menu;
-	UGameplayStatics::OpenLevel(Context, Menu);
+	UGameplayStatics::OpenLevel(World, Menu);
 }
 
-void ULevelManager::LoadEndLevel(UWorld* Context)
+void ULevelManager::LoadEnd(UWorld* World)
 {
 	LastLevelLoaded = End;
-	UGameplayStatics::OpenLevel(Context, End);
+	UGameplayStatics::OpenLevel(World, End);
 }
 
-void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
+void ULevelManager::LoadGameplayLevel(UWorld* World, const FName LevelName)
 {
 	if (LastLevelLoaded.GetStringLength() > 0 && LastLevelLoaded != NAME_None)
 	{
@@ -40,11 +53,11 @@ void ULevelManager::LoadGameplayLevel(UWorld* World, const FName MapName)
 		}
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Open level: %s"),*MapName.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Open level: %s"),*LevelName.ToString());
 	const FLatentActionInfo Info;
-	UGameplayStatics::LoadStreamLevel(World, MapName, true, true, Info);
+	UGameplayStatics::LoadStreamLevel(World, LevelName, true, true, Info);
 
-	LastLevelLoaded = MapName;
+	LastLevelLoaded = LevelName;
 }
 
 void ULevelManager::LoadNextGameplayLevel(UWorld* World)
@@ -53,23 +66,23 @@ void ULevelManager::LoadNextGameplayLevel(UWorld* World)
 
 	for (int32 Index = 0; Index < Levels.Num(); Index++)
 	{
-		if (Levels[Index].MapName.IsEqual(LastLevelLoaded))
+		if (Levels[Index].LevelName.IsEqual(LastLevelLoaded))
 		{
-			NextGameplayLevel = (Index + 1 == Levels.Num()) ?  End : Levels[Index + 1].MapName;
+			NextGameplayLevel = (Index + 1 == Levels.Num()) ?  End : Levels[Index + 1].LevelName;
 			break;
 		}
 	}
 
 	if (NextGameplayLevel == Menu)
-		LoadMenuLevel(World);
+		LoadMainMenu(World);
 
 	else if (NextGameplayLevel == End)
-		LoadEndLevel(World);
+		LoadEnd(World);
 	else
 	{
 		const int32 Index = Levels.FindLastByPredicate([NextGameplayLevel](const FLevelStruct LevelSetup)
         {
-            return LevelSetup.MapName == NextGameplayLevel;
+            return LevelSetup.LevelName == NextGameplayLevel;
         });
 
 		if (Index != INDEX_NONE)
@@ -80,9 +93,9 @@ void ULevelManager::LoadNextGameplayLevel(UWorld* World)
 	}
 }
 
-void ULevelManager::Restart(UWorld* Context)
+void ULevelManager::Restart(UWorld* World)
 {
-	const FString LevelName = UGameplayStatics::GetCurrentLevelName(Context);
+	const FString LevelName = UGameplayStatics::GetCurrentLevelName(World);
 	LastLevelLoaded = NAME_None;
-	UGameplayStatics::OpenLevel(Context, *LevelName);
+	UGameplayStatics::OpenLevel(World, *LevelName);
 }
