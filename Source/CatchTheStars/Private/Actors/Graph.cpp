@@ -54,7 +54,7 @@ void AGraph::SetSuccessAttached(const ANodeGraph* Node, const bool Success)
 	NodesMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
-	for (auto Link : Links)
+	for (auto &Link : Links)
 	{
 		if(Link.Value.Key == nullptr || Link.Value.Key != Node)
 			continue;

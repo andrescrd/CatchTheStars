@@ -32,8 +32,8 @@ protected:
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<FString, FLinkStruct> Links;
-	// UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
-	// TMap<FString, class UNiagaraComponent*> NiagaraMap;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
+	TMap<FString, FLinkStruct> BlockedLinks;	
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category=Setup)
 	TMap<class ANodeGraph*, bool> NodesMap;
 
