@@ -5,11 +5,13 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="fix unblock link">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelsDataAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelsDataAsset.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map6.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Map10.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map10.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/UMG/Public/Components/PanelSlot.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Curves/CurveLinearColor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/Graph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/LevelTick.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" root0="FORCE_HIGHLIGHTING" />
@@ -96,6 +99,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Kismet/KismetTextLibrary.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/BlueprintGraph/Private/K2Node_MathExpression.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Public/Actors/Graph.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Core/Public/Misc/AssertionMacros.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/CoreUObject/Private/UObject/Obj.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/BoxComponent.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -156,8 +160,8 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LinkStruct.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -631,14 +635,7 @@
       <workItem from="1615558298930" duration="22529000" />
       <workItem from="1615598375468" duration="2526000" />
       <workItem from="1615605409624" duration="9055000" />
-      <workItem from="1615651616225" duration="4080000" />
-    </task>
-    <task id="LOCAL-00027" summary="update">
-      <created>1614638295523</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1614638295523</updated>
+      <workItem from="1615651616225" duration="6410000" />
     </task>
     <task id="LOCAL-00028" summary="update start and target">
       <created>1614639159218</created>
@@ -976,7 +973,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615654616000</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="fix unblock link">
+      <created>1615669620761</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1615669620761</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1008,7 +1012,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update star select" />
     <MESSAGE value="adding show links" />
     <MESSAGE value="with editor" />
     <MESSAGE value="update success links niagara" />
@@ -1033,7 +1036,8 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="refactoring node" />
     <MESSAGE value="adding link data asset and niagara fx" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding link data asset and niagara fx" />
+    <MESSAGE value="fix unblock link" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix unblock link" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1052,16 +1056,6 @@
           <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Assets/LevelDataAsset.cpp</url>
           <line>24</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp</url>
-          <line>61</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp</url>
-          <line>93</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

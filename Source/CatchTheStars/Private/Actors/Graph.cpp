@@ -155,7 +155,7 @@ void AGraph::OnConstruction(const FTransform& Transform)
 	Super::OnConstruction(Transform);
 
 #if WITH_EDITOR
-	if (GEngine)
+	if (GEngine && GetWorld())
 	{
 		GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
 	}
