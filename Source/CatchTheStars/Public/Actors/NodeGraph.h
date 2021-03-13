@@ -27,7 +27,7 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class UChildActorComponent* StarChild;
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
-	class UNiagaraComponent* Niagara;
+	class UNiagaraComponent* NiagaraSuccessAttach;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	TSubclassOf<class ATarget> TargetClass;
@@ -59,8 +59,9 @@ public:
 	class AStar* GetStar() const;
 	TSet<class ANodeGraph*> GetLinks() const;
 	FVector GetStarLocation() const;
-	void PlaySoundOnSuccessAttach() const;
-	void NotifySuccessAttach(bool WasSuccess) const;
+	void PlayAttachSound() const;
+	void ActivateNiagaraSuccessAttach(const bool Activate) const;
+	void NotifySuccessAttach(const bool WasSuccess) const;
 	void SetStar(class AStar* NewStar);	
 	bool IsSuccessAttach() const;
 	bool HasStar() const;

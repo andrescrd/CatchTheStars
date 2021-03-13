@@ -16,10 +16,10 @@ ANodeGraph::ANodeGraph()
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
 
-	Niagara = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
-	Niagara->SetAutoActivate(false);
-	Niagara->SetAsset(FXTemplate);
-	Niagara->SetupAttachment(Root);
+	NiagaraSuccessAttach = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
+	NiagaraSuccessAttach->SetAutoActivate(false);
+	NiagaraSuccessAttach->SetAsset(FXTemplate);
+	NiagaraSuccessAttach->SetupAttachment(Root);
 
 	TargetChild = CreateDefaultSubobject<UChildActorComponent>(TEXT("TargetComponent"));
 	TargetChild->SetupAttachment(RootComponent);
@@ -37,9 +37,14 @@ TSet<ANodeGraph*> ANodeGraph::GetLinks() const { return Links; }
 
 FVector ANodeGraph::GetStarLocation() const { return StarChild->GetComponentLocation(); }
 
-void ANodeGraph::PlaySoundOnSuccessAttach() const
+void ANodeGraph::ActivateNiagaraSuccessAttach(const bool Activate) const
 {
-	if(AttachSound)
+	Activate ? NiagaraSuccessAttach->Activate() : NiagaraSuccessAttach->Deactivate();
+}
+
+void ANodeGraph::PlayAttachSound() const
+{
+	if (AttachSound)
 		UGameplayStatics::PlaySound2D(this, AttachSound);
 }
 
@@ -58,11 +63,11 @@ void ANodeGraph::SetStar(AStar* NewStar)
 
 	NotifySuccessAttach(WasSuccess);
 
-	if (IsSuccessAttach() && FXTemplate)
-		Niagara->Activate();
-
-	if(IsSuccessAttach())
-		PlaySoundOnSuccessAttach();		
+	if (IsSuccessAttach())
+	{
+		ActivateNiagaraSuccessAttach(true);
+		PlayAttachSound();
+	}
 }
 
 void ANodeGraph::RemoveStar()
@@ -74,9 +79,7 @@ void ANodeGraph::RemoveStar()
 	bHasStar = false;
 
 	NotifySuccessAttach(WasSuccess);
-	
-	if (!IsSuccessAttach() && FXTemplate)
-		Niagara->Deactivate();
+	ActivateNiagaraSuccessAttach(IsSuccessAttach());
 }
 
 void ANodeGraph::NotifySuccessAttach(const bool WasSuccess) const
@@ -108,7 +111,7 @@ void ANodeGraph::SetupTarget()
 		TargetChild->CreateChildActor();
 		Target = Cast<ATarget>(TargetChild->GetChildActor());
 		return;
-	}	
+	}
 
 	RemoveChild(TargetChild);
 }
@@ -122,7 +125,7 @@ void ANodeGraph::SetupStar()
 		Star = Cast<AStar>(StarChild->GetChildActor());
 		return;
 	}
-	
+
 	RemoveChild(StarChild);
 }
 

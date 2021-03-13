@@ -5,12 +5,8 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="full refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" afterDir="false" />
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="refactoring">
       <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +89,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveDrawingUtils.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/Graph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Private/UI/TypeWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/Private/Actors/Graph.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Kismet/KismetTextLibrary.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/BlueprintGraph/Private/K2Node_MathExpression.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Private/World/GameModes/GameplayGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -127,7 +124,6 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Assets/TypeDataAsset.h" />
       <option value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Components/SelecteableComponent.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/SelecteableComponent.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Star.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" />
@@ -157,8 +153,9 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameInstance/OwnGameInstance.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Structures/LinkStruct.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/NodeGraph.h" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -629,14 +626,7 @@
       <workItem from="1615494750571" duration="33000" />
       <workItem from="1615494897922" duration="4719000" />
       <workItem from="1615555388759" duration="2705000" />
-      <workItem from="1615558298930" duration="20578000" />
-    </task>
-    <task id="LOCAL-00024" summary="update assets">
-      <created>1612922803239</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1612922803239</updated>
+      <workItem from="1615558298930" duration="20993000" />
     </task>
     <task id="LOCAL-00025" summary=".">
       <created>1612994470855</created>
@@ -974,7 +964,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615594649190</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="refactoring">
+      <created>1615596389141</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1615596389141</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1025,13 +1022,13 @@
     <MESSAGE value="update gm" />
     <MESSAGE value="update" />
     <MESSAGE value="removing unused character" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="blender  models" />
     <MESSAGE value="update assets" />
     <MESSAGE value="fix restart" />
     <MESSAGE value="fix clean raycast" />
     <MESSAGE value="full refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="full refactoring" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
