@@ -37,6 +37,12 @@ TSet<ANodeGraph*> ANodeGraph::GetLinks() const { return Links; }
 
 FVector ANodeGraph::GetStarLocation() const { return StarChild->GetComponentLocation(); }
 
+void ANodeGraph::PlaySoundOnSuccessAttach() const
+{
+	if(AttachSound)
+		UGameplayStatics::PlaySound2D(this, AttachSound);
+}
+
 void ANodeGraph::SetStar(AStar* NewStar)
 {
 	const bool WasSuccess = IsSuccessAttach();
@@ -50,16 +56,13 @@ void ANodeGraph::SetStar(AStar* NewStar)
 	Star = NewStar;
 	bHasStar = true;
 
-	if (WasSuccess && !IsSuccessAttach()) // notify if it was success or not
-		OnSuccessAttached.Broadcast(this, false);
-	else if (!WasSuccess && IsSuccessAttach())
-		OnSuccessAttached.Broadcast(this, true);
+	NotifySuccessAttach(WasSuccess);
 
 	if (IsSuccessAttach() && FXTemplate)
 		Niagara->Activate();
 
-	if(IsSuccessAttach() && AttachSound)
-		UGameplayStatics::PlaySound2D(this, AttachSound);		
+	if(IsSuccessAttach())
+		PlaySoundOnSuccessAttach();		
 }
 
 void ANodeGraph::RemoveStar()
@@ -70,13 +73,18 @@ void ANodeGraph::RemoveStar()
 	Star = nullptr;
 	bHasStar = false;
 
+	NotifySuccessAttach(WasSuccess);
+	
+	if (!IsSuccessAttach() && FXTemplate)
+		Niagara->Deactivate();
+}
+
+void ANodeGraph::NotifySuccessAttach(const bool WasSuccess) const
+{
 	if (WasSuccess && !IsSuccessAttach()) // notify if it was success or not
 		OnSuccessAttached.Broadcast(this, false);
 	else if (!WasSuccess && IsSuccessAttach())
 		OnSuccessAttached.Broadcast(this, true);
-
-	if (!IsSuccessAttach() && FXTemplate)
-		Niagara->Deactivate();
 }
 
 bool ANodeGraph::IsSuccessAttach() const { return (Star && Target) && (Star->GetType() == Target->GetType()); }
@@ -99,32 +107,23 @@ void ANodeGraph::SetupTarget()
 		TargetChild->SetChildActorClass(TargetClass);
 		TargetChild->CreateChildActor();
 		Target = Cast<ATarget>(TargetChild->GetChildActor());
-	}
-	else
-	{
-		RemoveChild(TargetChild);
-	}
+		return;
+	}	
+
+	RemoveChild(TargetChild);
 }
 
 void ANodeGraph::SetupStar()
 {
-	if (StarChild && StarClass)
+	if (StarChild && StarClass && bHasStar)
 	{
-		if (bHasStar)
-		{
-			StarChild->SetChildActorClass(StarClass);
-			StarChild->CreateChildActor();
-			Star = Cast<AStar>(StarChild->GetChildActor());
-		}
-		else
-		{
-			RemoveChild(StarChild);;
-		}
+		StarChild->SetChildActorClass(StarClass);
+		StarChild->CreateChildActor();
+		Star = Cast<AStar>(StarChild->GetChildActor());
+		return;
 	}
-	else
-	{
-		RemoveChild(StarChild);
-	}
+	
+	RemoveChild(StarChild);
 }
 
 void ANodeGraph::SetupType() const

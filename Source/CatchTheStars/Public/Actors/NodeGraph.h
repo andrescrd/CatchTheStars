@@ -58,7 +58,9 @@ public:
 	class ATarget* GetTarget() const;
 	class AStar* GetStar() const;
 	TSet<class ANodeGraph*> GetLinks() const;
-	FVector GetStarLocation() const;	
+	FVector GetStarLocation() const;
+	void PlaySoundOnSuccessAttach() const;
+	void NotifySuccessAttach(bool WasSuccess) const;
 	void SetStar(class AStar* NewStar);	
 	bool IsSuccessAttach() const;
 	bool HasStar() const;

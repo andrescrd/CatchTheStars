@@ -97,6 +97,20 @@ UNiagaraComponent* AGraph::GetNiagaraForLink(const FVector From, const FVector T
 	return Niagara;
 }
 
+void AGraph::ShowSuccessLinks() const
+{
+	for (auto It = Links.CreateConstIterator(); It; ++It)
+	{
+		if (It.Value().NiagaraComponent == nullptr)
+			continue;
+
+		if (!It.Value().From->HasStar() || !It.Value().To->HasStar())
+			It.Value().NiagaraComponent->Deactivate();
+		else
+			It.Value().NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
+	}
+}
+
 void AGraph::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
@@ -127,24 +141,6 @@ void AGraph::BeginDestroy()
 	}
 }
 
-void AGraph::ShowSuccessLinks() const
-{
-	for (auto It = Links.CreateConstIterator(); It; ++It)
-	{
-		if (It.Value().NiagaraComponent == nullptr)
-			continue;
-
-		if (!It.Value().From->HasStar() || !It.Value().To->HasStar())
-		{
-			It.Value().NiagaraComponent->Deactivate();
-		}
-		else
-		{
-			It.Value().NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
-		}
-	}
-}
-
 // ****************************************************
 // EDITOR
 void AGraph::ShowDebugLinks()
@@ -165,13 +161,7 @@ void AGraph::AddSingleNode()
 
 void AGraph::GenerateGraph()
 {
-	for (auto It = NodesMap.CreateConstIterator(); It; ++It)
-	{
-		if (IsValid(It.Key()))
-			It.Key()->Destroy();
-
-		NodesMap.Remove(It.Key());
-	}
+	CleanNodeMap();
 
 	if (!NodeClass)
 		return;
@@ -183,10 +173,21 @@ void AGraph::GenerateGraph()
 	}
 }
 
+void AGraph::CleanNodeMap()
+{
+	for (auto It = NodesMap.CreateConstIterator(); It; ++It)
+	{
+		if (IsValid(It.Key()))
+			It.Key()->Destroy();
+
+		NodesMap.Remove(It.Key());
+	}
+}
+
 ANodeGraph* AGraph::CreateNewNode()
 {
 	AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
-                                                            FActorSpawnParameters());
+	                                                        FActorSpawnParameters());
 	ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
 
 	return Cast<ANodeGraph>(ChildActor);

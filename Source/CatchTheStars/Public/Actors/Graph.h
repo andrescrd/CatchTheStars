@@ -67,6 +67,7 @@ public:
 
 	UFUNCTION(CallInEditor, Category=Setup)
 	void AddSingleNode();
+	void CleanNodeMap();
 	class ANodeGraph*  CreateNewNode();
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();
