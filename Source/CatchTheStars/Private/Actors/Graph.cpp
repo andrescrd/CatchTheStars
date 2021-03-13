@@ -29,17 +29,17 @@ void AGraph::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto Node : NodesSuccessMap)
+	for (auto Node : NodesMap)
 	{
 		if (IsValid(Node.Key))
 		{
-			Node.Key->OnSuccessAttached.AddDynamic(this, &AGraph::SuccessAttached); // bind to event
-			NodesSuccessMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
+			Node.Key->OnSuccessAttached.AddDynamic(this, &AGraph::SetSuccessAttached); // bind to event
+			NodesMap[Node.Key] = Node.Key->IsSuccessAttach(); // setup initial values
 
 			if (Node.Key->HasStar())
 				MaxSuccess++;
 
-			if (NodesSuccessMap[Node.Key])
+			if (NodesMap[Node.Key])
 				CurrentSuccess++;
 
 			SetupLinks(Node.Key);
@@ -47,9 +47,9 @@ void AGraph::BeginPlay()
 	}
 }
 
-void AGraph::SuccessAttached(const ANodeGraph* Node, const bool Success)
+void AGraph::SetSuccessAttached(const ANodeGraph* Node, const bool Success)
 {
-	NodesSuccessMap[Node] = Success;
+	NodesMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
 	if (CurrentSuccess == MaxSuccess)
@@ -66,45 +66,6 @@ bool AGraph::IsAvailableLink(ANodeGraph* From, ANodeGraph* To)
 	return Links.Find(Name) || Links.Find(InvertedName);
 }
 
-ANodeGraph* AGraph::CreateNewNode()
-{
-	AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
-                                                            FActorSpawnParameters());
-	ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
-
-	return Cast<ANodeGraph>(ChildActor);
-}
-
-void AGraph::AddSingleNode()
-{
-	if (!NodeClass)
-		return;
-
-	const auto Node = CreateNewNode();
-	NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
-	NodesCounter++;
-}
-
-void AGraph::GenerateGraph()
-{
-	for (auto It = NodesSuccessMap.CreateConstIterator(); It; ++It)
-	{
-		if (IsValid(It.Key()))
-			It.Key()->Destroy();
-
-		NodesSuccessMap.Remove(It.Key());
-	}
-
-	if (!NodeClass)
-		return;
-
-	for (int i = 0; i < NodesCounter; ++i)
-	{
-		const auto Node = CreateNewNode();
-		NodesSuccessMap.Add(Node, Node->IsSuccessAttach());
-	}
-}
-
 void AGraph::SetupLinks(ANodeGraph* Node)
 {
 	auto NodeLinks = Node->GetLinks();
@@ -119,23 +80,21 @@ void AGraph::SetupLinks(ANodeGraph* Node)
 		if (Links.Contains(LinkStruct.GetId()) || Links.Contains(LinkStruct.GetIdInverted()))
 			continue;
 
+		LinkStruct.NiagaraComponent = GetNiagaraForLink(LinkStruct.From->GetActorLocation(),
+		                                                LinkStruct.To->GetActorLocation());
 		Links.Add(LinkStruct.GetId(), LinkStruct);
-		AddNiagaraLink(LinkStruct.GetId(), LinkStruct.From, LinkStruct.To);
 	}
 }
 
-void AGraph::AddNiagaraLink(const FString Id, const ANodeGraph* From, const ANodeGraph* To)
+UNiagaraComponent* AGraph::GetNiagaraForLink(const FVector From, const FVector To) const
 {
 	if (!FXTemplate)
-		return;
+		return nullptr;
 
-	const FVector FromVector = From->GetActorLocation();
-	const FVector ToVector = To->GetActorLocation();
+	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, From);
+	Niagara->SetVectorParameter(NiagaraParameterEnd, To);
 
-	UNiagaraComponent* Niagara = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), FXTemplate, FromVector);
-	Niagara->SetVectorParameter(NiagaraParameterEnd, ToVector);
-
-	NiagaraMap.Add(Id, Niagara);
+	return Niagara;
 }
 
 void AGraph::OnConstruction(const FTransform& Transform)
@@ -143,11 +102,11 @@ void AGraph::OnConstruction(const FTransform& Transform)
 	Super::OnConstruction(Transform);
 
 #if WITH_EDITOR
-	if(GEngine)
+	if (GEngine)
 	{
 		GEngine->Exec(GetWorld(),TEXT("flushpersistentdebuglines")); // exec command to clean debug lines on editor
 	}
-	
+
 	if (bShowLinks == true)
 	{
 		ShowDebugLinks();
@@ -159,38 +118,76 @@ void AGraph::BeginDestroy()
 {
 	Super::BeginDestroy();
 
-	for (auto It = NiagaraMap.CreateConstIterator(); It; ++It)
+	for (auto It = Links.CreateConstIterator(); It; ++It)
 	{
-		if (It.Value())
-			It.Value()->DestroyInstance();
+		if (It.Value().NiagaraComponent)
+			It.Value().NiagaraComponent->DestroyInstance();
 
-		NiagaraMap.Remove(It.Key());
+		Links.Remove(It.Key());
 	}
 }
 
+void AGraph::ShowSuccessLinks() const
+{
+	for (auto It = Links.CreateConstIterator(); It; ++It)
+	{
+		if (It.Value().NiagaraComponent == nullptr)
+			continue;
+
+		if (!It.Value().From->HasStar() || !It.Value().To->HasStar())
+		{
+			It.Value().NiagaraComponent->Deactivate();
+		}
+		else
+		{
+			It.Value().NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
+		}
+	}
+}
+
+// ****************************************************
+// EDITOR
 void AGraph::ShowDebugLinks()
 {
-	for (auto Node : NodesSuccessMap)
+	for (auto Node : NodesMap)
 		if (IsValid(Node.Key)) Node.Key->ShowDebugLinks();
 }
 
-void AGraph::ShowSuccessLinks()
+void AGraph::AddSingleNode()
 {
-	for (const auto Node : NodesSuccessMap)
+	if (!NodeClass)
+		return;
+
+	const auto Node = CreateNewNode();
+	NodesMap.Add(Node, Node->IsSuccessAttach());
+	NodesCounter++;
+}
+
+void AGraph::GenerateGraph()
+{
+	for (auto It = NodesMap.CreateConstIterator(); It; ++It)
 	{
-		auto NodeLinks = Node.Key->GetLinks();
+		if (IsValid(It.Key()))
+			It.Key()->Destroy();
 
-		FLinkStruct LinkStruct = FLinkStruct();
-		LinkStruct.From = Node.Key;
-
-		for (auto NodeLink : NodeLinks)
-		{
-			LinkStruct.To = NodeLink;
-
-			if (!NodesSuccessMap[NodeLink] || (!LinkStruct.To->HasStar() || !LinkStruct.From->HasStar()))
-				NiagaraMap[LinkStruct.GetId()]->Deactivate();
-			else
-				NiagaraMap[LinkStruct.GetId()]->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
-		}
+		NodesMap.Remove(It.Key());
 	}
+
+	if (!NodeClass)
+		return;
+
+	for (int i = 0; i < NodesCounter; ++i)
+	{
+		const auto Node = CreateNewNode();
+		NodesMap.Add(Node, Node->IsSuccessAttach());
+	}
+}
+
+ANodeGraph* AGraph::CreateNewNode()
+{
+	AActor* ChildActor = GetWorld()->SpawnActor<ANodeGraph>(NodeClass, GetActorLocation(), FRotator::ZeroRotator,
+                                                            FActorSpawnParameters());
+	ChildActor->AttachToActor(this, FAttachmentTransformRules(EAttachmentRule::KeepRelative, false));
+
+	return Cast<ANodeGraph>(ChildActor);
 }

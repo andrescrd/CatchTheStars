@@ -17,7 +17,7 @@ ANodeGraph::ANodeGraph()
 	RootComponent = Root;
 
 	Niagara = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
-	Niagara->SetAutoActivate(true);
+	Niagara->SetAutoActivate(false);
 	Niagara->SetAsset(FXTemplate);
 	Niagara->SetupAttachment(Root);
 

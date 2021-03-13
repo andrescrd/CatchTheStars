@@ -8,10 +8,14 @@ struct FLinkStruct
 	GENERATED_USTRUCT_BODY()
 
 public:
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	class ANodeGraph* From;
 	UPROPERTY(BlueprintReadWrite)
 	class ANodeGraph* To;
+	UPROPERTY(BlueprintReadWrite)
+	class ANodeGraph* Key;
+	UPROPERTY(BlueprintReadOnly)
+	class UNiagaraComponent* NiagaraComponent;
 
 	FString GetId() const;
 	FString GetIdInverted() const;
