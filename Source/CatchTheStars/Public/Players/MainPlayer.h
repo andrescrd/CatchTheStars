@@ -30,7 +30,8 @@ protected:
 	
 	virtual void SetupInputComponent() override;
 	class AGraph* GetCurrentGraph();
-	
+	void UnSelected();
+
 	void SetSelectedTarget(class ATarget* Target);
 	void SetSelectedStar(class AStar* Star);
 

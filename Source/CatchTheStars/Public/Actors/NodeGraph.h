@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Support/Enums/StarTypesEnum.h"
+#include "Support/Structures/LinkStruct.h"
+
 #include "NodeGraph.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ANodeGraph*, Node, const bool, Success);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSuccessAttachSignature, const class ANodeGraph*, Node, const bool,
+                                             Success);
 
 UCLASS()
 class CATCHTHESTARS_API ANodeGraph : public AActor
@@ -27,6 +30,8 @@ protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class UChildActorComponent* StarChild;
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
+	class UNiagaraComponent* NiagaraBlocked;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category=Setup)
 	class UNiagaraComponent* NiagaraSuccessAttach;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category=Setup)
@@ -38,12 +43,15 @@ protected:
 	bool bHasStar;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
 	EStarTypesEnum TargetType;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup, meta=(EditCondition="bHasStar"))
 	EStarTypesEnum StarType;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Setup)
-	TSet<class ANodeGraph*> Links;
+	TArray<FLinkStruct> Links;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
-	class UNiagaraSystem* FXTemplate;
+	class UNiagaraSystem* FXSuccessTemplate;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
+	class UNiagaraSystem* FXBlockedTemplate;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class USoundBase* AttachSound;
 
@@ -51,23 +59,28 @@ protected:
 	void SetupType() const;
 	void SetupTarget();
 	void SetupStar();
-	
-public:
-	virtual void OnConstruction(const FTransform& Transform) override;	
+	void SetupLinkStruct();
 
-	class ATarget* GetTarget() const;
-	class AStar* GetStar() const;
-	TSet<class ANodeGraph*> GetLinks() const;
-	FVector GetStarLocation() const;
 	void PlayAttachSound() const;
 	void ActivateNiagaraSuccessAttach(const bool Activate) const;
 	void NotifySuccessAttach(const bool WasSuccess) const;
-	void SetStar(class AStar* NewStar);	
-	bool IsSuccessAttach() const;
-	bool HasStar() const;
-	void RemoveStar();
 
+public:
 	FSuccessAttachSignature OnSuccessAttached;
+
+	virtual void OnConstruction(const FTransform& Transform) override;
+
+	class ATarget* GetTarget() const;
+	class AStar* GetStar() const;
+	TArray<FLinkStruct> GetLinks() const;
+	FVector GetStarLocation() const;
+
+	void SetIsKey(const bool IsKey) const;
+	void SetStar(class AStar* NewStar);
+	void RemoveStar();
+	
+	bool IsSuccessAttach() const;
+	bool HasStar() const;	
 
 	UFUNCTION(CallInEditor, Category=Setup)
 	void ShowDebugLinks();

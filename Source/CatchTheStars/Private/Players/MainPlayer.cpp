@@ -57,14 +57,7 @@ void AMainPlayer::OnSelected()
 	}
 	else
 	{
-		if (SelectedStar)
-			SelectedStar->SetSelected(false);
-
-		if (SelectedTarget)
-			SelectedTarget->SetSelected(false);
-
-		SelectedStar = nullptr;
-		SelectedTarget = nullptr;
+		UnSelected();
 	}
 }
 
@@ -84,22 +77,21 @@ void AMainPlayer::SetSelectedTarget(ATarget* Target)
 
 	SelectedTarget = Target;
 	SelectedTarget->SetSelected(true);
-
-	ANodeGraph* ParentTarget = Cast<ANodeGraph>(SelectedTarget->GetAttachParentActor());
-	ANodeGraph* ParentStar = Cast<ANodeGraph>(SelectedStar->GetAttachParentActor());
 	
-	if (ParentTarget == ParentStar || ParentTarget->HasStar())
-		return;
-
-	if(!GetCurrentGraph()->IsAvailableLink(ParentStar, ParentTarget)) // validate if graph  has valid link
-		return;
-		
-	ParentStar->RemoveStar();
-	ParentTarget->SetStar(SelectedStar);
-	
-	SelectedStar->SetSelected(false);
-	SelectedStar->SetNewLocation(ParentTarget->GetStarLocation());
+	GetCurrentGraph()->AttachStarToTarget(SelectedStar, SelectedTarget);	
 
 	SelectedTarget = nullptr;
 	SelectedStar = nullptr;
+}
+
+void AMainPlayer::UnSelected()
+{
+	if (SelectedStar)
+		SelectedStar->SetSelected(false);
+
+	if (SelectedTarget)
+		SelectedTarget->SetSelected(false);
+
+	SelectedStar = nullptr;
+	SelectedTarget = nullptr;
 }

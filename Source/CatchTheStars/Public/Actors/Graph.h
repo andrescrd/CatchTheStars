@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 
+
+#include "Star.h"
+#include "Target.h"
 #include "GameFramework/Actor.h"
 #include "Support/Structures/LinkStruct.h"
 
@@ -46,7 +49,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
 	class UNiagaraSystem* FXTemplate;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Setup)
-	FLinearColor LinearColorCurve;
+	class ULinkDataAsset* LinkDataAsset;
 		
 	virtual void BeginPlay() override;
 
@@ -62,7 +65,8 @@ protected:
 public:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void BeginDestroy() override;
-	
+
+	void AttachStarToTarget(class AStar* Star, class ATarget* Target);
 	bool IsAvailableLink(class ANodeGraph* From, class ANodeGraph* To);
 
 	UFUNCTION(CallInEditor, Category=Setup)
@@ -71,4 +75,5 @@ public:
 	class ANodeGraph*  CreateNewNode();
 	UFUNCTION(CallInEditor, Category=Setup)
 	void GenerateGraph();
+		
 };

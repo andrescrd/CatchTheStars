@@ -16,10 +16,15 @@ ANodeGraph::ANodeGraph()
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	RootComponent = Root;
 
-	NiagaraSuccessAttach = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraComponent"));
+	NiagaraSuccessAttach = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraSuccessAttach"));
 	NiagaraSuccessAttach->SetAutoActivate(false);
-	NiagaraSuccessAttach->SetAsset(FXTemplate);
-	NiagaraSuccessAttach->SetupAttachment(Root);
+	NiagaraSuccessAttach->SetAsset(FXSuccessTemplate);
+	NiagaraSuccessAttach->SetupAttachment(RootComponent);
+
+	NiagaraBlocked = CreateDefaultSubobject<UNiagaraComponent>(TEXT("NiagaraBlocked"));
+	NiagaraBlocked->SetAutoActivate(false);
+	NiagaraBlocked->SetAsset(FXBlockedTemplate);
+	NiagaraBlocked->SetupAttachment(RootComponent);
 
 	TargetChild = CreateDefaultSubobject<UChildActorComponent>(TEXT("TargetComponent"));
 	TargetChild->SetupAttachment(RootComponent);
@@ -33,13 +38,14 @@ ATarget* ANodeGraph::GetTarget() const { return Target; }
 
 AStar* ANodeGraph::GetStar() const { return Star; }
 
-TSet<ANodeGraph*> ANodeGraph::GetLinks() const { return Links; }
+TArray<FLinkStruct> ANodeGraph::GetLinks() const { return Links; }
 
 FVector ANodeGraph::GetStarLocation() const { return StarChild->GetComponentLocation(); }
 
 void ANodeGraph::ActivateNiagaraSuccessAttach(const bool Activate) const
 {
-	Activate ? NiagaraSuccessAttach->Activate() : NiagaraSuccessAttach->Deactivate();
+	if(FXSuccessTemplate)
+		Activate ? NiagaraSuccessAttach->Activate() : NiagaraSuccessAttach->Deactivate();
 }
 
 void ANodeGraph::PlayAttachSound() const
@@ -82,6 +88,12 @@ void ANodeGraph::RemoveStar()
 	ActivateNiagaraSuccessAttach(IsSuccessAttach());
 }
 
+void ANodeGraph::SetIsKey(const bool IsKey) const
+{
+	if (FXBlockedTemplate)
+		IsKey ? NiagaraBlocked->Activate() : NiagaraBlocked->Deactivate();
+}
+
 void ANodeGraph::NotifySuccessAttach(const bool WasSuccess) const
 {
 	if (WasSuccess && !IsSuccessAttach()) // notify if it was success or not
@@ -101,6 +113,7 @@ void ANodeGraph::OnConstruction(const FTransform& Transform)
 	SetupTarget();
 	SetupStar();
 	SetupType();
+	SetupLinkStruct();
 }
 
 void ANodeGraph::SetupTarget()
@@ -144,8 +157,26 @@ void ANodeGraph::RemoveChild(UChildActorComponent* Child)
 	Child->DestroyChildActor();
 }
 
+void ANodeGraph::SetupLinkStruct()
+{
+	for (FLinkStruct& Link : Links)
+	{
+		if (!Link.From)
+			Link.From = this;
+	}
+}
+
 void ANodeGraph::ShowDebugLinks()
 {
-	for (auto Link : Links)
-		DrawDebugLine(GetWorld(), GetActorLocation(), Link->GetStarLocation(), FColor::Green, true, 0, 0, 5);
+	for (const auto Link : Links)
+	{
+		if (!Link.To || !Link.From)
+			continue;
+
+		auto Color = Link.HasKey() ? FColor::Red : FColor::Green;
+		DrawDebugLine(GetWorld(), GetActorLocation(), Link.To->GetStarLocation(), Color, true, 0, 0, 5);
+
+		if (Link.HasKey())
+			DrawDebugSphere(GetWorld(), Link.Key->GetActorLocation(), 128.f, 8, FColor::Red, true, 0, 0, 5);
+	}
 }

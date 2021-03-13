@@ -10,13 +10,19 @@ struct FLinkStruct
 public:
 	UPROPERTY(BlueprintReadOnly)
 	class ANodeGraph* From;
-	UPROPERTY(BlueprintReadWrite)
-	class ANodeGraph* To;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class ANodeGraph* To;	
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite)
 	class ANodeGraph* Key;
 	UPROPERTY(BlueprintReadOnly)
 	class UNiagaraComponent* NiagaraComponent;
 
 	FString GetId() const;
 	FString GetIdInverted() const;
+	bool HasKey() const;
+	bool IsBlocked() const;
+
+	FLinkStruct(): From(nullptr), To(nullptr), Key(nullptr), NiagaraComponent(nullptr)
+	{
+	}
 };

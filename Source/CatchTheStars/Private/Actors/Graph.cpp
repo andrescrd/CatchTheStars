@@ -1,12 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Actors/Graph.h"
+
+
 #include "CollisionDebugDrawingPublic.h"
 #include "Actors/NodeGraph.h"
 #include "Kismet/GameplayStatics.h"
 #include "NiagaraFunctionLibrary.h"
 #include "NiagaraComponent.h"
+#include "Assets/LinkDataAsset.h"
 #include "World/GameModes/GameplayGameMode.h"
 
 const FName NiagaraParameterEnd = FName("BeamEnd");
@@ -52,6 +54,16 @@ void AGraph::SetSuccessAttached(const ANodeGraph* Node, const bool Success)
 	NodesMap[Node] = Success;
 	Success ? CurrentSuccess++ : CurrentSuccess--;
 
+	for (auto Link : Links)
+	{
+		if(Link.Value.Key == nullptr || Link.Value.Key != Node)
+			continue;
+		
+		Link.Value.Key->SetIsKey(false);
+		Link.Value.Key = nullptr;
+		Link.Value.NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinkDataAsset->PrimaryColor);
+	}
+
 	if (CurrentSuccess == MaxSuccess)
 	{
 		ShowSuccessLinks();
@@ -63,26 +75,35 @@ bool AGraph::IsAvailableLink(ANodeGraph* From, ANodeGraph* To)
 {
 	const FString Name = From->GetName() + To->GetName();
 	const FString InvertedName = To->GetName() + From->GetName();
-	return Links.Find(Name) || Links.Find(InvertedName);
+
+	return (Links.Find(Name) && !Links.Find(Name)->IsBlocked()) ||
+		(Links.Find(InvertedName) && !Links.Find(InvertedName)->IsBlocked());
 }
 
 void AGraph::SetupLinks(ANodeGraph* Node)
 {
+	if (!LinkDataAsset)
+		return;
+
 	auto NodeLinks = Node->GetLinks();
 
-	FLinkStruct LinkStruct = FLinkStruct();
-	LinkStruct.From = Node;
-
-	for (auto NodeLink : NodeLinks)
+	for (FLinkStruct NodeLink : NodeLinks)
 	{
-		LinkStruct.To = NodeLink;
-
-		if (Links.Contains(LinkStruct.GetId()) || Links.Contains(LinkStruct.GetIdInverted()))
+		if (Links.Contains(NodeLink.GetId()) || Links.Contains(NodeLink.GetIdInverted()))
 			continue;
 
-		LinkStruct.NiagaraComponent = GetNiagaraForLink(LinkStruct.From->GetActorLocation(),
-		                                                LinkStruct.To->GetActorLocation());
-		Links.Add(LinkStruct.GetId(), LinkStruct);
+		auto CurrentLinkNiagara = GetNiagaraForLink(NodeLink.From->GetActorLocation(),
+		                                            NodeLink.To->GetActorLocation());
+
+		const auto Color = NodeLink.IsBlocked() ? LinkDataAsset->BlockedColor : LinkDataAsset->PrimaryColor;
+
+		if(NodeLink.HasKey())
+			NodeLink.Key->SetIsKey(true);
+		
+		CurrentLinkNiagara->SetColorParameter(NiagaraParameterColor, Color);
+		NodeLink.NiagaraComponent = CurrentLinkNiagara;
+
+		Links.Add(NodeLink.GetId(), NodeLink);
 	}
 }
 
@@ -107,8 +128,26 @@ void AGraph::ShowSuccessLinks() const
 		if (!It.Value().From->HasStar() || !It.Value().To->HasStar())
 			It.Value().NiagaraComponent->Deactivate();
 		else
-			It.Value().NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinearColorCurve);
+			It.Value().NiagaraComponent->SetColorParameter(NiagaraParameterColor, LinkDataAsset->SuccessColor);
 	}
+}
+
+void AGraph::AttachStarToTarget(AStar* Star, ATarget* Target)
+{
+	ANodeGraph* ParentTarget = Cast<ANodeGraph>(Target->GetAttachParentActor());
+	ANodeGraph* ParentStar = Cast<ANodeGraph>(Star->GetAttachParentActor());
+	
+	if (ParentTarget == ParentStar || ParentTarget->HasStar())
+		return;
+
+	if(!IsAvailableLink(ParentStar, ParentTarget)) // validate if graph  has valid link
+		return;	
+		
+	ParentStar->RemoveStar();
+	ParentTarget->SetStar(Star);
+	
+	Star->SetSelected(false);
+	Star->SetNewLocation(ParentTarget->GetStarLocation());
 }
 
 void AGraph::OnConstruction(const FTransform& Transform)
