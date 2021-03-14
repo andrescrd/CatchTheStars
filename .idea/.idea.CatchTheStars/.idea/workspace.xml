@@ -5,7 +5,9 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding resources" />
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="removing unused modules">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Editor/UnrealEd/Public/Dialogs/Dialogs.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/LineBatchComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/andre/Documents/Source/CatchTheStars/Source/CatchTheStars/CatchTheStars.Build.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/UI/TypeWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_4.26/Engine/Source/Runtime/Engine/Private/GameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CatchTheStars/Public/World/GameModes/GameplayGameMode.h" root0="FORCE_HIGHLIGHTING" />
@@ -104,10 +107,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CTarget.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CStar.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CStar.h" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Node.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Node.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/CGraph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/CGraph.cpp" />
@@ -124,7 +123,6 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Components/SelecteableComponent.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Star.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Star.cpp" />
-      <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Support/Structures/LevelStruct.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/World/Managers/SaveGameManager.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Support/Helpers/OwnSaveGame.h" />
@@ -155,6 +153,11 @@
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/NodeGraph.cpp" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Public/Actors/Graph.h" />
       <option value="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.Build.cs" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars.Target.cs" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStarsEditor.Target.cs" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/CatchTheStars.cpp" />
+      <option value="$PROJECT_DIR$/Source/CatchTheStars/StarsCatcher.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oB2givjqJpSaKlJoHPwCK3Pwf5" />
@@ -628,14 +631,7 @@
       <workItem from="1615558298930" duration="22529000" />
       <workItem from="1615598375468" duration="2526000" />
       <workItem from="1615605409624" duration="9055000" />
-      <workItem from="1615651616225" duration="7260000" />
-    </task>
-    <task id="LOCAL-00030" summary="refactoring">
-      <created>1614647697596</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1614647697596</updated>
+      <workItem from="1615651616225" duration="8431000" />
     </task>
     <task id="LOCAL-00031" summary="refactoring">
       <created>1614648946886</created>
@@ -973,7 +969,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615680696431</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="removing unused modules">
+      <created>1615680894972</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1615680894972</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1005,7 +1008,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update success links niagara" />
     <MESSAGE value="update niagara color" />
     <MESSAGE value="adding widget to target" />
     <MESSAGE value="addin gaudios implementation" />
@@ -1030,7 +1032,8 @@
     <MESSAGE value="fix unblock link" />
     <MESSAGE value="fix Graph.cpp" />
     <MESSAGE value="adding resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding resources" />
+    <MESSAGE value="removing unused modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing unused modules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
