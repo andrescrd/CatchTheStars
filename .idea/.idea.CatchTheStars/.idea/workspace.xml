@@ -5,14 +5,7 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="fix unblock link">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelsDataAsset.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/DataAssets/LevelsDataAsset.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Main_BuiltData.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Map10.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Map10.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CatchTheStars/Private/Actors/Graph.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding resources" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -635,21 +628,7 @@
       <workItem from="1615558298930" duration="22529000" />
       <workItem from="1615598375468" duration="2526000" />
       <workItem from="1615605409624" duration="9055000" />
-      <workItem from="1615651616225" duration="6410000" />
-    </task>
-    <task id="LOCAL-00028" summary="update start and target">
-      <created>1614639159218</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1614639159218</updated>
-    </task>
-    <task id="LOCAL-00029" summary="fix star">
-      <created>1614647498769</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1614647498769</updated>
+      <workItem from="1615651616225" duration="7260000" />
     </task>
     <task id="LOCAL-00030" summary="refactoring">
       <created>1614647697596</created>
@@ -980,7 +959,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615669620761</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="fix Graph.cpp">
+      <created>1615676208454</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1615676208454</updated>
+    </task>
+    <task id="LOCAL-00078" summary="adding resources">
+      <created>1615680696431</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1615680696431</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1012,8 +1005,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="adding show links" />
-    <MESSAGE value="with editor" />
     <MESSAGE value="update success links niagara" />
     <MESSAGE value="update niagara color" />
     <MESSAGE value="adding widget to target" />
@@ -1037,7 +1028,9 @@
     <MESSAGE value="refactoring node" />
     <MESSAGE value="adding link data asset and niagara fx" />
     <MESSAGE value="fix unblock link" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix unblock link" />
+    <MESSAGE value="fix Graph.cpp" />
+    <MESSAGE value="adding resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding resources" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
