@@ -5,8 +5,10 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="removing unused modules">
+    <list default="true" id="be34a8ec-ceef-4613-9490-d40c199db0bb" name="Default Changelist" comment="adding icon">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CatchTheStars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Windows/Application.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Windows/Application.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/starscatcher.ico" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/starscatcher.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -631,14 +633,7 @@
       <workItem from="1615558298930" duration="22529000" />
       <workItem from="1615598375468" duration="2526000" />
       <workItem from="1615605409624" duration="9055000" />
-      <workItem from="1615651616225" duration="8431000" />
-    </task>
-    <task id="LOCAL-00031" summary="refactoring">
-      <created>1614648946886</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1614648946886</updated>
+      <workItem from="1615651616225" duration="8443000" />
     </task>
     <task id="LOCAL-00032" summary="fix attach parent">
       <created>1614803915402</created>
@@ -976,7 +971,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615680894972</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="adding icon">
+      <created>1615685701146</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1615685701146</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1008,7 +1010,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="update niagara color" />
     <MESSAGE value="adding widget to target" />
     <MESSAGE value="addin gaudios implementation" />
     <MESSAGE value="adding data manager" />
@@ -1033,7 +1034,8 @@
     <MESSAGE value="fix Graph.cpp" />
     <MESSAGE value="adding resources" />
     <MESSAGE value="removing unused modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing unused modules" />
+    <MESSAGE value="adding icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding icon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
